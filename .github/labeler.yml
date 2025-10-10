@@ -1,3 +1,0 @@
-community:
-  - changed-files:
-      - any-glob-to-all-files: ['libs/react-components/community/**', 'libs/react-components/design-tokens/**']

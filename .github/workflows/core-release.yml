@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - rc
-    paths-ignore:
-      - "libs/react-components/**"
-      - "libs/angular-components/**"
 
 jobs:
   build-and-deploy:
@@ -25,8 +22,6 @@ jobs:
       - name: Build and publish npm package
         run: |
           HUSKY=0
-          npm ci
-          cd libs/tedi-core
           npm ci
           npm run build
           git pull

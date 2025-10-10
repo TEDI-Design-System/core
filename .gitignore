@@ -4,9 +4,6 @@
 
 # compiled output
 /dist
-/libs/react-components/dist
-/libs/angular-components/dist
-/libs/tedi-core/dist
 /tmp
 /out-tsc
 
@@ -42,20 +39,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-**/**/tsconfig.tsbuildinfo
-
-# Local Netlify folder
-.netlify
-
-migrations.json
-
-.angular
-
-documentation.json
-
-*storybook.log
-
-# Coverage
-/libs/react-components/coverage
-/libs/angular-components/coverage
