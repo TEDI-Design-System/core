@@ -1,7 +1,6 @@
-@use 'base-colors-legacy';
-@use 'theme/color-variables__default';
-@use 'theme/color-variables__dark';
-@use 'theme/color-variables__rit';
+@use 'themes/default/color-variables__default';
+@use 'themes/default/color-variables__dark';
+@use 'themes/rit/color-variables__rit';
 
 :root {
   /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
