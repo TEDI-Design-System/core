@@ -1,3 +1,20 @@
+# [2.1.0](https://github.com/TEDI-Design-System/core/compare/core-2.0.0...core-2.1.0) (2025-11-05)
+
+
+* Update dependabot.yml ([](https://github.com/TEDI-Design-System/core/commit/9c79aca8696584cffb3db6732acccadf0e8b9ab5))
+* Update issue templates ([](https://github.com/TEDI-Design-System/core/commit/dea3dfe3f1f94f3cc12c7dccfe73b4be6866d512))
+
+
+### chore
+
+* changelog cleanup #22 ([](https://github.com/TEDI-Design-System/core/commit/834b4ba751ade74e096bf4ddd074ef6f39d3c564)), closes [#22](https://github.com/TEDI-Design-System/core/issues/22)
+* fix releaserc config to bypass old issue key errors #22 ([](https://github.com/TEDI-Design-System/core/commit/41833b0e33c2277094cb95ff7ba9e342b7df4d94)), closes [#22](https://github.com/TEDI-Design-System/core/issues/22)
+
+
+### feat
+
+* **variables:** theme logic, update variables #32 (#36) ([](https://github.com/TEDI-Design-System/core/commit/fc9b5bb2569b3c27ce24df2ed05d4beaf28c0926)), closes [#32](https://github.com/TEDI-Design-System/core/issues/32) [#36](https://github.com/TEDI-Design-System/core/issues/36) [#32](https://github.com/TEDI-Design-System/core/issues/32) [#32](https://github.com/TEDI-Design-System/core/issues/32)
+
 # [2.0.0](https://github.com/TEDI-Design-System/core/compare/core-1.15.5...core-2.0.0) (2025-10-10)
 
 ### Code Refactoring
