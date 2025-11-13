@@ -29,7 +29,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^16.2.4",
     "semantic-release": "^24.2.7",
-    "typescript": "5.9.2",
+    "typescript": "5.9.3",
     "prettier": "^2.8.8",
     "replace-in-file": "^8.3.0",
     "sass": "^1.86.0",
