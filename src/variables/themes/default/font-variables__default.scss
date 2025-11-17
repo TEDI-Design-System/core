@@ -44,10 +44,8 @@
   --heading-subtitle-small-weight: var(--tedi-weight-02);
   --family-default: var(--tedi-family-roboto);
   --family-heading: var(--tedi-family-roboto);
-}
 
-@media (width >= 48rem) {
-  :root {
+  @media (width >= 48rem) {
     --body-bold-size: var(--tedi-size-02);
     --body-bold-line-height: var(--tedi-line-height-03);
     --body-bold-weight: var(--tedi-weight-03);
