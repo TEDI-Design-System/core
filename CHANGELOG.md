@@ -1,3 +1,18 @@
+# [2.2.0](https://github.com/TEDI-Design-System/core/compare/core-2.1.0...core-2.2.0) (2025-11-17)
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/cli from 19.8.1 to 20.1.0 (#31) ([](https://github.com/TEDI-Design-System/core/commit/259cba11ad57a46145e1cefdec2e661fcf5f08af)), closes [#31](https://github.com/TEDI-Design-System/core/issues/31)
+* **deps-dev:** bump @commitlint/config-conventional (#28) ([](https://github.com/TEDI-Design-System/core/commit/4e75c3730b4f4ddcd378da677569463fa1f6b14e)), closes [#28](https://github.com/TEDI-Design-System/core/issues/28)
+* **deps-dev:** bump lint-staged from 16.1.6 to 16.2.4 (#27) ([](https://github.com/TEDI-Design-System/core/commit/5a2157fb3cab098a4b04a6c3797f2fa6b7d53b99)), closes [#27](https://github.com/TEDI-Design-System/core/issues/27)
+* **deps-dev:** bump typescript from 5.9.2 to 5.9.3 (#29) ([](https://github.com/TEDI-Design-System/core/commit/d017f22754f444e93f261d7f69840b49727faa91)), closes [#29](https://github.com/TEDI-Design-System/core/issues/29)
+
+
+### feat
+
+* mixin changes, variables update #33 (#37) ([](https://github.com/TEDI-Design-System/core/commit/ff2ec80c152a94e857f4ae9b2645d52cb9bc484b)), closes [#33](https://github.com/TEDI-Design-System/core/issues/33) [#37](https://github.com/TEDI-Design-System/core/issues/37) [#33](https://github.com/TEDI-Design-System/core/issues/33) [#33](https://github.com/TEDI-Design-System/core/issues/33) [#33](https://github.com/TEDI-Design-System/core/issues/33)
+
 # [2.1.0](https://github.com/TEDI-Design-System/core/compare/core-2.0.0...core-2.1.0) (2025-11-05)
 
 
