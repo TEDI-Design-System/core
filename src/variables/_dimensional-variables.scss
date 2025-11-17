@@ -361,10 +361,8 @@
   --tooltip-padding-x: var(--card-padding-xs);
   --tooltip-padding-y: var(--tooltip-padding-x);
   --tooltip-max-width: var(--containers-02);
-}
 
-@media (width >= 48rem) {
-  :root {
+  @media (width >= 48rem) {
     --alert-radius: var(--card-radius-rounded);
     --alert-default-padding-x-sm: var(--dimensions-05);
     --alert-default-padding-y-sm: var(--dimensions-05);
@@ -728,10 +726,8 @@
     --tooltip-padding-y: var(--tooltip-padding-x);
     --tooltip-max-width: var(--containers-02);
   }
-}
 
-@media (width >= 62rem) {
-  :root {
+  @media (width >= 62rem) {
     --alert-radius: var(--card-radius-rounded);
     --alert-default-padding-x-sm: var(--dimensions-05);
     --alert-default-padding-y-sm: var(--dimensions-05);
