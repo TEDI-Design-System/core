@@ -14,11 +14,10 @@ html {
 
 body {
   box-sizing: border-box;
+  font-family: var(--family-default);
+  font-size: var(--body-regular-size);
+  line-height: var(--body-regular-line-height);
   color: var(--general-text-primary);
-
-  @include mixins.responsive-styles(font-family, family-primary, $exclude: tablet);
-  @include mixins.responsive-styles(line-height, body-regular-line-height, $exclude: tablet);
-  @include mixins.responsive-styles(font-size, body-regular-size, $exclude: tablet);
 }
 
 *,
