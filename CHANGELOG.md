@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/TEDI-Design-System/core/compare/core-2.2.0...core-2.3.0) (2025-11-18)
+
+
+### feat
+
+* **modal:** update modal variables #38 (#39) ([](https://github.com/TEDI-Design-System/core/commit/895d3fbb3f5b7d35f406a6dbbfb89dc84cd7d268)), closes [#38](https://github.com/TEDI-Design-System/core/issues/38) [#39](https://github.com/TEDI-Design-System/core/issues/39)
+
 # [2.2.0](https://github.com/TEDI-Design-System/core/compare/core-2.1.0...core-2.2.0) (2025-11-17)
 
 

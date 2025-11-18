@@ -289,7 +289,9 @@
   --form-checkbox-radio-card-primary-hover-text: var(--button-main-primary-text-default);
   --form-checkbox-radio-card-primary-selected-background: var(--button-main-primary-background-default);
   --form-checkbox-radio-card-primary-selected-border-group: var(--button-main-primary-border-active);
-  --form-checkbox-radio-card-primary-selected-border-separate: var(--form-checkbox-radio-card-primary-selected-background);
+  --form-checkbox-radio-card-primary-selected-border-separate: var(
+    --form-checkbox-radio-card-primary-selected-background
+  );
   --form-checkbox-radio-card-primary-selected-text: var(--button-main-primary-text-default);
   --form-checkbox-radio-card-secondary-default-background: var(--button-main-secondary-background-default);
   --form-checkbox-radio-card-secondary-default-border: var(--form-checkbox-radio-card-primary-default-border-group);
@@ -298,7 +300,9 @@
   --form-checkbox-radio-card-secondary-disabled-default-border: var(--form-input-border-disabled);
   --form-checkbox-radio-card-secondary-disabled-default-text: var(--general-text-disabled);
   --form-checkbox-radio-card-secondary-disabled-selected-background: var(--general-surface-primary);
-  --form-checkbox-radio-card-secondary-disabled-selected-border: var(--form-checkbox-radio-default-border-selected-disabled);
+  --form-checkbox-radio-card-secondary-disabled-selected-border: var(
+    --form-checkbox-radio-default-border-selected-disabled
+  );
   --form-checkbox-radio-card-secondary-disabled-selected-text: var(--tedi-primary-600);
   --form-checkbox-radio-card-secondary-hover-background: var(--button-main-secondary-background-hover);
   --form-checkbox-radio-card-secondary-hover-border: var(--button-main-secondary-border-hover);
