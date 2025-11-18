@@ -494,9 +494,8 @@
   --loader-spinner-color-primary: var(--tedi-neutral-450);
   --loader-spinner-color-secondary: var(--tedi-alpha-white-80);
   --modal-background: var(--general-surface-primary);
-  --modal-border: var(--general-border-primary);
-  --modal-footer-border-top: var(--general-border-primary);
-  --modal-header-border-bottom: var(--general-border-primary);
+  --modal-border-outer: var(--general-border-primary);
+  --modal-border-inner: var(--general-border-primary);
   --popover-background: var(--general-surface-primary);
   --popover-border: var(--general-border-white);
   --popover-text: var(--general-text-primary);
