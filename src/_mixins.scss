@@ -15,15 +15,36 @@ $breakpoints: (
   $result: '';
 
   @each $name in $variable-names {
-    $prefixed: var(--#{$name});
-    $result: #{$result} #{$prefixed};
+    $result: #{$result} var(--#{$name}-#{$suffix});
   }
 
   @return $result;
 }
 
-@mixin responsive-styles($property, $name, $exclude: null) {
-  #{$property}: var(--#{$name});
+@mixin responsive-styles($property, $names, $exclude: null) {
+  $variable-names: ();
+
+  @if meta.type-of($names) == 'string' {
+    $variable-names: (string.slice($names, 1, -1));
+  } @else {
+    $variable-names: $names;
+  }
+
+  & {
+    #{$property}: #{construct-variables($variable-names, mobile)};
+  }
+
+  @if $exclude != 'tablet' {
+    @media (min-width: map.get($breakpoints, sm)) {
+      #{$property}: #{construct-variables($variable-names, tablet)};
+    }
+  }
+
+  @if $exclude != 'desktop' {
+    @media (min-width: map.get($breakpoints, lg)) {
+      #{$property}: #{construct-variables($variable-names, desktop)};
+    }
+  }
 }
 
 @mixin print-grayscale {
