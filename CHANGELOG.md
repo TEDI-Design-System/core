@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/TEDI-Design-System/core/compare/core-2.3.0...core-2.4.0) (2025-11-21)
+
+
+### feat
+
+* **variables:** unified variable exporter script #34 (#40) ([](https://github.com/TEDI-Design-System/core/commit/12e2e7755c3b61d23b3c052aee02267dc5704f11)), closes [#34](https://github.com/TEDI-Design-System/core/issues/34) [#40](https://github.com/TEDI-Design-System/core/issues/40)
+
 # [2.3.0](https://github.com/TEDI-Design-System/core/compare/core-2.2.0...core-2.3.0) (2025-11-18)
 
 
