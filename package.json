@@ -6,7 +6,8 @@
     "prepare": "husky",
     "build": "rm -rf dist && mkdir dist && cp -a src/* dist/ && sass src/index.scss dist/index.css --style=compressed --no-source-map && replace-in-file //fonts//g \"./fonts/\" dist/index.css --isRegex && mkdir dist/fonts && cp -a public/fonts/* dist/fonts/ && cp README.md dist/ && cp package.json dist/",
     "release": "npx semantic-release",
-    "lint": "npx stylelint \"src/**/*.scss\" --fix"
+    "lint": "npx stylelint \"src/**/*.scss\" --fix",
+    "import-variables": "dotenv -e .env -- npx ts-node scripts/variable-exporter.ts"
   },
   "publishConfig": {
     "access": "public"
@@ -26,17 +27,21 @@
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^12.0.1",
+    "dotenv-cli": "^11.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^16.2.4",
-    "semantic-release": "^24.2.7",
-    "typescript": "5.9.3",
+    "node-fetch": "^3.3.2",
     "prettier": "^2.8.8",
     "replace-in-file": "^8.3.0",
     "sass": "^1.86.0",
+    "semantic-release": "^24.2.7",
     "stylelint": "^16.13.2",
     "stylelint-config-recess-order": "^4.2.0",
     "stylelint-config-standard-scss": "^14.0.0",
-    "stylelint-declaration-strict-value": "^1.9.2"
+    "stylelint-declaration-strict-value": "^1.9.2",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "5.9.3"
   },
   "commitlint": {
     "extends": "@commitlint/config-conventional",
