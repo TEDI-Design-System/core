@@ -75,6 +75,12 @@ small,
   line-height: var(--body-small-regular-line-height);
 }
 
+.text-extra-small {
+  font-size: var(--body-extra-small-size);
+  font-weight: var(--body-extra-small-weight);
+  line-height: var(--body-extra-small-line-height);
+}
+
 // Text color variants
 @each $color,
   $var
