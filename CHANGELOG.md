@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/TEDI-Design-System/core/compare/core-2.4.0...core-2.5.0) (2025-11-25)
+
+
+### feat
+
+* **typography:** add extra small text, fix storybook styles #25 (#41) ([](https://github.com/TEDI-Design-System/core/commit/e46cd18c6a04de592038f22976679059e26c072f)), closes [#25](https://github.com/TEDI-Design-System/core/issues/25) [#41](https://github.com/TEDI-Design-System/core/issues/41)
+
 # [2.4.0](https://github.com/TEDI-Design-System/core/compare/core-2.3.0...core-2.4.0) (2025-11-21)
 
 
