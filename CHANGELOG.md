@@ -1,3 +1,24 @@
+# [3.0.0](https://github.com/TEDI-Design-System/core/compare/core-2.5.0...core-3.0.0) (2025-12-08)
+
+
+### chore
+
+* **deps-dev:** bump lint-staged from 16.2.4 to 16.2.7 (#45) ([](https://github.com/TEDI-Design-System/core/commit/f1d85d62d5284b39f005e471fe1720c21c5b1669)), closes [#45](https://github.com/TEDI-Design-System/core/issues/45)
+* **deps-dev:** bump stylelint from 16.24.0 to 16.26.1 (#42) ([](https://github.com/TEDI-Design-System/core/commit/75afefed51e463bf2ebd4aae42195bf1ebc969cc)), closes [#42](https://github.com/TEDI-Design-System/core/issues/42)
+* **deps-dev:** bump stylelint-config-recess-order from 4.6.0 to 7.4.0 (#43) ([](https://github.com/TEDI-Design-System/core/commit/7d2db3fd03376b83e98bacf68ba17b7dbd8e691e)), closes [#43](https://github.com/TEDI-Design-System/core/issues/43)
+* **deps-dev:** bump stylelint-config-standard-scss (#44) ([](https://github.com/TEDI-Design-System/core/commit/ea3487c01e8b36615dd14489a70a4c7c50a344e1)), closes [#44](https://github.com/TEDI-Design-System/core/issues/44)
+
+
+### fix
+
+* **variables:** remove legacy variables #47 (#49) ([](https://github.com/TEDI-Design-System/core/commit/68695c62f89e283848564de975f95a74ad850fa5)), closes [#47](https://github.com/TEDI-Design-System/core/issues/47) [#49](https://github.com/TEDI-Design-System/core/issues/49)
+
+
+### BREAKING CHANGE
+
+* **variables:** old suffixed variables have been removed.
+Migrate to the new unsuffixed variable names.
+
 # [2.5.0](https://github.com/TEDI-Design-System/core/compare/core-2.4.0...core-2.5.0) (2025-11-25)
 
 
