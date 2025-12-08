@@ -11,43 +11,8 @@ $breakpoints: (
   xxl: 1400px,
 );
 
-@function construct-variables($variable-names, $suffix) {
-  $result: '';
-
-  @each $name in $variable-names {
-    $result: #{$result} var(--#{$name}-#{$suffix});
-  }
-
-  @return $result;
-}
-
-@mixin responsive-styles($property, $names, $exclude: null) {
-  $variable-names: ();
-
-  @if meta.type-of($names) == 'string' {
-    $variable-names: (string.slice($names, 1, -1));
-  } @else {
-    $variable-names: $names;
-  }
-
-  & {
-    #{$property}: #{construct-variables($variable-names, mobile)};
-  }
-
-  @if $exclude != 'tablet' {
-    @media (min-width: map.get($breakpoints, sm)) {
-      #{$property}: #{construct-variables($variable-names, tablet)};
-    }
-  }
-
-  @if $exclude != 'desktop' {
-    @media (min-width: map.get($breakpoints, lg)) {
-      #{$property}: #{construct-variables($variable-names, desktop)};
-    }
-  }
-}
-
 @mixin print-grayscale {
+  /* stylelint-disable no-invalid-position-declaration */
   @media print {
     filter: grayscale(1);
   }
@@ -59,7 +24,7 @@ $breakpoints: (
   height: 1px !important;
   padding: 0 !important;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: rect(1px, 1px, 1px, 1px);
   border: 0 !important;
 }
 
