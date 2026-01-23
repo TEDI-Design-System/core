@@ -1,37 +1,3 @@
-.mobile {
-  .tedi-text {
-    &--h1 {
-      font-size: var(--heading-h1-size-mobile);
-    }
-
-    &--h2 {
-      font-size: var(--heading-h2-size-mobile);
-    }
-
-    &--h3 {
-      font-size: var(--heading-h3-size-mobile);
-    }
-
-    &--h4 {
-      font-size: var(--heading-h4-size-mobile);
-    }
-
-    &--h5 {
-      font-size: var(--heading-h5-size-mobile);
-    }
-
-    &--h6 {
-      font-size: var(--heading-h6-size-mobile);
-    }
-  }
-
-  .text {
-    &-subtitle {
-      font-size: var(--heading-subtitle-small-size-mobile);
-    }
-  }
-}
-
 a {
   color: var(--link-primary-default);
 
@@ -141,15 +107,12 @@ a {
   height: 100%;
   content: '';
   background-color: var(--tedi-neutral-150);
-  background-image: linear-gradient(
-      45deg,
-      var(--tedi-neutral-300) 25%,
-      transparent 25%,
-      transparent 75%,
-      var(--tedi-neutral-300) 75%
-    ),
+  background-image:
+    linear-gradient(45deg, var(--tedi-neutral-300) 25%, transparent 25%, transparent 75%, var(--tedi-neutral-300) 75%),
     linear-gradient(45deg, var(--tedi-neutral-300) 25%, transparent 25%, transparent 75%, var(--tedi-neutral-300) 75%);
-  background-position: 0 0, 10px 10px;
+  background-position:
+    0 0,
+    10px 10px;
   background-size: 20px 20px;
 }
 
