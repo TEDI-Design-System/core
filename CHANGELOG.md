@@ -1,3 +1,20 @@
+## [3.0.1](https://github.com/TEDI-Design-System/core/compare/core-3.0.0...core-3.0.1) (2026-01-23)
+
+
+### chore
+
+* add project auto-add workflow #57 ([](https://github.com/TEDI-Design-System/core/commit/05c5d6062fad3362f623604e898e4e087bb80b54)), closes [#57](https://github.com/TEDI-Design-System/core/issues/57)
+* **deps-dev:** bump @commitlint/cli from 20.1.0 to 20.3.0 (#54) ([](https://github.com/TEDI-Design-System/core/commit/2fbff4760c190119bbee6fcc315f6810b84cc6b0)), closes [#54](https://github.com/TEDI-Design-System/core/issues/54)
+* **deps-dev:** bump @commitlint/config-conventional (#52) ([](https://github.com/TEDI-Design-System/core/commit/7597131fb469bb81190ccbe0c02a205fcb3e4599)), closes [#52](https://github.com/TEDI-Design-System/core/issues/52)
+* **deps-dev:** bump prettier from 2.8.8 to 3.7.4 (#53) ([](https://github.com/TEDI-Design-System/core/commit/b206f69a531e32ceb0bbd1495cda308ad98a946c)), closes [#53](https://github.com/TEDI-Design-System/core/issues/53)
+* **deps-dev:** bump replace-in-file from 8.3.0 to 8.4.0 (#55) ([](https://github.com/TEDI-Design-System/core/commit/292486a8a8514d5c74b863649e1b6cab819f5f07)), closes [#55](https://github.com/TEDI-Design-System/core/issues/55)
+* **deps-dev:** bump sass from 1.93.2 to 1.97.1 (#51) ([](https://github.com/TEDI-Design-System/core/commit/6ca551d4276cb4a6106b1a27737656ee5d9e4404)), closes [#51](https://github.com/TEDI-Design-System/core/issues/51)
+
+
+### fix
+
+* remove mobile header classes from storybook-styles #60 (#61) ([](https://github.com/TEDI-Design-System/core/commit/b94064a3b50600d5d40c76d6a4ac46682f7a856e)), closes [#60](https://github.com/TEDI-Design-System/core/issues/60) [#61](https://github.com/TEDI-Design-System/core/issues/61)
+
 # [3.0.0](https://github.com/TEDI-Design-System/core/compare/core-2.5.0...core-3.0.0) (2025-12-08)
 
 
