@@ -1,3 +1,18 @@
+# [3.2.0](https://github.com/TEDI-Design-System/core/compare/core-3.1.1...core-3.2.0) (2026-02-12)
+
+
+* Merge branch 'rc' of https://github.com/TEDI-Design-System/core into rc ([](https://github.com/TEDI-Design-System/core/commit/1a41ed18ef14598382a1322a3a3c6739ec4b11ec))
+
+
+### chore
+
+* workflow fixes for publishing package #69 ([](https://github.com/TEDI-Design-System/core/commit/8c9ae6a9bc4c6ec01457e1202f58f199ce3cee21)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
+
+### feat
+
+* **variables:** update variables #69 ([](https://github.com/TEDI-Design-System/core/commit/f42b4468c9d70d70253af99ef34909f3b6ac4b70)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
 ### chore
 
 * **deps-dev:** bump @commitlint/config-conventional (#62) ([](https://github.com/TEDI-Design-System/core/commit/7b8df01b7374205486c31327ce3a0ad55beabea8)), closes [#62](https://github.com/TEDI-Design-System/core/issues/62)
