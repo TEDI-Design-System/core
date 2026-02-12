@@ -1,4 +1,5 @@
 .tedi-theme--muis {
+  --accordion-action-color: var(--general-icon-brand);
   --alert-default-background-danger: var(--general-status-danger-background-primary);
   --alert-default-background-info: var(--general-status-info-background-light);
   --alert-default-background-success: var(--general-status-success-background-primary);
@@ -242,6 +243,7 @@
   --empty-state-border: var(--card-border-primary);
   --empty-state-icon-primary: var(--general-icon-brand);
   --empty-state-icon-secondary: var(--general-icon-tertiary);
+  --feedback-indicator: var(--general-icon-background-brand-primary);
   --file-dropzone-background-default: var(--form-input-background-default);
   --file-dropzone-background-disabled: var(--form-general-background-disabled);
   --file-dropzone-background-drop-over: var(--general-surface-brand-quaternary);
@@ -254,24 +256,24 @@
   --file-dropzone-border-hover: var(--form-input-border-hover);
   --file-dropzone-text-default: var(--general-text-brand);
   --file-dropzone-text-drop-over: var(--general-text-tertiary);
-  --filter-primary-active-background: var(--form-checkbox-radio-card-primary-selected-background);
-  --filter-primary-active-border: var(--form-checkbox-radio-card-primary-selected-border-group);
-  --filter-primary-active-text: var(--form-checkbox-radio-card-primary-selected-text);
+  --filter-primary-default-background: var(--form-checkbox-radio-card-primary-default-background);
+  --filter-primary-default-border: var(--form-checkbox-radio-card-primary-default-border-separate);
+  --filter-primary-default-text: var(--form-checkbox-radio-card-primary-default-text);
   --filter-primary-hover-background: var(--form-checkbox-radio-card-primary-hover-background);
   --filter-primary-hover-border: var(--form-checkbox-radio-card-primary-hover-border);
   --filter-primary-hover-text: var(--form-checkbox-radio-card-primary-hover-text);
-  --filter-primary-inactive-background: var(--form-checkbox-radio-card-primary-default-background);
-  --filter-primary-inactive-border: var(--form-checkbox-radio-card-primary-default-border-separate);
-  --filter-primary-inactive-text: var(--form-checkbox-radio-card-primary-default-text);
-  --filter-secondary-active-background: var(--form-checkbox-radio-card-secondary-selected-background);
-  --filter-secondary-active-border: var(--form-checkbox-radio-card-secondary-selected-border);
-  --filter-secondary-active-text: var(--form-checkbox-radio-card-secondary-selected-text);
+  --filter-primary-selected-background: var(--form-checkbox-radio-card-primary-selected-background);
+  --filter-primary-selected-border: var(--form-checkbox-radio-card-primary-selected-border-group);
+  --filter-primary-selected-text: var(--form-checkbox-radio-card-primary-selected-text);
+  --filter-secondary-default-background: var(--form-checkbox-radio-card-secondary-default-background);
+  --filter-secondary-default-border: var(--form-checkbox-radio-card-secondary-default-border);
+  --filter-secondary-default-text: var(--form-checkbox-radio-card-secondary-default-text);
   --filter-secondary-hover-background: var(--form-checkbox-radio-card-secondary-hover-background);
   --filter-secondary-hover-border: var(--form-checkbox-radio-card-secondary-hover-border);
   --filter-secondary-hover-text: var(--form-checkbox-radio-card-secondary-hover-text);
-  --filter-secondary-inactive-background: var(--form-checkbox-radio-card-secondary-default-background);
-  --filter-secondary-inactive-border: var(--form-checkbox-radio-card-secondary-default-border);
-  --filter-secondary-inactive-text: var(--form-checkbox-radio-card-secondary-default-text);
+  --filter-secondary-selected-background: var(--form-checkbox-radio-card-secondary-selected-background);
+  --filter-secondary-selected-border: var(--form-checkbox-radio-card-secondary-selected-border);
+  --filter-secondary-selected-text: var(--form-checkbox-radio-card-secondary-selected-text);
   --footer-background: var(--general-surface-inverted-secondary);
   --footer-bottom-background: var(--general-surface-inverted-tertiary);
   --footer-icon-background: var(--tedi-alpha-white-20);
@@ -405,6 +407,7 @@
   --general-border-brand: var(--muis-primary-400);
   --general-border-primary: var(--muis-neutral-650);
   --general-border-secondary: var(--tedi-neutral-450);
+  --general-border-transparent-white: var(--muis-alpha-white-30);
   --general-border-white: var(--muis-neutral-100);
   --general-icon-accent: var(--tedi-orange-700);
   --general-icon-background-brand-primary: var(--general-surface-brand-primary);
@@ -485,6 +488,7 @@
   --header-popover-item-active: var(--general-surface-active);
   --header-popover-item-hover: var(--general-surface-hover);
   --header-popover-item-selected: var(--general-surface-selected);
+  --header-top-header-border-bottom: var(--general-border-primary);
   --link-inverted-active: var(--general-text-white);
   --link-inverted-default: var(--general-text-white);
   --link-inverted-focus: var(--general-text-white);

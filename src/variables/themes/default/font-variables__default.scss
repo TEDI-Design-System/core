@@ -44,6 +44,9 @@
   --body-extra-small-size: var(--tedi-size-00);
   --body-extra-small-weight: var(--tedi-weight-02);
   --body-extra-small-line-height: var(--tedi-line-height-00);
+  --body-link-regular: var(--body-regular-size);
+  --body-link-small: var(--body-small-regular-size);
+  --body-link-responsive: var(--body-small-regular-size);
 
 @media (width <= 48rem) {
   --family-default: var(--tedi-family-roboto);
@@ -90,5 +93,8 @@
   --body-extra-small-size: var(--tedi-size-00);
   --body-extra-small-weight: var(--tedi-weight-02);
   --body-extra-small-line-height: var(--tedi-line-height-00);
+  --body-link-regular: var(--body-regular-size);
+  --body-link-small: var(--body-small-regular-size);
+  --body-link-responsive: var(--body-regular-size);
 }
 }
