@@ -27,5 +27,6 @@ jobs:
           git pull
           npm run release
         env:
+          HUSKY: 0
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPMJS_TEDI_AUTH_TOKEN }}
