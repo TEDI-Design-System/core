@@ -1,3 +1,13 @@
+## [3.1.1](https://github.com/TEDI-Design-System/core/compare/core-3.1.0...core-3.1.1) (2026-02-12)
+
+
+* Merge branch 'rc' of https://github.com/TEDI-Design-System/core into rc ([](https://github.com/TEDI-Design-System/core/commit/253ce8038ecb63502cfcdefcfa0fef03c70be9bd))
+
+
+### fix
+
+* pkg fix for semantic-release #69 ([](https://github.com/TEDI-Design-System/core/commit/066cf1d7cba978a4da73f5fa5265fe3f2bbd2b92)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
 # [3.1.0](https://github.com/TEDI-Design-System/core/compare/core-3.0.1...core-3.1.0) (2026-02-12)
 
 
