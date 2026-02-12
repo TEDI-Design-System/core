@@ -1,3 +1,20 @@
+# [3.1.0](https://github.com/TEDI-Design-System/core/compare/core-3.0.1...core-3.1.0) (2026-02-12)
+
+
+* Add MIT License to the project ([](https://github.com/TEDI-Design-System/core/commit/3ae7ece942eeb89d855ee87a2c5af2756a19a513))
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/config-conventional (#62) ([](https://github.com/TEDI-Design-System/core/commit/7b8df01b7374205486c31327ce3a0ad55beabea8)), closes [#62](https://github.com/TEDI-Design-System/core/issues/62)
+* **deps-dev:** bump prettier from 3.7.4 to 3.8.1 (#64) ([](https://github.com/TEDI-Design-System/core/commit/51acc2863e5a59dd6449f6eae6ac686a5ca1adfd)), closes [#64](https://github.com/TEDI-Design-System/core/issues/64)
+* **deps-dev:** bump stylelint-config-recess-order from 7.4.0 to 7.6.0 (#66) ([](https://github.com/TEDI-Design-System/core/commit/55ab96c57442f4872b4346030cb9e1f882f0ee94)), closes [#66](https://github.com/TEDI-Design-System/core/issues/66)
+
+
+### feat
+
+* **variables:** update variables #69 ([](https://github.com/TEDI-Design-System/core/commit/659ef0021ae5064759c3d9eef90b94b4ea6f6b2e)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
 ## [3.0.1](https://github.com/TEDI-Design-System/core/compare/core-3.0.0...core-3.0.1) (2026-01-23)
 
 
