@@ -1,3 +1,33 @@
+# [3.1.0](https://github.com/TEDI-Design-System/core/compare/core-3.0.1...core-3.1.0) (2026-02-12)
+
+
+* Add MIT License to the project ([](https://github.com/TEDI-Design-System/core/commit/3ae7ece942eeb89d855ee87a2c5af2756a19a513))
+* Merge branch 'rc' of https://github.com/TEDI-Design-System/core into rc ([](https://github.com/TEDI-Design-System/core/commit/1a41ed18ef14598382a1322a3a3c6739ec4b11ec))
+* Merge branch 'rc' of https://github.com/TEDI-Design-System/core into rc ([](https://github.com/TEDI-Design-System/core/commit/253ce8038ecb63502cfcdefcfa0fef03c70be9bd))
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/config-conventional (#62) ([](https://github.com/TEDI-Design-System/core/commit/7b8df01b7374205486c31327ce3a0ad55beabea8)), closes [#62](https://github.com/TEDI-Design-System/core/issues/62)
+* **deps-dev:** bump prettier from 3.7.4 to 3.8.1 (#64) ([](https://github.com/TEDI-Design-System/core/commit/51acc2863e5a59dd6449f6eae6ac686a5ca1adfd)), closes [#64](https://github.com/TEDI-Design-System/core/issues/64)
+* **deps-dev:** bump stylelint-config-recess-order from 7.4.0 to 7.6.0 (#66) ([](https://github.com/TEDI-Design-System/core/commit/55ab96c57442f4872b4346030cb9e1f882f0ee94)), closes [#66](https://github.com/TEDI-Design-System/core/issues/66)
+* **release:** 3.1.0 ([](https://github.com/TEDI-Design-System/core/commit/171ca2d61e3b87c95da066779db1597f6f21be40))
+* **release:** 3.1.1 ([](https://github.com/TEDI-Design-System/core/commit/1fa784f4f4b7e3611c57e0fc091ef244c99c3057))
+* **release:** 3.2.0 ([](https://github.com/TEDI-Design-System/core/commit/b8c55fc1a10309f2f8e06e867e6b8bb5eaee88f3))
+* workflow fixes for publishing package #69 ([](https://github.com/TEDI-Design-System/core/commit/8c9ae6a9bc4c6ec01457e1202f58f199ce3cee21)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
+
+### feat
+
+* **variables:** update variables #69 ([](https://github.com/TEDI-Design-System/core/commit/f42b4468c9d70d70253af99ef34909f3b6ac4b70)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+* **variables:** update variables #69 ([](https://github.com/TEDI-Design-System/core/commit/659ef0021ae5064759c3d9eef90b94b4ea6f6b2e)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
+
+### fix
+
+* pkg fix for semantic-release #69 ([](https://github.com/TEDI-Design-System/core/commit/066cf1d7cba978a4da73f5fa5265fe3f2bbd2b92)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+* **variables:** update variables #69 ([](https://github.com/TEDI-Design-System/core/commit/e98e9ea6df8b324535f2e887647a9962e9f2fd63)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
 ### chore
 
 * **deps-dev:** bump @commitlint/config-conventional (#62) ([](https://github.com/TEDI-Design-System/core/commit/7b8df01b7374205486c31327ce3a0ad55beabea8)), closes [#62](https://github.com/TEDI-Design-System/core/issues/62)
