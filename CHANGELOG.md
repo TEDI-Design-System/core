@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/TEDI-Design-System/core/compare/core-3.1.0...core-3.2.0) (2026-02-17)
+
+
+### feat
+
+* **variables:** update variables #69 ([](https://github.com/TEDI-Design-System/core/commit/251890932edef874296bda70855311cdf05f7ba8)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
 # [3.1.0](https://github.com/TEDI-Design-System/core/compare/core-3.0.1...core-3.1.0) (2026-02-12)
 
 
