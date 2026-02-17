@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from "fs";
 import path from "path";
 
@@ -5,7 +6,6 @@ const FIGMA_VARIABLE_TOKEN = process.env.FIGMA_VARIABLE_TOKEN;
 const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY;
 const OUTPUT_DIR = "src/variables";
 
-// Must match exactly the collection names in your Figma file
 const WANTED_COLLECTIONS = new Set([
   "1. Semantic colors",
   "1.1 Base colors",
@@ -15,7 +15,6 @@ const WANTED_COLLECTIONS = new Set([
   "3.1 Base fonts",
 ]);
 
-// Themes
 const THEME_MAP: Record<string, { folder: string; fileSuffix: string }> = {
   default: { folder: "default", fileSuffix: "default" },
   light:   { folder: "default", fileSuffix: "default" },
@@ -30,9 +29,6 @@ const RESPONSIVE_MEDIA: Record<string, string> = {
   mobile: "(max-width: 48rem)",
 };
 
-/* ==========================================================================
-   UTILITIES
-   ========================================================================== */
 function sortCssVars(list: string[]) {
   list.sort((a, b) => {
     const nameA = a.trim().split(":")[0];
@@ -52,10 +48,6 @@ function kebab(str: string): string {
   return str.replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase();
 }
 
-/* ==========================================================================
-   THEME HELPERS – DATA-DRIVEN MAGIC
-   ========================================================================== */
-// Find theme config by checking if the mode name contains any key from THEME_MAP
 function getThemeConfigFromMode(modeName: string): { folder: string; fileSuffix: string } | undefined {
   const lower = modeName.toLowerCase();
   for (const [key, config] of Object.entries(THEME_MAP)) {
@@ -64,7 +56,6 @@ function getThemeConfigFromMode(modeName: string): { folder: string; fileSuffix:
   return undefined;
 }
 
-// Returns true for "brand" themes (muis, rit, etc.) – used to skip responsive overrides
 function isBrandTheme(modeName: string): boolean {
   const config = getThemeConfigFromMode(modeName);
   if (!config) return false;
@@ -72,20 +63,16 @@ function isBrandTheme(modeName: string): boolean {
   return !(lower.includes("default") || lower.includes("light") || lower.includes("dark"));
 }
 
-/* ==========================================================================
-   FIGMA API
-   ========================================================================== */
-async function fetchFigmaVariables() {
+async function fetchFigmaVariables(): Promise<FigmaVariablesResponse> {
   const res = await fetch(`https://api.figma.com/v1/files/${FIGMA_FILE_KEY}/variables/local`, {
     headers: { "X-Figma-Token": FIGMA_VARIABLE_TOKEN ?? "" },
   });
+
   if (!res.ok) throw new Error(`Figma API error: ${res.status}`);
-  return await res.json();
+
+  return (await res.json()) as FigmaVariablesResponse;
 }
 
-/* ==========================================================================
-   UNIT & CONVERSION LOGIC
-   ========================================================================== */
 function getUnit(collectionName: string): "px" | "rem" | null {
   const l = collectionName.toLowerCase();
   if (l.includes("dimension")) return "px";
@@ -130,13 +117,11 @@ function resolveValue(
 ): string {
   if (!raw) return "0";
 
-  // Alias
   if (raw && typeof raw === "object" && (raw.type === "VARIABLE_ALIAS" || (raw.id && !("value" in raw)))) {
     const cssVar = aliasMap[raw.id];
     return cssVar ? `var(${cssVar})` : "0";
   }
 
-  // Color
   if (raw && typeof raw === "object" && "r" in raw) {
     const v = "value" in raw ? raw.value : raw;
     const { r, g, b, a = 1 } = v;
@@ -148,31 +133,24 @@ function resolveValue(
   const lowerName = varName.toLowerCase();
 
   if (typeof value === "number") {
-    // ─────────────────────── BASE VARIABLES ───────────────────────
     if (convertToRemForBase) {
-      // 1. Font-weight → always unitless
       if (lowerName.includes("weight")) {
         return value.toString();
       }
 
-      // 2. Things we explicitly want in rem
       if (shouldConvertBaseToRem(varName)) {
         return pxToRem(value);
       }
 
-      // 3. Everything else in base → px (containers, breakpoints, etc.)
       return `${Math.round(value * 100) / 100}px`;
     }
 
-    // ─────────────────────── SEMANTIC LAYERS ───────────────────────
-    // Fonts collection
     if (lowerName.includes("font") || unit === "rem") {
-      if (lowerName.includes("weight")) return value.toString();     // ← unitless
-      if (isLineHeight(varName)) return pxToRem(value);             // ← rem
-      return pxToRem(value);                                        // ← rem (font-size, etc.)
+      if (lowerName.includes("weight")) return value.toString();
+      if (isLineHeight(varName)) return pxToRem(value);
+      return pxToRem(value);
     }
 
-    // Dimensions collection
     if (unit === "px" || lowerName.includes("radius") || lowerName.includes("border")) {
       return `${Math.round(value * 100) / 100}px`;
     }
@@ -183,9 +161,6 @@ function resolveValue(
   return value !== undefined ? String(value) : "0";
 }
 
-/* ==========================================================================
-   TYPES & MAIN
-   ========================================================================== */
 interface FigmaVariable {
   name: string;
   resolvedValuesByMode?: Record<string, any>;
@@ -196,6 +171,12 @@ interface FigmaCollection {
   modes: { modeId: string; name: string }[];
   variableIds: string[];
   defaultModeId?: string;
+}
+interface FigmaVariablesResponse {
+  meta: {
+    variables: Record<string, FigmaVariable>;
+    variableCollections: Record<string, FigmaCollection>;
+  };
 }
 
 async function run() {
@@ -212,7 +193,6 @@ async function run() {
     WANTED_COLLECTIONS.has(c.name.trim())
   );
 
-  /* ———————————————————————— 1. BASE VARIABLES ———————————————————————— */
   const baseLines: string[] = [];
   for (const coll of wantedColls.filter(c => c.name.includes("Base"))) {
     const modeId = coll.defaultModeId ?? coll.modes[0]?.modeId;
@@ -236,14 +216,12 @@ async function run() {
     fs.writeFileSync(path.join(OUTPUT_DIR, "_base-variables.scss"), css);
   }
 
-  /* ———————————————————————— 2. SEMANTIC VARIABLES ———————————————————————— */
   for (const coll of wantedColls.filter(c => !c.name.includes("Base"))) {
     const unit = getUnit(coll.name);
     const isFonts = coll.name === "3. Semantic fonts";
     const isColors = coll.name === "1. Semantic colors";
     const isDimensions = coll.name === "2. Semantic dimensions";
 
-    /* ——— Responsive Fonts (default/light/dark only) ——— */
     if (isFonts) {
       const desktopLines: string[] = [];
       const tabletLines: string[] = [];
@@ -252,7 +230,6 @@ async function run() {
       for (const mode of coll.modes) {
         const lower = mode.name.toLowerCase();
 
-        // Skip brand themes – they get their own full theme files
         if (isBrandTheme(mode.name)) continue;
 
         const target = lower.includes("mobile") ? mobileLines
@@ -281,10 +258,9 @@ async function run() {
       }
     }
 
-    /* ——— Theme-specific files ——— */
     for (const mode of coll.modes) {
       const themeConfig = getThemeConfigFromMode(mode.name);
-      if (!themeConfig) continue; // not a recognized theme → skip
+      if (!themeConfig) continue;
 
       const lines: string[] = [];
       for (const varId of coll.variableIds) {
@@ -308,7 +284,6 @@ async function run() {
       fs.writeFileSync(path.join(dir, fileName), css);
     }
 
-    /* ——— Responsive Dimensions ——— */
     if (isDimensions) {
       const rootLines: string[] = [];
       const mediaBlocks: string[] = [];
