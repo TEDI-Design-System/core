@@ -7,12 +7,12 @@ const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY;
 const OUTPUT_DIR = "src/variables";
 
 const WANTED_COLLECTIONS = new Set([
-  "1. Semantic colors",
-  "1.1 Base colors",
-  "2. Semantic dimensions",
-  "2.1 Base dimensions",
-  "3. Semantic fonts",
-  "3.1 Base fonts",
+  "TEDI colors base",
+  "TEDI colors semantic",
+  "TEDI dimensions base",
+  "TEDI dimensions semantic",
+  "TEDI fonts base",
+  "TEDI fonts semantic",
 ]);
 
 const THEME_MAP: Record<string, { folder: string; fileSuffix: string }> = {
@@ -218,9 +218,9 @@ async function run() {
 
   for (const coll of wantedColls.filter(c => !c.name.includes("Base"))) {
     const unit = getUnit(coll.name);
-    const isFonts = coll.name === "3. Semantic fonts";
-    const isColors = coll.name === "1. Semantic colors";
-    const isDimensions = coll.name === "2. Semantic dimensions";
+    const isFonts = coll.name === "TEDI fonts semantic";
+    const isColors = coll.name === "TEDI colors semantic";
+    const isDimensions = coll.name === "TEDI dimensions semantic";
 
     if (isFonts) {
       const desktopLines: string[] = [];
