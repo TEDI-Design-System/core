@@ -1,0 +1,544 @@
+# CSS Utility Classes & SCSS Mixins
+
+A comprehensive reference of all available utility/helper CSS classes and SCSS mixins in `@tedi-design-system/core`.
+
+---
+
+## Table of Contents
+
+- [Display & Visibility](#display--visibility)
+- [Flexbox](#flexbox)
+- [Grid System](#grid-system)
+- [Typography](#typography)
+  - [Headings](#headings)
+  - [Body Text Sizes](#body-text-sizes)
+  - [Text Colors (tedi-text)](#text-colors-tedi-text)
+  - [Text Colors (text)](#text-colors-text)
+  - [Text Transform](#text-transform)
+  - [Text Wrapping & Whitespace](#text-wrapping--whitespace)
+  - [Text Weight & Style](#text-weight--style)
+  - [Text Alignment](#text-alignment)
+  - [Text Line Height](#text-line-height)
+  - [Text Display](#text-display)
+- [Icons](#icons)
+- [Links](#links)
+- [Print Utilities](#print-utilities)
+- [Scroll](#scroll)
+- [SCSS Mixins](#scss-mixins)
+  - [General Mixins](#general-mixins)
+  - [Breakpoint Mixins](#breakpoint-mixins)
+  - [Grid Mixins](#grid-mixins)
+  - [Typography Mixins](#typography-mixins)
+- [Breakpoints Reference](#breakpoints-reference)
+- [Spacing Scale Reference](#spacing-scale-reference)
+
+---
+
+## Display & Visibility
+
+> Source: `src/_helpers.scss`
+
+| Class | Effect |
+|-------|--------|
+| `.hidden`, `[hidden]` | `display: none !important` |
+| `.block` | `display: block !important` |
+| `.inline-block` | `display: inline-block !important` |
+| `.flex` | `display: flex !important` |
+| `.screen-reader-only`, `.visually-hidden`, `.sr-only` | Visually hidden but accessible to screen readers |
+| `.screen-reader-only.focusable` | Becomes visible on `:focus` / `:active` (keyboard navigation) |
+
+---
+
+## Flexbox
+
+> Source: `src/bootstrap-utility/_utilities.scss`
+>
+> All flexbox utilities are **responsive** — append `-sm`, `-md`, `-lg`, `-xl`, or `-xxl` for breakpoint-specific behavior (e.g. `.flex-md-row`, `.justify-lg-center`).
+
+### Flex Direction
+
+| Class | Value |
+|-------|-------|
+| `.flex-row` | `flex-direction: row` |
+| `.flex-column` | `flex-direction: column` |
+| `.flex-row-reverse` | `flex-direction: row-reverse` |
+| `.flex-column-reverse` | `flex-direction: column-reverse` |
+
+### Flex Fill, Grow & Shrink
+
+| Class | Value |
+|-------|-------|
+| `.flex-fill` | `flex: 1 1 auto` |
+| `.flex-grow-0` | `flex-grow: 0` |
+| `.flex-grow-1` | `flex-grow: 1` |
+| `.flex-shrink-0` | `flex-shrink: 0` |
+| `.flex-shrink-1` | `flex-shrink: 1` |
+
+### Flex Wrap
+
+| Class | Value |
+|-------|-------|
+| `.flex-wrap` | `flex-wrap: wrap` |
+| `.flex-nowrap` | `flex-wrap: nowrap` |
+| `.flex-wrap-reverse` | `flex-wrap: wrap-reverse` |
+
+### Justify Content
+
+| Class | Value |
+|-------|-------|
+| `.justify-start` | `justify-content: flex-start` |
+| `.justify-end` | `justify-content: flex-end` |
+| `.justify-center` | `justify-content: center` |
+| `.justify-between` | `justify-content: space-between` |
+| `.justify-around` | `justify-content: space-around` |
+| `.justify-evenly` | `justify-content: space-evenly` |
+
+### Align Items
+
+| Class | Value |
+|-------|-------|
+| `.align-start` | `align-items: flex-start` |
+| `.align-end` | `align-items: flex-end` |
+| `.align-center` | `align-items: center` |
+| `.align-baseline` | `align-items: baseline` |
+| `.align-stretch` | `align-items: stretch` |
+
+### Align Self
+
+| Class | Value |
+|-------|-------|
+| `.align-self-auto` | `align-self: auto` |
+| `.align-self-start` | `align-self: flex-start` |
+| `.align-self-end` | `align-self: flex-end` |
+| `.align-self-center` | `align-self: center` |
+| `.align-self-baseline` | `align-self: baseline` |
+| `.align-self-stretch` | `align-self: stretch` |
+
+### Order
+
+| Class | Value |
+|-------|-------|
+| `.order-first` | `order: -1` |
+| `.order-0` … `.order-5` | `order: 0` … `order: 5` |
+| `.order-last` | `order: 6` |
+
+### Gap
+
+| Class | Value |
+|-------|-------|
+| `.gap-0` | `gap: 0` |
+| `.gap-1` | `gap: 0.25rem` |
+| `.gap-2` | `gap: 0.5rem` |
+| `.gap-3` | `gap: 1rem` |
+| `.gap-4` | `gap: 1.5rem` |
+| `.gap-5` | `gap: 3rem` |
+
+---
+
+## Grid System
+
+> Source: `src/bootstrap-utility/_grid.scss`
+>
+> 12-column grid with a default gutter of `1.5rem`. All classes are responsive with breakpoint infixes: `sm`, `md`, `lg`, `xl`, `xxl`.
+
+### Columns
+
+| Class | Purpose |
+|-------|---------|
+| `.col`, `.col-{bp}` | Equal-width flex column |
+| `.col-{bp}-auto` | Auto-width column |
+| `.col-{bp}-{1-12}` | Sized column (out of 12) |
+| `.offset-{bp}-{0-11}` | Left margin offset |
+| `.row-cols-{bp}-auto` | Auto-width children |
+| `.row-cols-{bp}-{1-12}` | Force N equal-width columns per row |
+
+### Gutters
+
+| Class | Purpose |
+|-------|---------|
+| `.g-{bp}-{0-5}` | Gap (both axes) |
+| `.gx-{bp}-{0-5}` | Horizontal gap |
+| `.gy-{bp}-{0-5}` | Vertical gap |
+
+### CSS Grid
+
+| Class | Purpose |
+|-------|---------|
+| `.g-col-{bp}-{1-12}` | CSS Grid column span |
+| `.g-start-{bp}-{1-11}` | CSS Grid column start position |
+
+---
+
+## Typography
+
+> Source: `src/_typography.scss`
+
+### Headings
+
+Each heading level can be applied via the HTML element or any of these equivalent classes:
+
+| Level | Classes |
+|-------|---------|
+| H1 | `h1`, `.h1`, `.tedi-h1`, `.text-h1`, `.tedi-text--h1` |
+| H2 | `h2`, `.h2`, `.tedi-h2`, `.text-h2`, `.tedi-text--h2` |
+| H3 | `h3`, `.h3`, `.tedi-h3`, `.text-h3`, `.tedi-text--h3` |
+| H4 | `h4`, `.h4`, `.tedi-h4`, `.text-h4`, `.tedi-text--h4` |
+| H5 | `h5`, `.h5`, `.tedi-h5`, `.text-h5`, `.tedi-text--h5` |
+| H6 | `h6`, `.h6`, `.tedi-h6`, `.text-h6`, `.tedi-text--h6` |
+
+### Body Text Sizes
+
+| Class | Description |
+|-------|-------------|
+| `.tedi-text--default` | Body regular (includes font-family, color) |
+| `.tedi-text--small` | Body small |
+| `.text-subtitle` | Subtitle (uppercase) |
+| `.text-subtitle.text-small` | Small subtitle |
+| `.text-normal` | Body regular (includes font-family, color) |
+| `.text-small`, `<small>` | Small text |
+| `.text-extra-small` | Extra small text |
+
+### Text Colors (tedi-text)
+
+| Class | CSS Variable |
+|-------|-------------|
+| `.tedi-text--default`, `.tedi-text--primary` | `--general-text-primary` |
+| `.tedi-text--secondary` | `--general-text-secondary` |
+| `.tedi-text--tertiary` | `--general-text-tertiary` |
+| `.tedi-text--white` | `--general-text-white` |
+| `.tedi-text--disabled` | `--general-text-disabled` |
+| `.tedi-text--brand` | `--general-text-brand` |
+| `.tedi-text--success` | `--general-status-success-text` |
+| `.tedi-text--warning` | `--general-status-warning-text` |
+| `.tedi-text--danger` | `--general-status-danger-text` |
+| `.tedi-text--info` | `--general-status-info-text` |
+| `.tedi-text--neutral` | `--general-status-neutral-text` |
+
+### Text Colors (text)
+
+| Class | CSS Variable | Notes |
+|-------|-------------|-------|
+| `.text-default` | `--general-text-primary` | |
+| `.text-primary` | `--general-text-brand` | Grayscale in print |
+| `.text-muted` | `--general-text-secondary` | |
+| `.text-subtle` | `--general-text-tertiary` | |
+| `.text-disabled` | `--general-text-disabled` | |
+| `.text-inverted` | `--general-text-white` | |
+| `.text-positive` | `--general-status-success-text` | Grayscale in print |
+| `.text-important` | `--general-status-danger-text` | Grayscale in print |
+| `.text-warning` | `--general-status-warning-text` | Grayscale in print |
+
+### Text Transform
+
+| Class | Effect |
+|-------|--------|
+| `.text-uppercase` | `text-transform: uppercase` |
+| `.text-lowercase` | `text-transform: lowercase` |
+| `.text-capitalize` | `text-transform: capitalize` |
+| `.text-capitalize-first` | Capitalizes first letter only (via `::first-letter`) |
+
+### Text Wrapping & Whitespace
+
+| Class | Effect |
+|-------|--------|
+| `.text-nowrap` | `white-space: nowrap` |
+| `.text-break-all` | `word-break: break-all` |
+| `.text-break-word` | `overflow-wrap: break-word` |
+| `.text-break-spaces` | `white-space: break-spaces` |
+
+### Text Weight & Style
+
+| Class | Effect |
+|-------|--------|
+| `.text-bold`, `<b>`, `<strong>` | `font-weight: 700` |
+| `.text-thin` | `font-weight: 300` |
+| `.text-italic`, `<i>` | `font-style: italic` |
+
+### Text Alignment
+
+| Class | Effect |
+|-------|--------|
+| `.text-center` | `text-align: center` |
+| `.text-left` | `text-align: left` |
+| `.text-right` | `text-align: right` |
+
+### Text Line Height
+
+| Class | Effect |
+|-------|--------|
+| `.text-line-normal` | `line-height: normal` |
+| `.text-line-condensed` | `line-height: 1` |
+
+### Text Display
+
+| Class | Effect |
+|-------|--------|
+| `.text-inline-block` | `display: inline-block` |
+| `.text-inline` | `display: inline` |
+
+---
+
+## Icons
+
+> Source: `src/_icons.scss`
+
+| Class | Description |
+|-------|-------------|
+| `.material-symbols` | Base class for Material Symbols icons |
+| `.material-symbols--outlined` | Outlined icon variant |
+| `.material-symbols--rounded` | Rounded icon variant |
+| `.material-symbols--sharp` | Sharp icon variant |
+
+**Usage:**
+
+```html
+<span class="material-symbols material-symbols--outlined">home</span>
+```
+
+---
+
+## Links
+
+> Source: `src/_base.scss`
+
+| Class | Effect |
+|-------|--------|
+| `a.link-white` | White link color (`--link-white-default`) |
+| `a.no-underline` | Removes text-decoration underline |
+
+---
+
+## Print Utilities
+
+> Source: `src/_print.scss`
+>
+> These classes only take effect inside `@media print`.
+
+| Class | Effect |
+|-------|--------|
+| `.no-print` | Hidden when printing |
+| `.no-print.show-print` | Override to show in print |
+
+### Page Break Control
+
+Available for `break-before`, `break-after`, and `break-inside`:
+
+| Class Pattern | Values |
+|--------------|--------|
+| `.break-before-{value}` | `auto`, `avoid`, `avoid-column`, `avoid-page`, `avoid-region` |
+| `.break-after-{value}` | `auto`, `avoid`, `avoid-column`, `avoid-page`, `avoid-region` |
+| `.break-inside-{value}` | `auto`, `avoid`, `avoid-column`, `avoid-page`, `avoid-region` |
+
+---
+
+## Scroll
+
+> Source: `src/_base.scss`
+
+| Class | Effect |
+|-------|--------|
+| `.scroll-disabled` | Prevents scrolling on viewports below `lg` breakpoint (< 992px) |
+
+---
+
+## SCSS Mixins
+
+### General Mixins
+
+> Source: `src/_mixins.scss`
+
+#### `print-grayscale`
+
+Applies grayscale filter in print media.
+
+```scss
+@use 'mixins';
+
+.my-colored-element {
+  color: var(--color-primary);
+  @include mixins.print-grayscale;
+}
+```
+
+#### `visually-hidden`
+
+Hides an element visually while keeping it accessible to screen readers.
+
+```scss
+@use 'mixins';
+
+.my-label {
+  @include mixins.visually-hidden;
+}
+```
+
+#### `focus-element`
+
+Applies the standard accessible focus outline. Customizable via `--global-outline-color` and `--global-outline-offset` CSS variables.
+
+```scss
+@use 'mixins';
+
+.my-interactive-element:focus {
+  @include mixins.focus-element;
+}
+```
+
+#### `button-reset`
+
+Resets all default button styling (padding, font, color, cursor, border, background). Includes disabled cursor handling.
+
+```scss
+@use 'mixins';
+
+.my-custom-button {
+  @include mixins.button-reset;
+}
+```
+
+#### `table-cell-selector($selector)`
+
+Targets specific table section cells for styling.
+
+| Parameter | Values | Default |
+|-----------|--------|---------|
+| `$selector` | `'thead'`, `'tbody'`, `'tfoot'`, `'all'` | `'all'` |
+
+```scss
+@use 'mixins';
+
+.my-table {
+  @include mixins.table-cell-selector('thead') {
+    background-color: var(--color-bg);
+  }
+}
+// Outputs: .my-table > thead > tr > th { background-color: ... }
+```
+
+### Breakpoint Mixins
+
+> Source: `src/bootstrap-utility/_breakpoints.scss`
+
+#### `media-breakpoint-up($name)`
+
+Applies styles from the given breakpoint and up (min-width).
+
+```scss
+@use 'bootstrap-utility/breakpoints';
+
+.sidebar {
+  display: none;
+
+  @include breakpoints.media-breakpoint-up(md) {
+    display: block; // visible from 768px and up
+  }
+}
+```
+
+#### `media-breakpoint-down($name)`
+
+Applies styles below the given breakpoint (max-width).
+
+```scss
+@use 'bootstrap-utility/breakpoints';
+
+.mobile-menu {
+  @include breakpoints.media-breakpoint-down(lg) {
+    display: block; // visible below 992px
+  }
+}
+```
+
+#### `media-breakpoint-between($lower, $upper)`
+
+Applies styles between two breakpoints.
+
+```scss
+@use 'bootstrap-utility/breakpoints';
+
+.tablet-only {
+  @include breakpoints.media-breakpoint-between(md, lg) {
+    font-size: 1.1rem; // 768px to 991.98px
+  }
+}
+```
+
+#### `media-breakpoint-only($name)`
+
+Applies styles only at the given breakpoint range.
+
+```scss
+@use 'bootstrap-utility/breakpoints';
+
+.sm-special {
+  @include breakpoints.media-breakpoint-only(sm) {
+    padding: 1rem; // 576px to 767.98px only
+  }
+}
+```
+
+#### Breakpoint Functions
+
+| Function | Returns |
+|----------|---------|
+| `breakpoint-next($name)` | Name of the next breakpoint |
+| `breakpoint-min($name)` | Min-width value (null for xs) |
+| `breakpoint-max($name)` | Max-width value (min - 0.02px) |
+| `breakpoint-infix($name)` | Infix string for class naming (e.g. `"-sm"`) |
+
+### Grid Mixins
+
+> Source: `src/bootstrap-utility/_grid.scss`
+
+| Mixin | Purpose |
+|-------|---------|
+| `make-row($gutter)` | Creates a flex row container with gutters |
+| `make-col-ready()` | Prepares a column element (flex-shrink, width, padding) |
+| `make-col($size, $columns: 12)` | Sets column width (or flex: 1 1 0 if no size) |
+| `make-col-auto()` | Auto-width column (`flex: 0 0 auto`) |
+| `make-col-offset($size, $columns: 12)` | Adds left margin offset |
+| `row-cols($count)` | Forces N equal-width children |
+
+### Typography Mixins
+
+> Source: `src/_typography.scss`
+
+#### `heading-styles($level)`
+
+Applies heading typography (font-size, font-weight, line-height) from CSS variables.
+
+```scss
+@use 'typography';
+
+.my-title {
+  @include typography.heading-styles(h2);
+}
+```
+
+---
+
+## Breakpoints Reference
+
+| Name | Min-width | Typical Usage |
+|------|-----------|---------------|
+| `xs` | 0 | Mobile (default) |
+| `sm` | 576px | Large phones |
+| `md` | 768px | Tablets |
+| `lg` | 992px | Desktops |
+| `xl` | 1200px | Large desktops |
+| `xxl` | 1400px | Extra large screens |
+
+---
+
+## Spacing Scale Reference
+
+Used by gap, gutter, and spacer utilities:
+
+| Key | Value |
+|-----|-------|
+| `0` | `0` |
+| `1` | `0.25rem` (4px) |
+| `2` | `0.5rem` (8px) |
+| `3` | `1rem` (16px) |
+| `4` | `1.5rem` (24px) |
+| `5` | `3rem` (48px) |
