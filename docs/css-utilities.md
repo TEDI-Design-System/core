@@ -23,11 +23,9 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 - [Icons](#icons)
 - [Links](#links)
 - [Print Utilities](#print-utilities)
-- [Scroll](#scroll)
 - [SCSS Mixins](#scss-mixins)
   - [General Mixins](#general-mixins)
   - [Breakpoint Mixins](#breakpoint-mixins)
-  - [Grid Mixins](#grid-mixins)
   - [Typography Mixins](#typography-mixins)
 - [Breakpoints Reference](#breakpoints-reference)
 - [Spacing Scale Reference](#spacing-scale-reference)
@@ -35,8 +33,6 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 ---
 
 ## Display & Visibility
-
-> Source: `src/_helpers.scss`
 
 | Class | Effect |
 |-------|--------|
@@ -51,8 +47,6 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 
 ## Flexbox
 
-> Source: `src/bootstrap-utility/_utilities.scss`
->
 > All flexbox utilities are **responsive** — append `-sm`, `-md`, `-lg`, `-xl`, or `-xxl` for breakpoint-specific behavior (e.g. `.flex-md-row`, `.justify-lg-center`).
 
 ### Flex Direction
@@ -137,8 +131,6 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 
 ## Grid System
 
-> Source: `src/bootstrap-utility/_grid.scss`
->
 > 12-column grid with a default gutter of `1.5rem`. All classes are responsive with breakpoint infixes: `sm`, `md`, `lg`, `xl`, `xxl`.
 
 ### Columns
@@ -171,20 +163,18 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 
 ## Typography
 
-> Source: `src/_typography.scss`
-
 ### Headings
 
-Each heading level can be applied via the HTML element or any of these equivalent classes:
+The preferred pattern is `.tedi-text--h*`. Other class variants still exist for backwards compatibility.
 
-| Level | Classes |
-|-------|---------|
-| H1 | `h1`, `.h1`, `.tedi-h1`, `.text-h1`, `.tedi-text--h1` |
-| H2 | `h2`, `.h2`, `.tedi-h2`, `.text-h2`, `.tedi-text--h2` |
-| H3 | `h3`, `.h3`, `.tedi-h3`, `.text-h3`, `.tedi-text--h3` |
-| H4 | `h4`, `.h4`, `.tedi-h4`, `.text-h4`, `.tedi-text--h4` |
-| H5 | `h5`, `.h5`, `.tedi-h5`, `.text-h5`, `.tedi-text--h5` |
-| H6 | `h6`, `.h6`, `.tedi-h6`, `.text-h6`, `.tedi-text--h6` |
+| Level | Preferred Class | Legacy Classes |
+|-------|----------------|----------------|
+| H1 | `.tedi-text--h1` | `.h1`, `.tedi-h1`, `.text-h1` |
+| H2 | `.tedi-text--h2` | `.h2`, `.tedi-h2`, `.text-h2` |
+| H3 | `.tedi-text--h3` | `.h3`, `.tedi-h3`, `.text-h3` |
+| H4 | `.tedi-text--h4` | `.h4`, `.tedi-h4`, `.text-h4` |
+| H5 | `.tedi-text--h5` | `.h5`, `.tedi-h5`, `.text-h5` |
+| H6 | `.tedi-text--h6` | `.h6`, `.tedi-h6`, `.text-h6` |
 
 ### Body Text Sizes
 
@@ -195,7 +185,7 @@ Each heading level can be applied via the HTML element or any of these equivalen
 | `.text-subtitle` | Subtitle (uppercase) |
 | `.text-subtitle.text-small` | Small subtitle |
 | `.text-normal` | Body regular (includes font-family, color) |
-| `.text-small`, `<small>` | Small text |
+| `.text-small` | Small text |
 | `.text-extra-small` | Extra small text |
 
 ### Text Colors (tedi-text)
@@ -250,9 +240,9 @@ Each heading level can be applied via the HTML element or any of these equivalen
 
 | Class | Effect |
 |-------|--------|
-| `.text-bold`, `<b>`, `<strong>` | `font-weight: 700` |
+| `.text-bold` | `font-weight: 700` |
 | `.text-thin` | `font-weight: 300` |
-| `.text-italic`, `<i>` | `font-style: italic` |
+| `.text-italic` | `font-style: italic` |
 
 ### Text Alignment
 
@@ -280,8 +270,6 @@ Each heading level can be applied via the HTML element or any of these equivalen
 
 ## Icons
 
-> Source: `src/_icons.scss`
-
 | Class | Description |
 |-------|-------------|
 | `.material-symbols` | Base class for Material Symbols icons |
@@ -299,8 +287,6 @@ Each heading level can be applied via the HTML element or any of these equivalen
 
 ## Links
 
-> Source: `src/_base.scss`
-
 | Class | Effect |
 |-------|--------|
 | `a.link-white` | White link color (`--link-white-default`) |
@@ -310,8 +296,6 @@ Each heading level can be applied via the HTML element or any of these equivalen
 
 ## Print Utilities
 
-> Source: `src/_print.scss`
->
 > These classes only take effect inside `@media print`.
 
 | Class | Effect |
@@ -331,21 +315,9 @@ Available for `break-before`, `break-after`, and `break-inside`:
 
 ---
 
-## Scroll
-
-> Source: `src/_base.scss`
-
-| Class | Effect |
-|-------|--------|
-| `.scroll-disabled` | Prevents scrolling on viewports below `lg` breakpoint (< 992px) |
-
----
-
 ## SCSS Mixins
 
 ### General Mixins
-
-> Source: `src/_mixins.scss`
 
 #### `print-grayscale`
 
@@ -396,28 +368,7 @@ Resets all default button styling (padding, font, color, cursor, border, backgro
 }
 ```
 
-#### `table-cell-selector($selector)`
-
-Targets specific table section cells for styling.
-
-| Parameter | Values | Default |
-|-----------|--------|---------|
-| `$selector` | `'thead'`, `'tbody'`, `'tfoot'`, `'all'` | `'all'` |
-
-```scss
-@use 'mixins';
-
-.my-table {
-  @include mixins.table-cell-selector('thead') {
-    background-color: var(--color-bg);
-  }
-}
-// Outputs: .my-table > thead > tr > th { background-color: ... }
-```
-
 ### Breakpoint Mixins
-
-> Source: `src/bootstrap-utility/_breakpoints.scss`
 
 #### `media-breakpoint-up($name)`
 
@@ -477,31 +428,7 @@ Applies styles only at the given breakpoint range.
 }
 ```
 
-#### Breakpoint Functions
-
-| Function | Returns |
-|----------|---------|
-| `breakpoint-next($name)` | Name of the next breakpoint |
-| `breakpoint-min($name)` | Min-width value (null for xs) |
-| `breakpoint-max($name)` | Max-width value (min - 0.02px) |
-| `breakpoint-infix($name)` | Infix string for class naming (e.g. `"-sm"`) |
-
-### Grid Mixins
-
-> Source: `src/bootstrap-utility/_grid.scss`
-
-| Mixin | Purpose |
-|-------|---------|
-| `make-row($gutter)` | Creates a flex row container with gutters |
-| `make-col-ready()` | Prepares a column element (flex-shrink, width, padding) |
-| `make-col($size, $columns: 12)` | Sets column width (or flex: 1 1 0 if no size) |
-| `make-col-auto()` | Auto-width column (`flex: 0 0 auto`) |
-| `make-col-offset($size, $columns: 12)` | Adds left margin offset |
-| `row-cols($count)` | Forces N equal-width children |
-
 ### Typography Mixins
-
-> Source: `src/_typography.scss`
 
 #### `heading-styles($level)`
 
