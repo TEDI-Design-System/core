@@ -12,14 +12,12 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 - [Typography](#typography)
   - [Headings](#headings)
   - [Body Text Sizes](#body-text-sizes)
-  - [Text Colors (tedi-text)](#text-colors-tedi-text)
-  - [Text Colors (text)](#text-colors-text)
+  - [Text Colors](#text-colors)
   - [Text Transform](#text-transform)
   - [Text Wrapping & Whitespace](#text-wrapping--whitespace)
   - [Text Weight & Style](#text-weight--style)
   - [Text Alignment](#text-alignment)
   - [Text Line Height](#text-line-height)
-  - [Text Display](#text-display)
 - [Icons](#icons)
 - [Links](#links)
 - [Print Utilities](#print-utilities)
@@ -40,8 +38,8 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 | `.block` | `display: block !important` |
 | `.inline-block` | `display: inline-block !important` |
 | `.flex` | `display: flex !important` |
-| `.screen-reader-only`, `.visually-hidden`, `.sr-only` | Visually hidden but accessible to screen readers |
-| `.screen-reader-only.focusable` | Becomes visible on `:focus` / `:active` (keyboard navigation) |
+| `.sr-only` | Visually hidden but accessible to screen readers |
+| `.sr-only.focusable` | Becomes visible on `:focus` / `:active` (keyboard navigation) |
 
 ---
 
@@ -165,16 +163,14 @@ A comprehensive reference of all available utility/helper CSS classes and SCSS m
 
 ### Headings
 
-The preferred pattern is `.tedi-text--h*`. Other class variants still exist for backwards compatibility.
-
-| Level | Preferred Class | Legacy Classes |
-|-------|----------------|----------------|
-| H1 | `.tedi-text--h1` | `.h1`, `.tedi-h1`, `.text-h1` |
-| H2 | `.tedi-text--h2` | `.h2`, `.tedi-h2`, `.text-h2` |
-| H3 | `.tedi-text--h3` | `.h3`, `.tedi-h3`, `.text-h3` |
-| H4 | `.tedi-text--h4` | `.h4`, `.tedi-h4`, `.text-h4` |
-| H5 | `.tedi-text--h5` | `.h5`, `.tedi-h5`, `.text-h5` |
-| H6 | `.tedi-text--h6` | `.h6`, `.tedi-h6`, `.text-h6` |
+| Class | Description |
+|-------|-------------|
+| `.tedi-text--h1` | H1 typography |
+| `.tedi-text--h2` | H2 typography |
+| `.tedi-text--h3` | H3 typography |
+| `.tedi-text--h4` | H4 typography |
+| `.tedi-text--h5` | H5 typography |
+| `.tedi-text--h6` | H6 typography |
 
 ### Body Text Sizes
 
@@ -184,11 +180,9 @@ The preferred pattern is `.tedi-text--h*`. Other class variants still exist for 
 | `.tedi-text--small` | Body small |
 | `.text-subtitle` | Subtitle (uppercase) |
 | `.text-subtitle.text-small` | Small subtitle |
-| `.text-normal` | Body regular (includes font-family, color) |
-| `.text-small` | Small text |
 | `.text-extra-small` | Extra small text |
 
-### Text Colors (tedi-text)
+### Text Colors
 
 | Class | CSS Variable |
 |-------|-------------|
@@ -203,20 +197,6 @@ The preferred pattern is `.tedi-text--h*`. Other class variants still exist for 
 | `.tedi-text--danger` | `--general-status-danger-text` |
 | `.tedi-text--info` | `--general-status-info-text` |
 | `.tedi-text--neutral` | `--general-status-neutral-text` |
-
-### Text Colors (text)
-
-| Class | CSS Variable | Notes |
-|-------|-------------|-------|
-| `.text-default` | `--general-text-primary` | |
-| `.text-primary` | `--general-text-brand` | Grayscale in print |
-| `.text-muted` | `--general-text-secondary` | |
-| `.text-subtle` | `--general-text-tertiary` | |
-| `.text-disabled` | `--general-text-disabled` | |
-| `.text-inverted` | `--general-text-white` | |
-| `.text-positive` | `--general-status-success-text` | Grayscale in print |
-| `.text-important` | `--general-status-danger-text` | Grayscale in print |
-| `.text-warning` | `--general-status-warning-text` | Grayscale in print |
 
 ### Text Transform
 
@@ -258,13 +238,6 @@ The preferred pattern is `.tedi-text--h*`. Other class variants still exist for 
 |-------|--------|
 | `.text-line-normal` | `line-height: normal` |
 | `.text-line-condensed` | `line-height: 1` |
-
-### Text Display
-
-| Class | Effect |
-|-------|--------|
-| `.text-inline-block` | `display: inline-block` |
-| `.text-inline` | `display: inline` |
 
 ---
 
