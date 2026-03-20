@@ -6,6 +6,8 @@
 
 Usage instructions and detailed documentation can be found in the [TEDI Design System wiki](https://github.com/TEDI-Design-System/general).
 
+For a full reference of available utility CSS classes and SCSS mixins, see [CSS Utilities Documentation](docs/css-utilities.md).
+
 ---
 
 ## Contributing

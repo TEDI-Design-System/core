@@ -4,7 +4,7 @@
   "main": "src/index.scss",
   "scripts": {
     "prepare": "husky || true",
-    "build": "rm -rf dist && mkdir dist && cp -a src/* dist/ && sass src/index.scss dist/index.css --style=compressed --no-source-map && replace-in-file //fonts//g \"./fonts/\" dist/index.css --isRegex && mkdir dist/fonts && cp -a public/fonts/* dist/fonts/ && cp README.md dist/ && cp package.json dist/",
+    "build": "rm -rf dist && mkdir dist && cp -a src/* dist/ && sass src/index.scss dist/index.css --style=compressed --no-source-map && replace-in-file //fonts//g \"./fonts/\" dist/index.css --isRegex && mkdir dist/fonts && cp -a public/fonts/* dist/fonts/ && cp -a docs dist/ && cp README.md dist/ && cp package.json dist/",
     "release": "npx semantic-release",
     "lint": "npx stylelint \"src/**/*.scss\" --fix",
     "import-variables": "dotenv -e .env -- npx ts-node scripts/variable-exporter.ts"
