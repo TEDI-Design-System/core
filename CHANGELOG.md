@@ -1,3 +1,19 @@
+# [3.3.0](https://github.com/TEDI-Design-System/core/compare/core-3.2.0...core-3.3.0) (2026-03-20)
+
+
+### chore
+
+* add npmjs oidc support #76 ([](https://github.com/TEDI-Design-System/core/commit/55b74322bd4e88e837725fcf9392e3a2caed6132)), closes [#76](https://github.com/TEDI-Design-System/core/issues/76)
+* add npmjs oidc support #76 ([](https://github.com/TEDI-Design-System/core/commit/5bbd4cc3688b83476e94bd990174e9b33e08668e)), closes [#76](https://github.com/TEDI-Design-System/core/issues/76)
+* **deps-dev:** bump @commitlint/config-conventional (#71) ([](https://github.com/TEDI-Design-System/core/commit/2c22324fb9e0180c559f57152bd37a117012bddf)), closes [#71](https://github.com/TEDI-Design-System/core/issues/71)
+* **deps-dev:** bump lint-staged from 16.2.7 to 16.3.1 (#73) ([](https://github.com/TEDI-Design-System/core/commit/036bb400f6cef2a71baa776872ea4414d4828a7d)), closes [#73](https://github.com/TEDI-Design-System/core/issues/73)
+* **deps-dev:** bump stylelint-config-recess-order from 7.6.0 to 7.6.1 (#74) ([](https://github.com/TEDI-Design-System/core/commit/3167420690608d4c9eb139628304cc342f83e635)), closes [#74](https://github.com/TEDI-Design-System/core/issues/74)
+
+
+### feat
+
+* create documentation for existing css utilities #82 (#83) ([](https://github.com/TEDI-Design-System/core/commit/74ab58412e1ef46153f21d44b2e7c7847249e60d)), closes [#82](https://github.com/TEDI-Design-System/core/issues/82) [#83](https://github.com/TEDI-Design-System/core/issues/83)
+
 # [3.2.0](https://github.com/TEDI-Design-System/core/compare/core-3.1.0...core-3.2.0) (2026-02-17)
 
 
