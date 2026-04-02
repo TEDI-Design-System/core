@@ -99,10 +99,10 @@
   --feedback-star-size: var(--icon-05);
   --file-dropzone-padding-x: var(--dimensions-13);
   --file-dropzone-padding-y: var(--dimensions-13);
-  --filter-default-inner-spacing: var(--dimensions-02);
+  --filter-default-inner-spacing: var(--dimensions-04);
+  --filter-default-inner-spacing-sm: var(--dimensions-02);
   --filter-default-padding-x: var(--dimensions-04);
   --filter-default-padding-y: var(--dimensions-03);
-  --filter-lg-inner-spacing: var(--form-checkbox-radio-card-inner-spacing);
   --filter-lg-padding-x: var(--form-checkbox-radio-card-checkbox-padding-x);
   --filter-lg-padding-y: var(--form-checkbox-radio-card-checkbox-padding-y);
   --form-calendar-date-width: 40px;
@@ -131,6 +131,7 @@
   --form-field-button-height: var(--dimensions-14);
   --form-field-button-height-sm: var(--dimensions-13);
   --form-field-height: var(--dimensions-16);
+  --form-field-height-lg: var(--dimensions-19);
   --form-field-height-sm: var(--dimensions-14);
   --form-field-inner-spacing: var(--dimensions-05);
   --form-field-inner-spacing-sm: var(--dimensions-03);
@@ -387,6 +388,7 @@
   --table-of-contents-width: var(--containers-04);
   --table-radius: var(--radius-02-default);
   --tag-default-loader-padding-y: var(--dimensions-04);
+  --tag-default-padding-sm: var(--dimensions-01);
   --tag-default-padding-x: var(--dimensions-03);
   --tag-default-padding-y: var(--dimensions-02);
   --tag-default-radius: var(--radius-02-default);
@@ -517,10 +519,10 @@
   --feedback-star-size: var(--icon-06);
   --file-dropzone-padding-x: var(--dimensions-13);
   --file-dropzone-padding-y: var(--dimensions-13);
-  --filter-default-inner-spacing: var(--dimensions-02);
+  --filter-default-inner-spacing: var(--dimensions-04);
+  --filter-default-inner-spacing-sm: var(--dimensions-02);
   --filter-default-padding-x: var(--dimensions-04);
   --filter-default-padding-y: var(--dimensions-03);
-  --filter-lg-inner-spacing: var(--form-checkbox-radio-card-inner-spacing);
   --filter-lg-padding-x: var(--form-checkbox-radio-card-checkbox-padding-x);
   --filter-lg-padding-y: var(--form-checkbox-radio-card-checkbox-padding-y);
   --form-calendar-date-width: 40px;
@@ -549,6 +551,7 @@
   --form-field-button-height: var(--dimensions-14);
   --form-field-button-height-sm: var(--dimensions-13);
   --form-field-height: var(--dimensions-16);
+  --form-field-height-lg: var(--dimensions-19);
   --form-field-height-sm: var(--dimensions-14);
   --form-field-inner-spacing: var(--dimensions-05);
   --form-field-inner-spacing-sm: var(--dimensions-03);
@@ -805,6 +808,7 @@
   --table-of-contents-width: var(--containers-04);
   --table-radius: var(--radius-02-default);
   --tag-default-loader-padding-y: var(--dimensions-04);
+  --tag-default-padding-sm: var(--dimensions-01);
   --tag-default-padding-x: var(--dimensions-03);
   --tag-default-padding-y: var(--dimensions-02);
   --tag-default-radius: var(--radius-02-default);
@@ -936,10 +940,10 @@
   --feedback-star-size: var(--icon-06);
   --file-dropzone-padding-x: var(--dimensions-10);
   --file-dropzone-padding-y: var(--dimensions-13);
-  --filter-default-inner-spacing: var(--dimensions-02);
+  --filter-default-inner-spacing: var(--dimensions-04);
+  --filter-default-inner-spacing-sm: var(--dimensions-02);
   --filter-default-padding-x: var(--dimensions-04);
   --filter-default-padding-y: var(--dimensions-03);
-  --filter-lg-inner-spacing: var(--form-checkbox-radio-card-inner-spacing);
   --filter-lg-padding-x: var(--form-checkbox-radio-card-checkbox-padding-x);
   --filter-lg-padding-y: var(--form-checkbox-radio-card-checkbox-padding-y);
   --form-calendar-date-width: 40px;
@@ -968,6 +972,7 @@
   --form-field-button-height: var(--dimensions-14);
   --form-field-button-height-sm: var(--dimensions-13);
   --form-field-height: var(--dimensions-17);
+  --form-field-height-lg: var(--dimensions-19);
   --form-field-height-sm: var(--dimensions-17);
   --form-field-inner-spacing: var(--dimensions-05);
   --form-field-inner-spacing-sm: var(--dimensions-03);
@@ -1224,6 +1229,7 @@
   --table-of-contents-width: var(--containers-04);
   --table-radius: var(--radius-02-default);
   --tag-default-loader-padding-y: var(--dimensions-04);
+  --tag-default-padding-sm: var(--dimensions-01);
   --tag-default-padding-x: var(--dimensions-03);
   --tag-default-padding-y: var(--dimensions-02);
   --tag-default-radius: var(--radius-02-default);
