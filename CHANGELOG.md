@@ -1,3 +1,23 @@
+# [4.0.0](https://github.com/TEDI-Design-System/core/compare/core-3.3.0...core-4.0.0) (2026-04-02)
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/cli from 20.3.0 to 20.5.0 (#87) ([](https://github.com/TEDI-Design-System/core/commit/497feb91d57577e85b560ff8f660838b578df42e)), closes [#87](https://github.com/TEDI-Design-System/core/issues/87)
+* **deps-dev:** bump @commitlint/config-conventional (#84) ([](https://github.com/TEDI-Design-System/core/commit/3385eaf02989b8e4fa9735a6040449ba9fd82a60)), closes [#84](https://github.com/TEDI-Design-System/core/issues/84)
+* **deps-dev:** bump lint-staged from 16.3.1 to 16.4.0 (#88) ([](https://github.com/TEDI-Design-System/core/commit/a91e94c1478eaaa2f3b25c7fa56aff309e6b31f0)), closes [#88](https://github.com/TEDI-Design-System/core/issues/88)
+* **deps-dev:** bump stylelint-config-recess-order from 7.6.1 to 7.7.0 (#85) ([](https://github.com/TEDI-Design-System/core/commit/9c909cfa3061c7bb5327a95fdd662aa4845aa369)), closes [#85](https://github.com/TEDI-Design-System/core/issues/85)
+
+
+### fix
+
+* update Figma collections names #80 (#81) ([](https://github.com/TEDI-Design-System/core/commit/df264b33ac165cbda7339526c40c4388c3f922b4)), closes [#80](https://github.com/TEDI-Design-System/core/issues/80) [#81](https://github.com/TEDI-Design-System/core/issues/81) [#80](https://github.com/TEDI-Design-System/core/issues/80) [#80](https://github.com/TEDI-Design-System/core/issues/80)
+
+
+### BREAKING CHANGE
+
+* tedi prefixed variables replaced with unprefixed
+
 # [3.3.0](https://github.com/TEDI-Design-System/core/compare/core-3.2.0...core-3.3.0) (2026-03-20)
 
 
