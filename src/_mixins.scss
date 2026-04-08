@@ -24,8 +24,8 @@ $breakpoints: (
   height: 1px !important;
   padding: 0 !important;
   overflow: hidden;
-  clip-path: rect(1px, 1px, 1px, 1px);
   border: 0 !important;
+  clip-path: rect(1px, 1px, 1px, 1px);
 }
 
 @mixin table-cell-selector($selector: 'all') {
@@ -49,9 +49,9 @@ $breakpoints: (
 }
 
 @mixin focus-element {
-  border-radius: 0.25rem;
   outline: 2px solid var(--global-outline-color, var(--color-primary-main));
   outline-offset: var(--global-outline-offset, 1px);
+  border-radius: 0.25rem;
 
   html:not([data-whatintent='keyboard']) & {
     outline: none;
