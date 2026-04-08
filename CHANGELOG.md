@@ -1,3 +1,22 @@
+# [5.0.0](https://github.com/TEDI-Design-System/core/compare/core-4.0.0...core-5.0.0) (2026-04-08)
+
+
+### chore
+
+* added variable update workflow #78 (#79) ([](https://github.com/TEDI-Design-System/core/commit/76027bc616530de35250d2c4188658f648071a22)), closes [#78](https://github.com/TEDI-Design-System/core/issues/78) [#79](https://github.com/TEDI-Design-System/core/issues/79)
+
+
+### fix
+
+* **variables:** remove MUIS and RIT variables #75 (#89) ([](https://github.com/TEDI-Design-System/core/commit/ed6c1b94ff14116abad642dd30cf049b9644ee88)), closes [#75](https://github.com/TEDI-Design-System/core/issues/75) [#89](https://github.com/TEDI-Design-System/core/issues/89)
+
+
+### BREAKING CHANGE
+
+* **variables:** Removed MUIS and RIT theme variables from the core package.
+
+Consumers must now export and include custom theme variables from Figma manually.
+
 # [4.0.0](https://github.com/TEDI-Design-System/core/compare/core-3.3.0...core-4.0.0) (2026-04-02)
 
 
