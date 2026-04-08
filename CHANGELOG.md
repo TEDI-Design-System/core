@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/TEDI-Design-System/core/compare/core-5.0.0...core-5.0.1) (2026-04-08)
+
+
+### fix
+
+* fix storybook styles variables #90 (#91) ([](https://github.com/TEDI-Design-System/core/commit/7fce9751b53b1dd225c582e302c56593ef1ebbcc)), closes [#90](https://github.com/TEDI-Design-System/core/issues/90) [#91](https://github.com/TEDI-Design-System/core/issues/91)
+
 # [5.0.0](https://github.com/TEDI-Design-System/core/compare/core-4.0.0...core-5.0.0) (2026-04-08)
 
 
