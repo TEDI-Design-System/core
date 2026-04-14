@@ -50,9 +50,9 @@ jobs:
         if: steps.changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: chore/sync-figma-variables
-          commit-message: "chore(variables): update variables from Figma #69"
-          title: "chore(variables): update variables from Figma"
+          branch: feat/sync-figma-variables
+          commit-message: "feat(variables): update variables from Figma #69"
+          title: "feat(variables): update variables from Figma"
           body: |
             ## Summary
             - Automated sync of variables from Figma variables API
