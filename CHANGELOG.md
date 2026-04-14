@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/TEDI-Design-System/core/compare/core-5.0.1...core-6.0.0) (2026-04-14)
+
+
+### feat
+
+* **variables:** update variables from Figma (#92) ([](https://github.com/TEDI-Design-System/core/commit/92474635983c838a056e80b797e354f2ef23d3d9)), closes [#92](https://github.com/TEDI-Design-System/core/issues/92) [#69](https://github.com/TEDI-Design-System/core/issues/69) [#69](https://github.com/TEDI-Design-System/core/issues/69)
+
+
+### BREAKING CHANGE
+
+* **variables:** TEDI base variables are all tedi prefixed now
+
 ## [5.0.1](https://github.com/TEDI-Design-System/core/compare/core-5.0.0...core-5.0.1) (2026-04-08)
 
 
