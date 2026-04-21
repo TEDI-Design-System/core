@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/TEDI-Design-System/core/compare/core-6.0.0...core-6.0.1) (2026-04-21)
+
+
+### fix
+
+* **styles:** fix unprefixed base variables in styles files #95 (#96) ([](https://github.com/TEDI-Design-System/core/commit/5dc05815242cff01caf224747614276eeadf831e)), closes [#95](https://github.com/TEDI-Design-System/core/issues/95) [#96](https://github.com/TEDI-Design-System/core/issues/96) [#95](https://github.com/TEDI-Design-System/core/issues/95)
+
 # [6.0.0](https://github.com/TEDI-Design-System/core/compare/core-5.0.1...core-6.0.0) (2026-04-14)
 
 
