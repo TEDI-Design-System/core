@@ -49,7 +49,7 @@ $breakpoints: (
 }
 
 @mixin focus-element {
-  outline: 2px solid var(--global-outline-color, var(--color-primary-main));
+  outline: 2px solid var(--global-outline-color, var(--tedi-primary-600));
   outline-offset: var(--global-outline-offset, 1px);
   border-radius: 0.25rem;
 
@@ -64,7 +64,7 @@ $breakpoints: (
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  background-color: var(--color-transparent);
+  background: transparent;
   border: none;
 
   &:disabled {
