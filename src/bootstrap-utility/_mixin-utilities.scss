@@ -30,7 +30,8 @@
     $infix: if(sass($property-class == '' and str-slice($infix, 1, 1) == '-'): str-slice($infix, 2); else: $infix);
 
     // Don't prefix if value key is null (eg. with shadow class)
-    $property-class-modifier: if(sass($key): if(sass($property-class == '' and $infix == ''): ''; else: '-') + $key; else: '');
+    $separator: if(sass($property-class == '' and $infix == ''): ''; else: '-');
+    $property-class-modifier: if(sass($key): $separator + $key; else: '');
 
     @if map.get($utility, rfs) {
       // Inside the media query
@@ -38,7 +39,7 @@
         $val: rfs-value($value);
 
         // Do not render anything if fluid and non fluid values are the same
-        $value: if(sass($val == rfs-fluid-value($value)): null);
+        $value: if(sass($val == rfs-fluid-value($value)): null; else: $val);
       } @else {
         $value: rfs-fluid-value($value);
       }
@@ -81,7 +82,7 @@
           .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
             @each $property in $properties {
               // stylelint-disable-next-line annotation-no-unknown
-              #{$property}: $value if(sass($enable-important-utilities): !important; else: null);
+              #{$property}: $value if(sass(vars.$enable-important-utilities): !important; else: null);
             }
           }
         }
