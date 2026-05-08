@@ -1,3 +1,18 @@
+# [6.1.0](https://github.com/TEDI-Design-System/core/compare/core-6.0.1...core-6.1.0) (2026-05-08)
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/cli from 20.5.0 to 20.5.3 (#102) ([](https://github.com/TEDI-Design-System/core/commit/36afefc73a72f0c4d0e00c47993877b70e8a825d)), closes [#102](https://github.com/TEDI-Design-System/core/issues/102)
+* **deps-dev:** bump @commitlint/config-conventional (#98) ([](https://github.com/TEDI-Design-System/core/commit/0a635632d3648af676ca1d1586cb0e667f9914de)), closes [#98](https://github.com/TEDI-Design-System/core/issues/98)
+* **deps-dev:** bump sass from 1.97.1 to 1.99.0 (#99) ([](https://github.com/TEDI-Design-System/core/commit/27efecb9118dbc60f08d5281475109a8f59e4b26)), closes [#99](https://github.com/TEDI-Design-System/core/issues/99)
+* **deps-dev:** bump stylelint-declaration-strict-value (#101) ([](https://github.com/TEDI-Design-System/core/commit/6ad64c13570b4f0a0d2ca1be872b8243b6bcbec8)), closes [#101](https://github.com/TEDI-Design-System/core/issues/101)
+
+
+### feat
+
+* **variables:** update variables from Figma #69 (#94) ([](https://github.com/TEDI-Design-System/core/commit/adda2068d1208b7de6fa09aae4b08e7be3bb6c92)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69) [#94](https://github.com/TEDI-Design-System/core/issues/94)
+
 ## [6.0.1](https://github.com/TEDI-Design-System/core/compare/core-6.0.0...core-6.0.1) (2026-04-21)
 
 
