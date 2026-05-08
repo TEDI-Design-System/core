@@ -49,7 +49,7 @@
   --body-link-size-regular: var(--body-regular-size);
   --body-link-size-responsive: var(--body-small-regular-size);
 
-@media (width <= 48rem) {
+@media (width < 48rem) {
   --family-default: var(--tedi-family-roboto);
   --family-heading: var(--tedi-family-roboto);
   --body-regular-weight: var(--tedi-weight-02);
