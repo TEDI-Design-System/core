@@ -614,13 +614,13 @@
   --stepper-item-horizontal-type-danger-bg-active: var(--tedi-red-600);
   --stepper-item-horizontal-type-danger-bg-default: var(--general-status-danger-background-primary);
   --stepper-item-horizontal-type-danger-bg-hover: var(--tedi-red-600);
-  --stepper-item-horizontal-type-default-bg-active: var(--general-surface-secondary);
   --stepper-item-horizontal-type-default-bg-default: var(--general-surface-tertiary);
   --stepper-item-horizontal-type-default-bg-hover: var(--general-surface-secondary);
   --stepper-item-horizontal-type-selected-bg-default: var(--general-border-brand);
   --stepper-item-vertical-line: var(--tedi-neutral-600);
   --stepper-item-vertical-mobile-progressbar-completed: var(--general-status-success-background-tertiary);
   --stepper-item-vertical-mobile-progressbar-default: var(--stepper-item-vertical-line);
+  --stepper-item-vertical-text-active: var(--link-primary-active);
   --stepper-item-vertical-text-default: var(--general-text-primary);
   --stepper-item-vertical-text-disabled: var(--general-text-disabled);
   --stepper-item-vertical-text-hover: var(--link-primary-hover);
@@ -630,9 +630,11 @@
   --stepper-step-danger-bg: var(--general-status-danger-background-tertiary);
   --stepper-step-danger-bg-hover: var(--tedi-red-700);
   --stepper-step-default-bg: var(--general-surface-primary);
+  --stepper-step-default-bg-active: var(--general-surface-primary);
   --stepper-step-default-bg-hover: var(--general-surface-primary);
   --stepper-step-default-border: var(--stepper-item-vertical-line);
-  --stepper-step-default-border-hover: var(--general-border-brand);
+  --stepper-step-default-border-active: var(--stepper-item-vertical-line);
+  --stepper-step-default-border-hover: var(--stepper-item-vertical-line);
   --stepper-step-disabled-bg: var(--general-surface-disabled);
   --stepper-step-disabled-border: var(--timeline-default);
   --stepper-step-selected-bg: var(--general-surface-primary);
