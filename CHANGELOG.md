@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/TEDI-Design-System/core/compare/core-6.1.0...core-6.1.1) (2026-05-11)
+
+
+### fix
+
+* fix breakpoint boundary mismatch between CSS tokens and JS useBreakpoint hook #97 (#104) ([](https://github.com/TEDI-Design-System/core/commit/3fee753758852a8901ea20ec5772c72f188412d4)), closes [#97](https://github.com/TEDI-Design-System/core/issues/97) [#104](https://github.com/TEDI-Design-System/core/issues/104)
+
 # [6.1.0](https://github.com/TEDI-Design-System/core/compare/core-6.0.1...core-6.1.0) (2026-05-08)
 
 
