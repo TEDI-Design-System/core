@@ -427,7 +427,7 @@
   --tooltip-padding-y: var(--tooltip-padding-x);
   --tooltip-radius: var(--card-radius-rounded);
 
-  @media (width <= 62rem) {
+  @media (width < 62rem) {
   --alert-default-icon-container-height: var(--tedi-dimensions-13);
   --alert-default-icon-size: var(--button-icon-inner-size);
   --alert-default-inner-spacing-x: var(--tedi-dimensions-03);
@@ -857,7 +857,7 @@
   --tooltip-radius: var(--card-radius-rounded);
   }
 
-  @media (width <= 48rem) {
+  @media (width < 48rem) {
   --alert-default-icon-container-height: var(--tedi-dimensions-13);
   --alert-default-icon-size: var(--button-icon-inner-size);
   --alert-default-inner-spacing-x: var(--tedi-dimensions-03);

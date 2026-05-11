@@ -23,8 +23,8 @@ const THEME_MAP: Record<string, { folder: string; fileSuffix: string }> = {
 
 const RESPONSIVE_MEDIA: Record<string, string> = {
   desktop: "",
-  tablet: "(max-width: 62rem)",
-  mobile: "(max-width: 48rem)",
+  tablet: "(width < 62rem)",
+  mobile: "(width < 48rem)",
 };
 
 function sortCssVars(list: string[]) {
@@ -245,8 +245,8 @@ async function run() {
 
       const blocks: string[] = [];
       if (desktopLines.length) blocks.push(desktopLines.join("\n"));
-      if (tabletLines.length) blocks.push(`@media (max-width: 62rem) {\n${tabletLines.join("\n")}\n}`);
-      if (mobileLines.length) blocks.push(`@media (max-width: 48rem) {\n${mobileLines.join("\n")}\n}`);
+      if (tabletLines.length) blocks.push(`@media (width < 62rem) {\n${tabletLines.join("\n")}\n}`);
+      if (mobileLines.length) blocks.push(`@media (width < 48rem) {\n${mobileLines.join("\n")}\n}`);
 
       if (blocks.length > 0) {
         const css = `.tedi-theme--default,\n:root {\n${blocks.join("\n\n")}\n}\n`;
