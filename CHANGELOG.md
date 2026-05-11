@@ -1,3 +1,10 @@
+## [6.1.2](https://github.com/TEDI-Design-System/core/compare/core-6.1.1...core-6.1.2) (2026-05-11)
+
+
+### fix
+
+* resolve sass errors due to sass upgrade #68 (#103) ([](https://github.com/TEDI-Design-System/core/commit/d90dab8c951b85fc5018a2184e3b22c7b258affe)), closes [#68](https://github.com/TEDI-Design-System/core/issues/68) [#103](https://github.com/TEDI-Design-System/core/issues/103)
+
 ## [6.1.1](https://github.com/TEDI-Design-System/core/compare/core-6.1.0...core-6.1.1) (2026-05-11)
 
 
