@@ -239,6 +239,7 @@
   --layout-header-profile-icon: var(--icon-06);
   --layout-header-separator-padding-y: 0;
   --layout-header-tablet-only: 0;
+  --layout-header-top-header-min-height: var(--tedi-dimensions-16);
   --layout-header-top-header-padding-x: var(--tedi-dimensions-13);
   --layout-header-top-header-padding-y: var(--tedi-dimensions-00);
   --layout-page-spacing-top: var(--tedi-dimensions-13);
@@ -668,6 +669,7 @@
   --layout-header-profile-icon: var(--icon-06);
   --layout-header-separator-padding-y: var(--tedi-dimensions-03);
   --layout-header-tablet-only: true;
+  --layout-header-top-header-min-height: var(--tedi-dimensions-16);
   --layout-header-top-header-padding-x: var(--tedi-dimensions-10);
   --layout-header-top-header-padding-y: var(--tedi-dimensions-00);
   --layout-page-spacing-top: var(--tedi-dimensions-13);
@@ -1098,6 +1100,7 @@
   --layout-header-profile-icon: var(--icon-05);
   --layout-header-separator-padding-y: 0;
   --layout-header-tablet-only: 0;
+  --layout-header-top-header-min-height: var(--tedi-dimensions-16);
   --layout-header-top-header-padding-x: var(--tedi-dimensions-06);
   --layout-header-top-header-padding-y: var(--tedi-dimensions-03);
   --layout-page-spacing-top: var(--tedi-dimensions-13);
