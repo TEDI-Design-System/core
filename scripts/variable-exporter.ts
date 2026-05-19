@@ -128,7 +128,7 @@ function resolveValue(
     const { r, g, b, a = 1 } = v;
     const [rr, gg, bb] = [r, g, b].map((c: number) => Math.round(c * 255));
     const alpha = Number(a.toFixed(4));
-    return alpha === 1 ? `rgb(${rr}, ${gg}, ${bb})` : `rgba(${rr}, ${gg}, ${bb}, ${alpha})`;
+    return a === 1 ? `rgb(${rr}, ${gg}, ${bb})` : `rgba(${rr}, ${gg}, ${bb}, ${alpha})`;
   }
 
   const value = raw && typeof raw === "object" && "value" in raw ? raw.value : raw;
