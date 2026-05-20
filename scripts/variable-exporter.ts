@@ -66,7 +66,10 @@ async function fetchFigmaVariables(): Promise<FigmaVariablesResponse> {
     headers: { "X-Figma-Token": FIGMA_VARIABLE_TOKEN ?? "" },
   });
 
-  if (!res.ok) throw new Error(`Figma API error: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Figma API error: ${res.status} ${res.statusText} — ${body || "<empty body>"}`);
+  }
 
   return (await res.json()) as FigmaVariablesResponse;
 }
@@ -124,7 +127,8 @@ function resolveValue(
     const v = "value" in raw ? raw.value : raw;
     const { r, g, b, a = 1 } = v;
     const [rr, gg, bb] = [r, g, b].map((c: number) => Math.round(c * 255));
-    return a === 1 ? `rgb(${rr}, ${gg}, ${bb})` : `rgba(${rr}, ${gg}, ${bb}, ${a})`;
+    const alpha = Number(a.toFixed(4));
+    return a === 1 ? `rgb(${rr}, ${gg}, ${bb})` : `rgba(${rr}, ${gg}, ${bb}, ${alpha})`;
   }
 
   const value = raw && typeof raw === "object" && "value" in raw ? raw.value : raw;

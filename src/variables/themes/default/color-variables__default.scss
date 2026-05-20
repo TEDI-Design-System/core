@@ -259,6 +259,9 @@
   --file-dropzone-border-hover: var(--form-input-border-hover);
   --file-dropzone-text-default: var(--general-text-brand);
   --file-dropzone-text-drop-over: var(--general-text-tertiary);
+  --filter-primary-active-background: var(--button-main-primary-background-active);
+  --filter-primary-active-border: var(--button-main-primary-border-active);
+  --filter-primary-active-text: var(--button-main-primary-text-active);
   --filter-primary-default-background: var(--form-checkbox-radio-card-primary-default-background);
   --filter-primary-default-border: var(--form-checkbox-radio-card-primary-default-border-separate);
   --filter-primary-default-text: var(--form-checkbox-radio-card-primary-default-text);
@@ -271,6 +274,9 @@
   --filter-primary-selected-background: var(--form-checkbox-radio-card-primary-selected-background);
   --filter-primary-selected-border: var(--form-checkbox-radio-card-primary-selected-border-group);
   --filter-primary-selected-text: var(--form-checkbox-radio-card-primary-selected-text);
+  --filter-secondary-active-background: var(--button-main-secondary-background-active);
+  --filter-secondary-active-border: var(--button-main-secondary-border-active);
+  --filter-secondary-active-text: var(--button-main-secondary-text-active);
   --filter-secondary-default-background: var(--form-checkbox-radio-card-secondary-default-background);
   --filter-secondary-default-border: var(--form-checkbox-radio-card-secondary-default-border);
   --filter-secondary-default-text: var(--form-checkbox-radio-card-secondary-default-text);
