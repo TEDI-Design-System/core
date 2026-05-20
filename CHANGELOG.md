@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/TEDI-Design-System/core/compare/core-6.2.0...core-6.2.1) (2026-05-20)
+
+
+### fix
+
+* grid breakpoints from px -> rem, update variables #106 (#107) ([](https://github.com/TEDI-Design-System/core/commit/fe358fc40ce4537bc440e238442b50e4e48be5fe)), closes [#106](https://github.com/TEDI-Design-System/core/issues/106) [#107](https://github.com/TEDI-Design-System/core/issues/107) [#106](https://github.com/TEDI-Design-System/core/issues/106) [#106](https://github.com/TEDI-Design-System/core/issues/106)
+
 # [6.2.0](https://github.com/TEDI-Design-System/core/compare/core-6.1.2...core-6.2.0) (2026-05-18)
 
 
