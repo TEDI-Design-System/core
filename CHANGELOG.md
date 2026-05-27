@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/TEDI-Design-System/core/compare/core-6.3.0...core-6.4.0) (2026-05-27)
+
+
+### feat
+
+* **variables:** update variables from Figma #69 (#109) ([](https://github.com/TEDI-Design-System/core/commit/dd60ad900a5cf8d231354f94442fde4234c84948)), closes [#69](https://github.com/TEDI-Design-System/core/issues/69) [#109](https://github.com/TEDI-Design-System/core/issues/109)
+
 # [6.3.0](https://github.com/TEDI-Design-System/core/compare/core-6.2.1...core-6.3.0) (2026-05-22)
 
 
