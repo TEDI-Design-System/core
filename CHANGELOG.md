@@ -1,3 +1,19 @@
+## [6.4.1](https://github.com/TEDI-Design-System/core/compare/core-6.4.0...core-6.4.1) (2026-06-11)
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/config-conventional (#115) ([](https://github.com/TEDI-Design-System/core/commit/3254ec98faf0f4dc1cbe1024bd4f3251b6948d6f)), closes [#115](https://github.com/TEDI-Design-System/core/issues/115)
+* **deps-dev:** bump lint-staged from 16.4.0 to 17.0.7 (#116) ([](https://github.com/TEDI-Design-System/core/commit/06193ebb763dd5cf41bc109d31cbcbe07d59ff49)), closes [#116](https://github.com/TEDI-Design-System/core/issues/116)
+* **deps-dev:** bump prettier from 3.8.1 to 3.8.3 (#113) ([](https://github.com/TEDI-Design-System/core/commit/f0ae74f87b79529e42469c40c8edbc8e3c4776b1)), closes [#113](https://github.com/TEDI-Design-System/core/issues/113)
+* **deps-dev:** bump sass from 1.99.0 to 1.100.0 (#114) ([](https://github.com/TEDI-Design-System/core/commit/f8560c111b43632da43bb254b975fe8291ad482b)), closes [#114](https://github.com/TEDI-Design-System/core/issues/114)
+* **deps-dev:** bump typescript from 5.9.3 to 6.0.3 (#112) ([](https://github.com/TEDI-Design-System/core/commit/3c209fd644b6455ba43ec8c05ee032906eb9672a)), closes [#112](https://github.com/TEDI-Design-System/core/issues/112)
+
+
+### fix
+
+* inherit font-family and font-size for form controls #110 (#117) ([](https://github.com/TEDI-Design-System/core/commit/8c40a2195f3d7216d0d83eb1bb586760c8a19d43)), closes [#110](https://github.com/TEDI-Design-System/core/issues/110) [#117](https://github.com/TEDI-Design-System/core/issues/117) [#110](https://github.com/TEDI-Design-System/core/issues/110) [#110](https://github.com/TEDI-Design-System/core/issues/110) [#110](https://github.com/TEDI-Design-System/core/issues/110)
+
 # [6.4.0](https://github.com/TEDI-Design-System/core/compare/core-6.3.0...core-6.4.0) (2026-05-27)
 
 
