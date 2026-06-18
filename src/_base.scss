@@ -18,6 +18,8 @@ body {
   font-size: var(--body-regular-size);
   line-height: var(--body-regular-line-height);
   color: var(--general-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
