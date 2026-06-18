@@ -1,3 +1,10 @@
+## [6.4.2](https://github.com/TEDI-Design-System/core/compare/core-6.4.1...core-6.4.2) (2026-06-18)
+
+
+### fix
+
+* add font smoothing #118 (#119) ([](https://github.com/TEDI-Design-System/core/commit/35e227e77f4098962912dcce6c281bb5a1bacf18)), closes [#118](https://github.com/TEDI-Design-System/core/issues/118) [#119](https://github.com/TEDI-Design-System/core/issues/119)
+
 ## [6.4.1](https://github.com/TEDI-Design-System/core/compare/core-6.4.0...core-6.4.1) (2026-06-11)
 
 
