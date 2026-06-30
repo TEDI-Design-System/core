@@ -1,3 +1,10 @@
+## [6.4.3](https://github.com/TEDI-Design-System/core/compare/core-6.4.2...core-6.4.3) (2026-06-30)
+
+
+### fix
+
+* removed duplicate variable #121 (#122) ([](https://github.com/TEDI-Design-System/core/commit/d8bc52f4a6f99844de0b245481873e27606deaad)), closes [#121](https://github.com/TEDI-Design-System/core/issues/121) [#122](https://github.com/TEDI-Design-System/core/issues/122)
+
 ## [6.4.2](https://github.com/TEDI-Design-System/core/compare/core-6.4.1...core-6.4.2) (2026-06-18)
 
 
