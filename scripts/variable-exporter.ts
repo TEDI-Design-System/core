@@ -170,6 +170,7 @@ interface FigmaVariable {
 }
 interface FigmaCollection {
   name: string;
+  remote: boolean;
   modes: { modeId: string; name: string }[];
   variableIds: string[];
   defaultModeId?: string;
@@ -192,8 +193,21 @@ async function run() {
   }
 
   const wantedColls = Object.values(collections).filter(c =>
-    WANTED_COLLECTIONS.has(c.name.trim())
+    !c.remote && WANTED_COLLECTIONS.has(c.name.trim())
   );
+
+  // Guard: each wanted collection must resolve to exactly one local collection.
+  // Figma re-imports subscribed libraries as remote collections that share the
+  // same name/key, and a silent overwrite would gut the generated tokens.
+  for (const name of WANTED_COLLECTIONS) {
+    const matches = wantedColls.filter(c => c.name.trim() === name);
+    if (matches.length !== 1) {
+      throw new Error(
+        `Expected exactly 1 local collection named "${name}", found ${matches.length}. ` +
+        `Aborting to avoid overwriting tokens.`
+      );
+    }
+  }
 
   const baseLines: string[] = [];
   for (const coll of wantedColls.filter(c => c.name.includes("base"))) {

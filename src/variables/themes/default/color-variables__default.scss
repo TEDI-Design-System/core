@@ -425,6 +425,16 @@
   --general-border-secondary: var(--tedi-neutral-450);
   --general-border-transparent-white: var(--tedi-alpha-white-30);
   --general-border-white: var(--tedi-neutral-100);
+  --general-effect-colors-elevation-dropdown-area-drop-shadow: var(--tedi-alpha-20);
+  --general-effect-colors-elevation-general-primary: var(--tedi-alpha-20);
+  --general-effect-colors-elevation-general-secondary: var(--tedi-alpha-14);
+  --general-effect-colors-focus-inset-inner-shadow-1: var(--tedi-primary-500);
+  --general-effect-colors-focus-inset-inner-shadow-2: var(--general-surface-primary);
+  --general-effect-colors-focus-inverted-inner-shadow: var(--tedi-neutral-850);
+  --general-effect-colors-focus-inverted-outer-shadow: var(--tedi-neutral-100);
+  --general-effect-colors-focus-outset-inner-shadow: var(--general-surface-primary);
+  --general-effect-colors-focus-outset-outer-shadow: var(--tedi-primary-600);
+  --general-effect-colors-focus-outset-primary: var(--tedi-neutral-100);
   --general-icon-accent: var(--tedi-orange-700);
   --general-icon-background-brand-primary: var(--general-surface-brand-primary);
   --general-icon-background-brand-secondary: var(--general-surface-brand-tertiary);
@@ -455,6 +465,7 @@
   --general-status-neutral-border: var(--tedi-neutral-450);
   --general-status-neutral-text: var(--general-text-primary);
   --general-status-success-background-primary: var(--tedi-green-100);
+  --general-status-success-background-primary: var(--tedi-green-200);
   --general-status-success-background-secondary: var(--tedi-green-600);
   --general-status-success-background-tertiary: var(--tedi-green-700);
   --general-status-success-border: var(--tedi-green-500);
@@ -584,6 +595,12 @@
   --progress-bar-background-passive: var(--form-slider-passive-background-default);
   --progress-bar-border-default: var(--form-slider-border-default);
   --progress-bar-range-label-text: var(--form-slider-range-label-text);
+  --sheet-body-default: var(--general-surface-primary);
+  --sheet-body-secondary: var(--general-surface-secondary);
+  --sheet-border-border: var(--general-border-primary);
+  --sheet-footer-background: var(--sheet-header-background-default);
+  --sheet-header-background-brand: var(--general-surface-brand-primary);
+  --sheet-header-background-default: var(--general-surface-primary);
   --status-badge-background-accent: var(--tedi-orange-200);
   --status-badge-background-brand: var(--general-status-info-background-light);
   --status-badge-background-danger: var(--general-status-danger-background-primary);
@@ -633,7 +650,7 @@
   --stepper-item-horizontal-type-selected-bg-default: var(--general-border-brand);
   --stepper-item-vertical-line: var(--timeline-default);
   --stepper-item-vertical-mobile-progressbar-completed: var(--general-status-success-background-tertiary);
-  --stepper-item-vertical-mobile-progressbar-default: var(--stepper-item-vertical-line);
+  --stepper-item-vertical-mobile-progressbar-default: var(--tedi-neutral-400);
   --stepper-item-vertical-text-active: var(--link-primary-active);
   --stepper-item-vertical-text-default: var(--general-text-primary);
   --stepper-item-vertical-text-disabled: var(--general-text-disabled);
@@ -669,6 +686,7 @@
   --table-border-th: var(--general-border-secondary);
   --table-default: var(--general-surface-primary);
   --table-hover: var(--general-surface-hover);
+  --table-of-content-border-active: var(--general-border-brand);
   --table-striped: var(--general-surface-tertiary);
   --tag-danger-background: var(--general-status-danger-background-primary);
   --tag-danger-border: var(--tedi-red-300);
@@ -678,6 +696,10 @@
   --tag-secondary-border: var(--tedi-neutral-300);
   --timeline-completed: var(--general-border-accent);
   --timeline-default: var(--general-border-secondary);
-  --tooltip-background: var(--general-surface-inverted-primary);
-  --tooltip-text: var(--general-text-white);
+  --tooltip-primary-background: var(--general-surface-inverted-primary);
+  --tooltip-primary-border: var(--tooltip-primary-background);
+  --tooltip-primary-text: var(--general-text-white);
+  --tooltip-secondary-background: var(--popover-background);
+  --tooltip-secondary-border: var(--popover-border-default);
+  --tooltip-secondary-text: var(--general-text-dark);
 }
