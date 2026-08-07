@@ -1,3 +1,21 @@
+# [6.5.0](https://github.com/TEDI-Design-System/core/compare/core-6.4.3...core-6.5.0) (2026-08-07)
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/cli from 20.5.3 to 21.2.0 (#123) ([](https://github.com/TEDI-Design-System/core/commit/6f9350e17e71d4ecadb529ac8a1a93d9beebac2d)), closes [#123](https://github.com/TEDI-Design-System/core/issues/123)
+* **deps-dev:** bump @commitlint/cli from 21.2.0 to 21.2.1 (#134) ([](https://github.com/TEDI-Design-System/core/commit/ef534e66eb0d2daf680f7aa6df9c44d3b8b5aee3)), closes [#134](https://github.com/TEDI-Design-System/core/issues/134)
+* **deps-dev:** bump @semantic-release/git from 10.0.1 to 11.0.1 (#135) ([](https://github.com/TEDI-Design-System/core/commit/60e4d881e9da5c008fc1861b954eb9afdef9eff4)), closes [#135](https://github.com/TEDI-Design-System/core/issues/135)
+* **deps-dev:** bump lint-staged from 17.0.7 to 17.0.8 (#126) ([](https://github.com/TEDI-Design-System/core/commit/498464ad4af79c095772a3cf72913876db893fd3)), closes [#126](https://github.com/TEDI-Design-System/core/issues/126)
+* **deps-dev:** bump sass from 1.100.0 to 1.101.0 (#127) ([](https://github.com/TEDI-Design-System/core/commit/02ecc52239dd1267373a37caca50f1bacfd599ba)), closes [#127](https://github.com/TEDI-Design-System/core/issues/127)
+* **deps-dev:** bump semantic-release from 25.0.3 to 25.0.5 (#125) ([](https://github.com/TEDI-Design-System/core/commit/e5f3103b87ad30c4bcecceec704d998ff4ad5ff5)), closes [#125](https://github.com/TEDI-Design-System/core/issues/125)
+* **deps-dev:** bump semantic-release from 25.0.5 to 25.0.8 (#131) ([](https://github.com/TEDI-Design-System/core/commit/1c04da8a6544fcb928c6444ee97d0a1c9a714340)), closes [#131](https://github.com/TEDI-Design-System/core/issues/131)
+
+
+### feat
+
+* **icons:** update material symbols font files #136 (#137) ([](https://github.com/TEDI-Design-System/core/commit/f2a3346e0c3d8ba93336ab25def3dae295955ca1)), closes [#136](https://github.com/TEDI-Design-System/core/issues/136) [#137](https://github.com/TEDI-Design-System/core/issues/137)
+
 ## [6.4.3](https://github.com/TEDI-Design-System/core/compare/core-6.4.2...core-6.4.3) (2026-06-30)
 
 
