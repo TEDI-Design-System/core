@@ -170,6 +170,7 @@ interface FigmaVariable {
 }
 interface FigmaCollection {
   name: string;
+  remote: boolean;
   modes: { modeId: string; name: string }[];
   variableIds: string[];
   defaultModeId?: string;
@@ -191,9 +192,41 @@ async function run() {
     aliasMap[id] = `--${kebab(variables[id].name)}`;
   }
 
-  const wantedColls = Object.values(collections).filter(c =>
-    WANTED_COLLECTIONS.has(c.name.trim())
-  );
+  const wantedColls = Object.values(collections)
+    .filter(c => !c.remote && WANTED_COLLECTIONS.has(c.name.trim()))
+    .map(c => ({ ...c, name: c.name.trim() }));
+
+  // Guard: each wanted collection must resolve to exactly one local collection.
+  // Figma re-imports subscribed libraries as remote collections that share the
+  // same name/key, and a silent overwrite would gut the generated tokens.
+  for (const name of WANTED_COLLECTIONS) {
+    const matches = wantedColls.filter(c => c.name === name);
+    if (matches.length !== 1) {
+      throw new Error(
+        `Expected exactly 1 local collection named "${name}", found ${matches.length}. ` +
+        `Aborting to avoid overwriting tokens.`
+      );
+    }
+  }
+
+  for (const coll of wantedColls) {
+    const seen = new Map<string, string>();
+    const deduped: string[] = [];
+    for (const varId of coll.variableIds) {
+      const cssName = aliasMap[varId];
+      const keptId = seen.get(cssName);
+      if (keptId) {
+        console.warn(
+          `Duplicate variable name in "${coll.name}": ${cssName} — ` +
+          `keeping ${keptId}, ignoring ${varId}.`
+        );
+        continue;
+      }
+      seen.set(cssName, varId);
+      deduped.push(varId);
+    }
+    coll.variableIds = deduped;
+  }
 
   const baseLines: string[] = [];
   for (const coll of wantedColls.filter(c => c.name.includes("base"))) {

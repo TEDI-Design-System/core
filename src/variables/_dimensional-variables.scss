@@ -13,6 +13,7 @@
   --alert-illustrative-padding-y: var(--tedi-dimensions-07);
   --alert-illustrative-text-max-width: 748px;
   --alert-radius: var(--card-radius-rounded);
+  --attachment-actions-min-height: var(--tedi-dimensions-16);
   --avatar-size-lg: var(--tedi-dimensions-16);
   --avatar-size-md: var(--tedi-dimensions-14);
   --avatar-size-sm: var(--tedi-dimensions-13);
@@ -165,7 +166,8 @@
   --form-toggle-large-width: 56px;
   --form-toggle-padding: var(--tedi-dimensions-02);
   --form-toggle-radius: var(--tedi-radius-04);
-  --general-selected-border-width: var(--tedi-borders-02);
+  --general-border-width-default: var(--tedi-borders-01);
+  --general-border-width-selected: var(--tedi-borders-02);
   --grid-gutter-x-eemaldada-01: 4px;
   --grid-gutter-x-eemaldada-02: 8px;
   --grid-gutter-x-eemaldada-03-default: 12px;
@@ -203,7 +205,6 @@
   --layout-grid-column-gutter: var(--tedi-dimensions-13);
   --layout-grid-column-offset: 40px;
   --layout-grid-column-width: 464px;
-  --layout-grid-column-width: 464px;
   --layout-grid-column-width-1: 1440px;
   --layout-grid-column-width-12: 98px;
   --layout-grid-column-width-2: 708px;
@@ -218,7 +219,6 @@
   --layout-grid-gutters-48: var(--tedi-dimensions-18);
   --layout-header-desktop-and-tablet-only: true;
   --layout-header-desktop-only: true;
-  --layout-header-height: 84px;
   --layout-header-height: 84px;
   --layout-header-items-center-gutter-x: var(--tedi-dimensions-18);
   --layout-header-items-menu-item-padding: var(--tedi-dimensions-05);
@@ -358,9 +358,18 @@
   --separator-thickness-sm: 0.5px;
   --separator-thickness-xs: 0.25px;
   --separator-top-spacing-large-dot-sm: 4px;
+  --sheet-body-padding-x: 0;
+  --sheet-body-padding-y: 0;
+  --sheet-footer-padding-x: 0;
+  --sheet-footer-padding-y: 0;
+  --sheet-header-height: 0;
+  --sheet-header-padding-x: 0;
+  --sheet-header-padding-y: 0;
+  --sheet-header-radius: 0;
   --status-indicator-inner-spacing: var(--tedi-dimensions-05);
   --status-indicator-lg: var(--tedi-dimensions-07);
   --status-indicator-sm: var(--tedi-dimensions-05);
+  --stepper-card-min-height: var(--tedi-dimensions-20);
   --stepper-item-horizontal-inner-spacing: var(--tedi-dimensions-05);
   --stepper-item-horizontal-min-height: var(--tedi-dimensions-16);
   --stepper-item-horizontal-padding-x: var(--tedi-dimensions-10);
@@ -374,6 +383,7 @@
   --stepper-item-vertical-lg-min-height: 40px;
   --stepper-item-vertical-lg-min-height-first-item: 32px;
   --stepper-item-vertical-lg-padding-top: 8px;
+  --stepper-item-vertical-lg-padding-top-collapse: 4px;
   --stepper-item-vertical-lg-sub-item-indicator-width: var(--tedi-dimensions-13);
   --stepper-item-vertical-line-height: 6px;
   --stepper-item-vertical-padding-y-sm: 2px;
@@ -447,6 +457,7 @@
   --alert-illustrative-padding-y: var(--tedi-dimensions-07);
   --alert-illustrative-text-max-width: 748px;
   --alert-radius: var(--card-radius-rounded);
+  --attachment-actions-min-height: var(--tedi-dimensions-16);
   --avatar-size-lg: var(--tedi-dimensions-16);
   --avatar-size-md: var(--tedi-dimensions-14);
   --avatar-size-sm: var(--tedi-dimensions-13);
@@ -599,7 +610,8 @@
   --form-toggle-large-width: 56px;
   --form-toggle-padding: var(--tedi-dimensions-02);
   --form-toggle-radius: var(--tedi-radius-04);
-  --general-selected-border-width: var(--tedi-borders-02);
+  --general-border-width-default: var(--tedi-borders-01);
+  --general-border-width-selected: var(--tedi-borders-02);
   --grid-gutter-x-eemaldada-01: var(--tedi-dimensions-03);
   --grid-gutter-x-eemaldada-02: var(--tedi-dimensions-05);
   --grid-gutter-x-eemaldada-03-default: var(--tedi-dimensions-07);
@@ -637,7 +649,6 @@
   --layout-grid-column-gutter: var(--tedi-dimensions-13);
   --layout-grid-column-offset: 24px;
   --layout-grid-column-width: 464px;
-  --layout-grid-column-width: 224px;
   --layout-grid-column-width-1: 720px;
   --layout-grid-column-width-12: 0;
   --layout-grid-column-width-2: 348px;
@@ -652,7 +663,6 @@
   --layout-grid-gutters-48: var(--tedi-dimensions-18);
   --layout-header-desktop-and-tablet-only: true;
   --layout-header-desktop-only: 0;
-  --layout-header-height: 56px;
   --layout-header-height: 56px;
   --layout-header-items-center-gutter-x: var(--tedi-dimensions-13);
   --layout-header-items-menu-item-padding: var(--tedi-dimensions-05);
@@ -792,9 +802,18 @@
   --separator-thickness-sm: 0.5px;
   --separator-thickness-xs: 0.25px;
   --separator-top-spacing-large-dot-sm: var(--tedi-dimensions-03);
+  --sheet-body-padding-x: 0;
+  --sheet-body-padding-y: 0;
+  --sheet-footer-padding-x: 0;
+  --sheet-footer-padding-y: 0;
+  --sheet-header-height: 0;
+  --sheet-header-padding-x: 0;
+  --sheet-header-padding-y: 0;
+  --sheet-header-radius: 0;
   --status-indicator-inner-spacing: var(--tedi-dimensions-05);
   --status-indicator-lg: var(--tedi-dimensions-07);
   --status-indicator-sm: var(--tedi-dimensions-05);
+  --stepper-card-min-height: var(--tedi-dimensions-20);
   --stepper-item-horizontal-inner-spacing: var(--tedi-dimensions-05);
   --stepper-item-horizontal-min-height: var(--tedi-dimensions-16);
   --stepper-item-horizontal-padding-x: var(--tedi-dimensions-10);
@@ -808,6 +827,7 @@
   --stepper-item-vertical-lg-min-height: 40px;
   --stepper-item-vertical-lg-min-height-first-item: 32px;
   --stepper-item-vertical-lg-padding-top: 8px;
+  --stepper-item-vertical-lg-padding-top-collapse: 4px;
   --stepper-item-vertical-lg-sub-item-indicator-width: var(--tedi-dimensions-13);
   --stepper-item-vertical-line-height: 6px;
   --stepper-item-vertical-padding-y-sm: 2px;
@@ -882,6 +902,7 @@
   --alert-illustrative-padding-y: var(--tedi-dimensions-07);
   --alert-illustrative-text-max-width: 748px;
   --alert-radius: var(--card-radius-rounded);
+  --attachment-actions-min-height: var(--tedi-dimensions-16);
   --avatar-size-lg: var(--tedi-dimensions-16);
   --avatar-size-md: var(--tedi-dimensions-14);
   --avatar-size-sm: var(--tedi-dimensions-13);
@@ -1034,7 +1055,8 @@
   --form-toggle-large-width: 56px;
   --form-toggle-padding: var(--tedi-dimensions-02);
   --form-toggle-radius: var(--tedi-radius-04);
-  --general-selected-border-width: var(--tedi-borders-02);
+  --general-border-width-default: var(--tedi-borders-01);
+  --general-border-width-selected: var(--tedi-borders-02);
   --grid-gutter-x-eemaldada-01: var(--tedi-dimensions-03);
   --grid-gutter-x-eemaldada-02: var(--tedi-dimensions-05);
   --grid-gutter-x-eemaldada-03-default: var(--tedi-dimensions-07);
@@ -1072,7 +1094,6 @@
   --layout-grid-column-gutter: var(--tedi-dimensions-13);
   --layout-grid-column-offset: 8px;
   --layout-grid-column-width: 464px;
-  --layout-grid-column-width: 0;
   --layout-grid-column-width-1: 359px;
   --layout-grid-column-width-12: 0;
   --layout-grid-column-width-2: 167.5px;
@@ -1087,7 +1108,6 @@
   --layout-grid-gutters-48: var(--tedi-dimensions-18);
   --layout-header-desktop-and-tablet-only: 0;
   --layout-header-desktop-only: 0;
-  --layout-header-height: 56px;
   --layout-header-height: 56px;
   --layout-header-items-center-gutter-x: var(--tedi-dimensions-07);
   --layout-header-items-menu-item-padding: var(--tedi-dimensions-05);
@@ -1227,9 +1247,18 @@
   --separator-thickness-sm: 0.5px;
   --separator-thickness-xs: 0.25px;
   --separator-top-spacing-large-dot-sm: var(--tedi-dimensions-03);
+  --sheet-body-padding-x: var(--sheet-header-padding-x);
+  --sheet-body-padding-y: var(--sheet-header-padding-y);
+  --sheet-footer-padding-x: var(--sheet-header-padding-x);
+  --sheet-footer-padding-y: var(--sheet-header-padding-y);
+  --sheet-header-height: 60px;
+  --sheet-header-padding-x: var(--tedi-dimensions-10);
+  --sheet-header-padding-y: var(--tedi-dimensions-05);
+  --sheet-header-radius: 24px;
   --status-indicator-inner-spacing: var(--tedi-dimensions-05);
   --status-indicator-lg: var(--tedi-dimensions-07);
   --status-indicator-sm: var(--tedi-dimensions-05);
+  --stepper-card-min-height: var(--tedi-dimensions-20);
   --stepper-item-horizontal-inner-spacing: var(--tedi-dimensions-05);
   --stepper-item-horizontal-min-height: var(--tedi-dimensions-17);
   --stepper-item-horizontal-padding-x: var(--tedi-dimensions-10);
@@ -1242,7 +1271,8 @@
   --stepper-item-vertical-lg-inner-spacing: var(--tedi-dimensions-05);
   --stepper-item-vertical-lg-min-height: 44px;
   --stepper-item-vertical-lg-min-height-first-item: 32px;
-  --stepper-item-vertical-lg-padding-top: 8px;
+  --stepper-item-vertical-lg-padding-top: 10px;
+  --stepper-item-vertical-lg-padding-top-collapse: 0;
   --stepper-item-vertical-lg-sub-item-indicator-width: var(--tedi-dimensions-13);
   --stepper-item-vertical-line-height: 6px;
   --stepper-item-vertical-padding-y-sm: 2px;
