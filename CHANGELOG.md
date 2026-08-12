@@ -1,3 +1,10 @@
+## [6.5.1](https://github.com/TEDI-Design-System/core/compare/core-6.5.0...core-6.5.1) (2026-08-12)
+
+
+### fix
+
+* import only local collections, update variables #128 (#129) ([](https://github.com/TEDI-Design-System/core/commit/2216f6f15beffcba58a4e1d5bada3adda9740938)), closes [#128](https://github.com/TEDI-Design-System/core/issues/128) [#129](https://github.com/TEDI-Design-System/core/issues/129) [#128](https://github.com/TEDI-Design-System/core/issues/128) [#128](https://github.com/TEDI-Design-System/core/issues/128)
+
 # [6.5.0](https://github.com/TEDI-Design-System/core/compare/core-6.4.3...core-6.5.0) (2026-08-07)
 
 
