@@ -416,11 +416,31 @@ async function run() {
     for (const varId of coll.variableIds) collOfVar[varId] = coll;
   }
 
+  // What a mode MEANS, rather than what it is called: collections label the same
+  // axis differently ("Light" vs "Default") and use different axes entirely
+  // (colors are themed, dimensions/fonts are per-viewport). Classifying with the
+  // same helpers the SCSS writers use keeps resolution correct across a rename.
+  const classifyMode = (modeName: string): string | undefined => {
+    const kebabName = kebab(modeName);
+    if (kebabName in RESPONSIVE_MEDIA) return `viewport:${kebabName}`;
+    const theme = getThemeConfigFromMode(modeName);
+    return theme ? `theme:${theme.fileSuffix}` : undefined;
+  };
+
   const pickMode = (coll: FigmaCollection, preferredModeName?: string): string | undefined => {
     if (preferredModeName) {
       const match = coll.modes.find(m => kebab(m.name) === kebab(preferredModeName));
       if (match) return match.modeId;
+
+      const wanted = classifyMode(preferredModeName);
+      if (wanted) {
+        const equivalent = coll.modes.find(m => classifyMode(m.name) === wanted);
+        if (equivalent) return equivalent.modeId;
+      }
     }
+    // No counterpart for this context — e.g. a dark colour referencing a
+    // dimension, which has no dark variant. The target's default mode is the
+    // right answer, not a guess.
     return coll.defaultModeId ?? coll.modes[0]?.modeId;
   };
 
