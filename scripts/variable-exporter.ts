@@ -6,6 +6,12 @@ const FIGMA_VARIABLE_TOKEN = process.env.FIGMA_VARIABLE_TOKEN;
 const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY;
 const OUTPUT_DIR = "src/variables";
 
+// Machine-readable twin of the generated SCSS, for tooling that cannot parse
+// compiled CSS (AI design docs, Figma tooling, downstream framework repos).
+// Written to src/ so `npm run build` (cp -a src/* dist/) ships it alongside the
+// stylesheet it describes — the two can never disagree about a released version.
+const TOKENS_JSON_PATH = "src/tokens.json";
+
 const WANTED_COLLECTIONS = new Set([
   "TEDI colors base",
   "TEDI colors semantic",
@@ -162,6 +168,36 @@ function resolveValue(
 
   return value !== undefined ? String(value) : "0";
 }
+
+// Same predicate the SCSS path uses to decide "this is a reference, emit var(...)".
+function isAliasRaw(raw: any): boolean {
+  return !!raw && typeof raw === "object" && (raw.type === "VARIABLE_ALIAS" || (raw.id && !("value" in raw)));
+}
+
+// resolveValue() emits legacy comma notation, which stylelint --fix later rewrites
+// to modern space notation in the SCSS. Nothing lints JSON, so normalise here —
+// tokens.json must describe the colours exactly as the shipped stylesheet states
+// them (`rgb(0 90 163)`, `rgb(0 0 0 / 10%)`), not as an intermediate form.
+function toModernColorNotation(value: string): string {
+  const rgba = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/.exec(value);
+  if (!rgba) return value;
+
+  const [, r, g, b, a] = rgba;
+  if (a === undefined || Number(a) === 1) return `rgb(${r} ${g} ${b})`;
+
+  const percent = Number((Number(a) * 100).toFixed(4));
+  return `rgb(${r} ${g} ${b} / ${percent}%)`;
+}
+
+interface TokenEntry {
+  /** What the stylesheet declares — `var(--other-token)` for a reference, else a literal. */
+  value: string;
+  /** The literal that value ultimately resolves to, with references followed. */
+  resolved: string;
+}
+
+/** tier ("base" | "semantic") -> token name (no leading `--`) -> entry */
+type TokenTiers = Record<string, Record<string, TokenEntry>>;
 
 interface FigmaVariable {
   name: string;
@@ -362,6 +398,152 @@ async function run() {
       }
     }
   }
+
+  // ---------------------------------------------------------------------------
+  // tokens.json — the same variables the SCSS above declares, as data.
+  //
+  // Two tiers, exactly as Figma models them: "base" (the * base collections) and
+  // "semantic" (the * semantic collections). Consumers must NOT re-derive tiers
+  // from name prefixes — that invents distinctions Figma does not make.
+  //
+  // Buckets mirror the cascade a page actually sees:
+  //   themes.default    — :root on a default-theme desktop viewport
+  //   themes.dark       — the .tedi-theme--dark override subset
+  //   breakpoints.*     — the @media override subsets (tablet, mobile)
+  // ---------------------------------------------------------------------------
+  const collOfVar: Record<string, FigmaCollection & { name: string }> = {};
+  for (const coll of wantedColls) {
+    for (const varId of coll.variableIds) collOfVar[varId] = coll;
+  }
+
+  const pickMode = (coll: FigmaCollection, preferredModeName?: string): string | undefined => {
+    if (preferredModeName) {
+      const match = coll.modes.find(m => kebab(m.name) === kebab(preferredModeName));
+      if (match) return match.modeId;
+    }
+    return coll.defaultModeId ?? coll.modes[0]?.modeId;
+  };
+
+  // Follow references to a literal. `preferredModeName` keeps a dark-theme token
+  // resolving against dark values wherever the target collection also has that
+  // mode, and falls back to the target's default mode when it does not.
+  const resolveLiteral = (varId: string, modeId: string, preferredModeName?: string, depth = 0): string => {
+    const v = variables[varId];
+    const coll = collOfVar[varId];
+    if (!v || !coll) return "0";
+
+    const raw = v.resolvedValuesByMode?.[modeId] ?? v.valuesByMode?.[modeId];
+    if (raw === undefined) return "0";
+
+    if (isAliasRaw(raw)) {
+      if (depth > 10) {
+        console.warn(`Reference chain too deep (or cyclic) at ${aliasMap[varId]} — emitting "0".`);
+        return "0";
+      }
+      const targetColl = collOfVar[raw.id];
+      if (!targetColl) return "0";
+      const targetMode = pickMode(targetColl, preferredModeName);
+      return targetMode ? resolveLiteral(raw.id, targetMode, preferredModeName, depth + 1) : "0";
+    }
+
+    return resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), v.name);
+  };
+
+  const themeTokens: Record<string, TokenTiers> = {};
+  const breakpointTokens: Record<string, TokenTiers> = {};
+
+  const addToken = (
+    root: Record<string, TokenTiers>,
+    bucket: string,
+    tier: "base" | "semantic",
+    varId: string,
+    modeId: string,
+    preferredModeName?: string
+  ) => {
+    const v = variables[varId];
+    const coll = collOfVar[varId];
+    if (!v || !coll) return;
+
+    const raw = v.resolvedValuesByMode?.[modeId] ?? v.valuesByMode?.[modeId];
+    if (raw === undefined) return;
+
+    root[bucket] ??= {};
+    root[bucket][tier] ??= {};
+    root[bucket][tier][aliasMap[varId].replace(/^--/, "")] = {
+      value: toModernColorNotation(
+        resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), v.name)
+      ),
+      resolved: toModernColorNotation(resolveLiteral(varId, modeId, preferredModeName)),
+    };
+  };
+
+  for (const coll of wantedColls.filter(c => c.name.includes("base"))) {
+    const modeId = pickMode(coll);
+    if (!modeId) continue;
+    for (const varId of coll.variableIds) addToken(themeTokens, "default", "base", varId, modeId, "default");
+  }
+
+  for (const coll of wantedColls.filter(c => !c.name.includes("base"))) {
+    for (const mode of coll.modes) {
+      if (isBrandTheme(mode.name)) continue;
+
+      const modeKebab = kebab(mode.name);
+      const themeConfig = getThemeConfigFromMode(mode.name);
+      const isResponsive = modeKebab in RESPONSIVE_MEDIA;
+
+      // Desktop is the base viewport (no media query), so it belongs to the theme
+      // bucket; tablet/mobile are override subsets.
+      let root = themeTokens;
+      let bucket: string;
+      if (isResponsive) {
+        if (RESPONSIVE_MEDIA[modeKebab] === "") {
+          bucket = "default";
+        } else {
+          root = breakpointTokens;
+          bucket = modeKebab;
+        }
+      } else if (themeConfig) {
+        bucket = themeConfig.fileSuffix;
+      } else {
+        continue;
+      }
+
+      for (const varId of coll.variableIds) {
+        addToken(root, bucket, "semantic", varId, mode.modeId, mode.name);
+      }
+    }
+  }
+
+  // Sort every level so the scheduled job produces reviewable diffs, not churn.
+  const sortTiers = (tiers: TokenTiers): TokenTiers =>
+    Object.fromEntries(
+      Object.keys(tiers).sort().map(tier => [
+        tier,
+        Object.fromEntries(Object.keys(tiers[tier]).sort().map(name => [name, tiers[tier][name]])),
+      ])
+    );
+  const sortBuckets = (root: Record<string, TokenTiers>): Record<string, TokenTiers> =>
+    Object.fromEntries(Object.keys(root).sort().map(b => [b, sortTiers(root[b])]));
+
+  const tokensJson = {
+    $comment:
+      "Generated from Figma by scripts/variable-exporter.ts — do not edit. " +
+      "Tiers are Figma's collections (base, semantic); never re-derive them from name prefixes. " +
+      "themes.dark and breakpoints.* are override subsets of themes.default. " +
+      "Read the package version from this package's package.json. " +
+      "Does not include the hand-maintained z-index scale in variables/_utility-variables.scss.",
+    themes: sortBuckets(themeTokens),
+    breakpoints: sortBuckets(breakpointTokens),
+  };
+
+  fs.writeFileSync(TOKENS_JSON_PATH, JSON.stringify(tokensJson, null, 2) + "\n");
+
+  const counts = Object.entries(tokensJson.themes)
+    .map(([name, tiers]) => `${name}: ${Object.entries(tiers).map(([t, v]) => `${t} ${Object.keys(v).length}`).join(", ")}`)
+    .concat(Object.entries(tokensJson.breakpoints).map(([name, tiers]) =>
+      `${name}: ${Object.entries(tiers).map(([t, v]) => `${t} ${Object.keys(v).length}`).join(", ")}`))
+    .join(" | ");
+  console.log(`${TOKENS_JSON_PATH} written — ${counts}`);
 
   console.log("All variables successfully imported!");
 }
