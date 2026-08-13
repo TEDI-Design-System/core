@@ -1,3 +1,10 @@
+# [6.6.0](https://github.com/TEDI-Design-System/core/compare/core-6.5.1...core-6.6.0) (2026-08-13)
+
+
+### feat
+
+* **variable-exporter:** now emits tokens.json file #138 (#139) ([](https://github.com/TEDI-Design-System/core/commit/c42e064d3c27c993dbfba4adfa1f998291a52776)), closes [#138](https://github.com/TEDI-Design-System/core/issues/138) [#139](https://github.com/TEDI-Design-System/core/issues/139)
+
 ## [6.5.1](https://github.com/TEDI-Design-System/core/compare/core-6.5.0...core-6.5.1) (2026-08-12)
 
 
