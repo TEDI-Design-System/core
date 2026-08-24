@@ -139,7 +139,6 @@
   --form-field-outer-spacing: var(--tedi-dimensions-03);
   --form-field-padding-x-lg: var(--tedi-dimensions-10);
   --form-field-padding-x-md-default: var(--tedi-dimensions-05);
-  --form-field-padding-x-sm: var(--tedi-dimensions-03);
   --form-field-padding-y-lg: var(--tedi-dimensions-10);
   --form-field-padding-y-md-default: var(--tedi-dimensions-05);
   --form-field-padding-y-md-has-button: var(--tedi-dimensions-03);
@@ -407,8 +406,9 @@
   --table-header-padding-y: 12px;
   --table-header-padding-y-sm: 12px;
   --table-of-contents-active-item-border-width: 3px;
-  --table-of-contents-padding-level-1: var(--tedi-dimensions-10);
-  --table-of-contents-padding-level-2: var(--tedi-dimensions-14);
+  --table-of-contents-padding-left-level-1: var(--tedi-dimensions-10);
+  --table-of-contents-padding-left-level-2: var(--tedi-dimensions-14);
+  --table-of-contents-padding-y: var(--tedi-dimensions-04);
   --table-of-contents-width: var(--tedi-containers-04);
   --table-radius: var(--tedi-radius-02-default);
   --tag-default-loader-padding-y: var(--tedi-dimensions-04);
@@ -583,7 +583,6 @@
   --form-field-outer-spacing: var(--tedi-dimensions-03);
   --form-field-padding-x-lg: var(--tedi-dimensions-10);
   --form-field-padding-x-md-default: var(--tedi-dimensions-05);
-  --form-field-padding-x-sm: var(--tedi-dimensions-03);
   --form-field-padding-y-lg: var(--tedi-dimensions-10);
   --form-field-padding-y-md-default: var(--tedi-dimensions-05);
   --form-field-padding-y-md-has-button: var(--tedi-dimensions-03);
@@ -851,8 +850,9 @@
   --table-header-padding-y: 12px;
   --table-header-padding-y-sm: 12px;
   --table-of-contents-active-item-border-width: 3px;
-  --table-of-contents-padding-level-1: var(--tedi-dimensions-10);
-  --table-of-contents-padding-level-2: var(--tedi-dimensions-14);
+  --table-of-contents-padding-left-level-1: var(--tedi-dimensions-10);
+  --table-of-contents-padding-left-level-2: var(--tedi-dimensions-14);
+  --table-of-contents-padding-y: var(--tedi-dimensions-04);
   --table-of-contents-width: var(--tedi-containers-04);
   --table-radius: var(--tedi-radius-02-default);
   --tag-default-loader-padding-y: var(--tedi-dimensions-04);
@@ -1028,7 +1028,6 @@
   --form-field-outer-spacing: var(--tedi-dimensions-03);
   --form-field-padding-x-lg: var(--tedi-dimensions-10);
   --form-field-padding-x-md-default: var(--tedi-dimensions-05);
-  --form-field-padding-x-sm: var(--tedi-dimensions-03);
   --form-field-padding-y-lg: var(--tedi-dimensions-10);
   --form-field-padding-y-md-default: var(--tedi-dimensions-06);
   --form-field-padding-y-md-has-button: var(--tedi-dimensions-04);
@@ -1254,7 +1253,7 @@
   --sheet-header-height: 60px;
   --sheet-header-padding-x: var(--tedi-dimensions-10);
   --sheet-header-padding-y: var(--tedi-dimensions-05);
-  --sheet-header-radius: 24px;
+  --sheet-header-radius: var(--tedi-dimensions-13);
   --status-indicator-inner-spacing: var(--tedi-dimensions-05);
   --status-indicator-lg: var(--tedi-dimensions-07);
   --status-indicator-sm: var(--tedi-dimensions-05);
@@ -1296,8 +1295,9 @@
   --table-header-padding-y: 12px;
   --table-header-padding-y-sm: 12px;
   --table-of-contents-active-item-border-width: 3px;
-  --table-of-contents-padding-level-1: var(--tedi-dimensions-10);
-  --table-of-contents-padding-level-2: var(--tedi-dimensions-14);
+  --table-of-contents-padding-left-level-1: var(--tedi-dimensions-10);
+  --table-of-contents-padding-left-level-2: var(--tedi-dimensions-14);
+  --table-of-contents-padding-y: var(--tedi-dimensions-05);
   --table-of-contents-width: var(--tedi-containers-04);
   --table-radius: var(--tedi-radius-02-default);
   --tag-default-loader-padding-y: var(--tedi-dimensions-04);
