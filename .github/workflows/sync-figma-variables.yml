@@ -48,6 +48,9 @@ jobs:
 
       - name: Create Pull Request
         if: steps.changes.outputs.changed == 'true'
+        # Skip local git hooks — the bot commit must not be gated on lint-staged.
+        env:
+          HUSKY: 0
         uses: peter-evans/create-pull-request@v7
         with:
           branch: feat/sync-figma-variables

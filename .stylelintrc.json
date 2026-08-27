@@ -19,6 +19,7 @@
         "ignorePseudoClasses": ["global"]
       }
     ],
-    "lightness-notation": null
+    "lightness-notation": null,
+    "value-keyword-case": ["lower", { "ignoreProperties": ["/^--/"] }]
   }
 }
