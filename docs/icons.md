@@ -25,45 +25,77 @@ Import the granular stylesheet for the style you use instead of the full bundle:
 
 ```ts
 // Only the outlined font is referenced → only one woff2 is needed.
-import '@tedi-design-system/core/icons/outlined.css';
+// Import the bare specifier (no extension) — it resolves to the compiled CSS
+// via the package's `exports` map.
+import '@tedi-design-system/core/icons/outlined';
 ```
 
 Available entries:
 
 | Import | Declares | References |
 |---|---|---|
-| `@tedi-design-system/core/icons/outlined.css` | `.material-symbols`, `.material-symbols--outlined` | `material-symbols-outlined.woff2` |
-| `@tedi-design-system/core/icons/rounded.css` | `.material-symbols`, `.material-symbols--rounded` | `material-symbols-rounded.woff2` |
-| `@tedi-design-system/core/icons/sharp.css` | `.material-symbols`, `.material-symbols--sharp` | `material-symbols-sharp.woff2` |
-| `@tedi-design-system/core/icons/all.css` | all three modifiers | all three woff2 |
+| `@tedi-design-system/core/icons/outlined` | `.material-symbols`, `.material-symbols--outlined` | `material-symbols-outlined.woff2` |
+| `@tedi-design-system/core/icons/rounded` | `.material-symbols`, `.material-symbols--rounded` | `material-symbols-rounded.woff2` |
+| `@tedi-design-system/core/icons/sharp` | `.material-symbols`, `.material-symbols--sharp` | `material-symbols-sharp.woff2` |
+| `@tedi-design-system/core/icons/all` | all three modifiers | all three woff2 |
 
 Each entry contains the shared `.material-symbols` base class plus one `@font-face`, so a
-single-style import pulls in exactly one icon font.
+single-style import pulls in exactly one icon font. The same specifier serves both worlds:
+bundlers get the compiled CSS, and Sass (`pkg:` scheme, below) gets the SCSS source.
 
 ### SCSS
 
-If you compile SCSS, `@use` the matching partial instead:
+If you compile SCSS, `@use` the matching entry via the Sass [Node package
+importer](https://sass-lang.com/documentation/js-api/classes/nodepackageimporter/)
+(`pkg:` scheme):
 
 ```scss
-@use '@tedi-design-system/core/icons/outlined';
-// or 'icons/rounded', 'icons/sharp', 'icons/all'
+@use 'pkg:@tedi-design-system/core/icons/outlined';
+// or '…/icons/rounded', '…/icons/sharp', '…/icons/all'
 ```
+
+The `pkg:` scheme requires the Node package importer to be enabled — it's built into
+Dart Sass (`--pkg-importer=node` on the CLI, or `importers: [new NodePackageImporter()]`
+in the JS API) and is what resolves these entries through the package's `exports` map.
+
+#### Font path
+
+Each `@font-face` references `/fonts/<file>.woff2` by default — the location the **compiled**
+stylesheet ships with. When you compile the SCSS yourself, that absolute URL points at your
+site root, so you must either:
+
+- **serve the packaged fonts at `/fonts/`** (copy `@tedi-design-system/core/fonts/*.woff2`
+  into your public root), or
+- **override the path** to wherever your bundler serves them, via the `$font-path` variable
+  (include the trailing slash):
+
+  ```scss
+  @use 'pkg:@tedi-design-system/core/icons/outlined' with (
+    $font-path: '~/assets/fonts/'
+  );
+  ```
+
+`icons/all` is not path-configurable (it aggregates the three styles); to customise the path
+with every style, `@use` the per-style entries individually.
 
 ---
 
 ## Important: scope your service-worker precache
 
-Modularising the CSS only tells the browser *which* font to download lazily. In a PWA the
-**service worker precaches every asset in the build**, so all three woff2 can still be
-cached even if your CSS references only one. To get the full saving, exclude the unused
-fonts from your precache manifest.
+Modularising the CSS only tells the browser *which* font to download lazily. In a PWA,
+Workbox precaches every build asset that matches its `globPatterns`. If your patterns
+include woff2 files (directly, or via a broad pattern), all three can be precached even
+when your CSS references only one. To get the full saving, keep your existing patterns and
+`globIgnores` the unused fonts.
 
-**Workbox (`vite-plugin-pwa`) example** — precache only the outlined font:
+**Workbox (`vite-plugin-pwa`) example** — keep your app's patterns, exclude the two unused
+fonts:
 
 ```ts
 VitePWA({
   workbox: {
-    globPatterns: ['**/*.{js,css,html}', '**/material-symbols-outlined.woff2'],
+    // Keep whatever your app already precaches; just add the ignores.
+    globPatterns: ['**/*.{js,css,html,woff2}'],
     globIgnores: ['**/material-symbols-{rounded,sharp}.woff2'],
   },
 })

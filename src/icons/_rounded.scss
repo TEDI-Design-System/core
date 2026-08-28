@@ -2,11 +2,16 @@
 // icon font instead of all three styles (~1 MB combined). See react#41.
 @use 'base';
 
+// Directory (including trailing slash) the woff2 is served from. Defaults to the
+// packaged location; SCSS consumers whose fonts live elsewhere can override it:
+//   @use 'pkg:@tedi-design-system/core/icons/rounded' with ($font-path: '~/assets/fonts/');
+$font-path: '/fonts/' !default;
+
 @font-face {
   font-family: 'Material Symbols Rounded';
   font-style: normal;
   font-weight: 100 700;
-  src: url('/fonts/material-symbols-rounded.woff2') format('woff2');
+  src: url('#{$font-path}material-symbols-rounded.woff2') format('woff2');
   font-display: block;
 }
 
