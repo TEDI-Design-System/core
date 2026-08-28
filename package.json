@@ -8,22 +8,14 @@
       "default": "./index.css"
     },
     "./index.css": "./index.css",
-    "./icons/outlined": {
-      "sass": "./icons/_outlined.scss",
-      "default": "./icons/outlined.css"
-    },
-    "./icons/rounded": {
-      "sass": "./icons/_rounded.scss",
-      "default": "./icons/rounded.css"
-    },
-    "./icons/sharp": {
-      "sass": "./icons/_sharp.scss",
-      "default": "./icons/sharp.css"
-    },
-    "./icons/all": {
-      "sass": "./icons/_all.scss",
-      "default": "./icons/all.css"
-    },
+    "./icons/outlined.scss": "./icons/_outlined.scss",
+    "./icons/rounded.scss": "./icons/_rounded.scss",
+    "./icons/sharp.scss": "./icons/_sharp.scss",
+    "./icons/all.scss": "./icons/_all.scss",
+    "./icons/outlined.css": "./icons/outlined.css",
+    "./icons/rounded.css": "./icons/rounded.css",
+    "./icons/sharp.css": "./icons/sharp.css",
+    "./icons/all.css": "./icons/all.css",
     "./fonts/*": "./fonts/*",
     "./*.scss": "./*.scss",
     "./package.json": "./package.json"

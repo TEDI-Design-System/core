@@ -25,23 +25,21 @@ Import the granular stylesheet for the style you use instead of the full bundle:
 
 ```ts
 // Only the outlined font is referenced → only one woff2 is needed.
-// Import the bare specifier (no extension) — it resolves to the compiled CSS
-// via the package's `exports` map.
-import '@tedi-design-system/core/icons/outlined';
+import '@tedi-design-system/core/icons/outlined.css';
 ```
 
-Available entries:
+Available entries — import the compiled `.css` in bundlers/JS, or the `.scss` source in
+Sass (see below):
 
-| Import | Declares | References |
+| CSS import | Declares | References |
 |---|---|---|
-| `@tedi-design-system/core/icons/outlined` | `.material-symbols`, `.material-symbols--outlined` | `material-symbols-outlined.woff2` |
-| `@tedi-design-system/core/icons/rounded` | `.material-symbols`, `.material-symbols--rounded` | `material-symbols-rounded.woff2` |
-| `@tedi-design-system/core/icons/sharp` | `.material-symbols`, `.material-symbols--sharp` | `material-symbols-sharp.woff2` |
-| `@tedi-design-system/core/icons/all` | all three modifiers | all three woff2 |
+| `@tedi-design-system/core/icons/outlined.css` | `.material-symbols`, `.material-symbols--outlined` | `material-symbols-outlined.woff2` |
+| `@tedi-design-system/core/icons/rounded.css` | `.material-symbols`, `.material-symbols--rounded` | `material-symbols-rounded.woff2` |
+| `@tedi-design-system/core/icons/sharp.css` | `.material-symbols`, `.material-symbols--sharp` | `material-symbols-sharp.woff2` |
+| `@tedi-design-system/core/icons/all.css` | all three modifiers | all three woff2 |
 
 Each entry contains the shared `.material-symbols` base class plus one `@font-face`, so a
-single-style import pulls in exactly one icon font. The same specifier serves both worlds:
-bundlers get the compiled CSS, and Sass (`pkg:` scheme, below) gets the SCSS source.
+single-style import pulls in exactly one icon font.
 
 ### SCSS
 
@@ -50,8 +48,8 @@ importer](https://sass-lang.com/documentation/js-api/classes/nodepackageimporter
 (`pkg:` scheme):
 
 ```scss
-@use 'pkg:@tedi-design-system/core/icons/outlined';
-// or '…/icons/rounded', '…/icons/sharp', '…/icons/all'
+@use 'pkg:@tedi-design-system/core/icons/outlined.scss';
+// or '…/icons/rounded.scss', '…/icons/sharp.scss', '…/icons/all.scss'
 ```
 
 The `pkg:` scheme requires the Node package importer to be enabled — it's built into
@@ -60,9 +58,11 @@ in the JS API) and is what resolves these entries through the package's `exports
 
 #### Font path
 
-Each `@font-face` references `/fonts/<file>.woff2` by default — the location the **compiled**
-stylesheet ships with. When you compile the SCSS yourself, that absolute URL points at your
-site root, so you must either:
+The **compiled** icon CSS entries (`icons/*.css`) reference the packaged fonts at the
+relative path `../fonts/<file>.woff2`, so they work out of the box. The **SCSS** source
+defaults `$font-path` to `/fonts/` instead — an absolute URL pointing at your site root —
+because the source has no fixed position relative to your fonts. So when you compile the
+SCSS yourself, you must either:
 
 - **serve the packaged fonts at `/fonts/`** (copy `@tedi-design-system/core/fonts/*.woff2`
   into your public root), or
@@ -70,7 +70,7 @@ site root, so you must either:
   (include the trailing slash):
 
   ```scss
-  @use 'pkg:@tedi-design-system/core/icons/outlined' with (
+  @use 'pkg:@tedi-design-system/core/icons/outlined.scss' with (
     $font-path: '~/assets/fonts/'
   );
   ```
