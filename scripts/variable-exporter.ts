@@ -133,8 +133,14 @@ function resolveValue(
     const v = "value" in raw ? raw.value : raw;
     const { r, g, b, a = 1 } = v;
     const [rr, gg, bb] = [r, g, b].map((c: number) => Math.round(c * 255));
+    if (a === 1) return `rgb(${rr} ${gg} ${bb})`;
+    // Emit the exact form stylelint --fix produces (color-function-notation: modern
+    // + alpha-value-notation: percentage). Emitting legacy comma notation here made
+    // every run write SCSS that stylelint reverted at commit time, so the sync
+    // produced a phantom diff and then failed on an empty commit.
     const alpha = Number(a.toFixed(4));
-    return a === 1 ? `rgb(${rr}, ${gg}, ${bb})` : `rgba(${rr}, ${gg}, ${bb}, ${alpha})`;
+    const percent = Number((alpha * 100).toFixed(4));
+    return `rgb(${rr} ${gg} ${bb} / ${percent}%)`;
   }
 
   const value = raw && typeof raw === "object" && "value" in raw ? raw.value : raw;
@@ -174,10 +180,10 @@ function isAliasRaw(raw: any): boolean {
   return !!raw && typeof raw === "object" && (raw.type === "VARIABLE_ALIAS" || (raw.id && !("value" in raw)));
 }
 
-// resolveValue() emits legacy comma notation, which stylelint --fix later rewrites
-// to modern space notation in the SCSS. Nothing lints JSON, so normalise here —
-// tokens.json must describe the colours exactly as the shipped stylesheet states
-// them (`rgb(0 90 163)`, `rgb(0 0 0 / 10%)`), not as an intermediate form.
+// resolveValue() already emits modern space notation, so this is a defensive
+// normaliser for any colour that reaches tokens.json as a raw legacy string from
+// Figma. tokens.json must describe the colours exactly as the shipped stylesheet
+// states them (`rgb(0 90 163)`, `rgb(0 0 0 / 10%)`), not as an intermediate form.
 function toModernColorNotation(value: string): string {
   const rgba = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/.exec(value);
   if (!rgba) return value;
