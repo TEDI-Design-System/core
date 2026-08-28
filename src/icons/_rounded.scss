@@ -1,0 +1,15 @@
+// Material Symbols — Rounded. Import this entry alone to ship only the rounded
+// icon font instead of all three styles (~1 MB combined). See react#41.
+@use 'base';
+
+@font-face {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal;
+  font-weight: 100 700;
+  src: url('/fonts/material-symbols-rounded.woff2') format('woff2');
+  font-display: block;
+}
+
+.material-symbols--rounded {
+  font-family: 'Material Symbols Rounded', sans-serif;
+}

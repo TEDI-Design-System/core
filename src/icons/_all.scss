@@ -1,0 +1,6 @@
+// Every Material Symbols style. Reproduces the original `@use 'icons'` behaviour
+// (all three fonts declared). Prefer a single-style entry — icons/outlined,
+// icons/rounded or icons/sharp — when the app uses one icon style. See react#41.
+@forward 'outlined';
+@forward 'rounded';
+@forward 'sharp';

@@ -1,0 +1,15 @@
+// Material Symbols — Outlined. Import this entry alone to ship only the outlined
+// icon font instead of all three styles (~1 MB combined). See react#41.
+@use 'base';
+
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  src: url('/fonts/material-symbols-outlined.woff2') format('woff2');
+  font-display: block;
+}
+
+.material-symbols--outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+}
