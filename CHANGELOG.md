@@ -1,3 +1,10 @@
+## [6.8.1](https://github.com/TEDI-Design-System/core/compare/core-6.8.0...core-6.8.1) (2026-08-28)
+
+
+### fix
+
+* emit stylelint-stable scss, unbreak figma variable sync #143 (#144) ([](https://github.com/TEDI-Design-System/core/commit/73fbf8517b62d27acb50bfb049734f4e0ac9d3d8)), closes [#143](https://github.com/TEDI-Design-System/core/issues/143) [#144](https://github.com/TEDI-Design-System/core/issues/144)
+
 # [6.8.0](https://github.com/TEDI-Design-System/core/compare/core-6.7.0...core-6.8.0) (2026-08-28)
 
 
