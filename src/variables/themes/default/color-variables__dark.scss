@@ -595,12 +595,12 @@
   --progress-bar-background-passive: var(--form-slider-passive-background-default);
   --progress-bar-border-default: var(--form-slider-border-default);
   --progress-bar-range-label-text: var(--form-slider-range-label-text);
-  --sheet-body-default: var(--tedi-neutral-850);
-  --sheet-body-secondary: var(--tedi-neutral-750);
-  --sheet-border-border: var(--sheet-header-background-default);
+  --sheet-body-default: var(--general-surface-primary);
+  --sheet-body-secondary: var(--general-surface-tertiary);
+  --sheet-border: var(--sheet-header-background-default);
   --sheet-footer-background: var(--sheet-header-background-default);
-  --sheet-header-background-brand: var(--tedi-neutral-800);
-  --sheet-header-background-default: var(--tedi-neutral-800);
+  --sheet-header-background-brand: var(--general-surface-secondary);
+  --sheet-header-background-default: var(--general-surface-secondary);
   --status-badge-background-accent: var(--tedi-orange-700);
   --status-badge-background-brand: var(--general-status-info-background-light);
   --status-badge-background-danger: var(--general-status-danger-background-primary);
