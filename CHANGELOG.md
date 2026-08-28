@@ -1,3 +1,10 @@
+# [6.8.0](https://github.com/TEDI-Design-System/core/compare/core-6.7.0...core-6.8.0) (2026-08-28)
+
+
+### feat
+
+* add component types doc #140 (#141) ([](https://github.com/TEDI-Design-System/core/commit/d7e6934e72997c997d59df68e15946343538ef10)), closes [#140](https://github.com/TEDI-Design-System/core/issues/140) [#141](https://github.com/TEDI-Design-System/core/issues/141) [#140](https://github.com/TEDI-Design-System/core/issues/140) [#140](https://github.com/TEDI-Design-System/core/issues/140)
+
 # [6.7.0](https://github.com/TEDI-Design-System/core/compare/core-6.6.0...core-6.7.0) (2026-08-24)
 
 
