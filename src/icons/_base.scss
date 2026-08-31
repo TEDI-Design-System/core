@@ -1,0 +1,18 @@
+// Shared base class for all Material Symbols styles. Contains no @font-face, so
+// importing it never pulls an icon font on its own. Each style entry
+// (icons/outlined, icons/rounded, icons/sharp) @uses this.
+.material-symbols {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  font-feature-settings: 'liga';
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  overflow-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
