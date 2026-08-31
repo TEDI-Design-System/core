@@ -2,27 +2,11 @@
   "name": "@tedi-design-system/core",
   "version": "0.0.0-semantic-version",
   "main": "index.scss",
-  "exports": {
-    ".": {
-      "sass": "./index.scss",
-      "default": "./index.css"
-    },
-    "./index.css": "./index.css",
-    "./icons/outlined.scss": "./icons/_outlined.scss",
-    "./icons/rounded.scss": "./icons/_rounded.scss",
-    "./icons/sharp.scss": "./icons/_sharp.scss",
-    "./icons/all.scss": "./icons/_all.scss",
-    "./icons/outlined.css": "./icons/outlined.css",
-    "./icons/rounded.css": "./icons/rounded.css",
-    "./icons/sharp.css": "./icons/sharp.css",
-    "./icons/all.css": "./icons/all.css",
-    "./fonts/*": "./fonts/*",
-    "./*.scss": "./*.scss",
-    "./package.json": "./package.json"
-  },
+  "sass": "index.scss",
+  "style": "index.css",
   "scripts": {
     "prepare": "husky || true",
-    "build": "rm -rf dist && mkdir dist && cp -a src/* dist/ && sass src/index.scss dist/index.css --style=compressed --no-source-map && replace-in-file //fonts//g \"./fonts/\" dist/index.css --isRegex && sass src/icons/_outlined.scss:dist/icons/outlined.css src/icons/_rounded.scss:dist/icons/rounded.css src/icons/_sharp.scss:dist/icons/sharp.css src/icons/_all.scss:dist/icons/all.css --style=compressed --no-source-map && replace-in-file //fonts//g \"../fonts/\" dist/icons/outlined.css dist/icons/rounded.css dist/icons/sharp.css dist/icons/all.css --isRegex && mkdir dist/fonts && cp -a public/fonts/* dist/fonts/ && cp -a docs dist/ && cp README.md dist/ && cp package.json dist/",
+    "build": "rm -rf dist && mkdir dist && cp -a src/* dist/ && sass src/index.scss:dist/index.css src/index-without-icons.scss:dist/index-without-icons.css --style=compressed --no-source-map && replace-in-file //fonts//g \"./fonts/\" dist/index.css dist/index-without-icons.css --isRegex && sass src/icons/_outlined.scss:dist/icons/outlined.css src/icons/_rounded.scss:dist/icons/rounded.css src/icons/_sharp.scss:dist/icons/sharp.css src/icons/_all.scss:dist/icons/all.css --style=compressed --no-source-map && replace-in-file //fonts//g \"../fonts/\" dist/icons/outlined.css dist/icons/rounded.css dist/icons/sharp.css dist/icons/all.css --isRegex && mkdir dist/fonts && cp -a public/fonts/* dist/fonts/ && cp -a docs dist/ && cp README.md dist/ && cp package.json dist/",
     "release": "npx semantic-release",
     "lint": "npx stylelint \"src/**/*.scss\" --fix",
     "import-variables": "dotenv -e .env -- npx ts-node scripts/variable-exporter.ts"

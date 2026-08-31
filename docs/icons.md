@@ -80,6 +80,29 @@ with every style, `@use` the per-style entries individually.
 
 ---
 
+## Full stylesheet with a single icon font
+
+The default bundle (`@tedi-design-system/core`) declares **all three** icon styles, so a
+consumer that needs the whole design system CSS would otherwise pull all three fonts. Use
+the **icon-less bundle** and add exactly the style you want:
+
+```ts
+// Everything except the Material Symbols @font-face declarations…
+import '@tedi-design-system/core/index-without-icons.css';
+// …plus one icon style.
+import '@tedi-design-system/core/icons/outlined.css';
+```
+
+```scss
+@use 'pkg:@tedi-design-system/core/index-without-icons.scss';
+@use 'pkg:@tedi-design-system/core/icons/outlined.scss';
+```
+
+`index-without-icons` is `index` with `@use 'icons'` omitted — it declares no icon
+`@font-face` and references no icon woff2, so only the single style you add is loaded.
+
+---
+
 ## Important: scope your service-worker precache
 
 Modularising the CSS only tells the browser *which* font to download lazily. In a PWA,
