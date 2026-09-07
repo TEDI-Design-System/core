@@ -35,7 +35,7 @@ jobs:
         env:
           FIGMA_VARIABLE_TOKEN: ${{ secrets.FIGMA_VARIABLE_TOKEN }}
           FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
-        run: npx ts-node scripts/variable-exporter.ts
+        run: node scripts/variable-exporter.ts
 
       - name: Check for changes
         id: changes
