@@ -1,3 +1,19 @@
+## [6.8.2](https://github.com/TEDI-Design-System/core/compare/core-6.8.1...core-6.8.2) (2026-09-07)
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/config-conventional (#150) ([](https://github.com/TEDI-Design-System/core/commit/d437503a1a706e0c6e479da382be7076fe867421)), closes [#150](https://github.com/TEDI-Design-System/core/issues/150)
+* **deps-dev:** bump lint-staged from 17.0.8 to 17.4.1 (#149) ([](https://github.com/TEDI-Design-System/core/commit/603fd0490c51a64835aecbaf545c07d6bbfdaaec)), closes [#149](https://github.com/TEDI-Design-System/core/issues/149)
+* **deps-dev:** bump prettier from 3.8.3 to 3.9.6 (#151) ([](https://github.com/TEDI-Design-System/core/commit/25e6c56239d3c42de09a88a9612d60c0c0ed001c)), closes [#151](https://github.com/TEDI-Design-System/core/issues/151)
+* **deps-dev:** bump semantic-release from 25.0.8 to 25.0.9 (#152) ([](https://github.com/TEDI-Design-System/core/commit/b3894da29347e6ef9f0b4da449ecc8129e831eb6)), closes [#152](https://github.com/TEDI-Design-System/core/issues/152)
+* **deps-dev:** bump typescript from 6.0.3 to 7.0.2 (#148) ([](https://github.com/TEDI-Design-System/core/commit/13c177911a68298c05b88e7ee55b3fa50e0151c6)), closes [#148](https://github.com/TEDI-Design-System/core/issues/148)
+
+
+### fix
+
+* **variable-exporter:** fixed unsupported ts-node call #143 ([](https://github.com/TEDI-Design-System/core/commit/ca3cac776a6c388f55b30483f7f3b31502fea6cd)), closes [#143](https://github.com/TEDI-Design-System/core/issues/143)
+
 ## [6.8.1](https://github.com/TEDI-Design-System/core/compare/core-6.8.0...core-6.8.1) (2026-08-28)
 
 
