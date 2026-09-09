@@ -241,13 +241,17 @@
   --dropdown-item-disabled-text: var(--general-text-disabled);
   --dropdown-item-hover-background: var(--general-surface-hover);
   --dropdown-item-hover-text: var(--tedi-primary-700);
+  --dropdown-object-item-background: var(--card-background-primary);
+  --dropdown-object-item-border-hover: var(--card-border-primary);
+  --dropdown-object-item-border-selected: var(--card-border-selected);
   --empty-state-background-primary: var(--general-surface-primary);
   --empty-state-background-secondary: var(--general-surface-secondary);
   --empty-state-background-tertiary: var(--general-surface-tertiary);
   --empty-state-border: var(--card-border-primary);
   --empty-state-icon-primary: var(--general-icon-brand);
   --empty-state-icon-secondary: var(--general-icon-tertiary);
-  --feedback-indicator: var(--general-icon-background-brand-primary);
+  --feedback-background-default: var(--general-icon-background-brand-primary);
+  --feedback-background-hover: var(--tedi-primary-800);
   --file-dropzone-background-default: var(--form-input-background-default);
   --file-dropzone-background-disabled: var(--form-general-background-disabled);
   --file-dropzone-background-drop-over: var(--general-surface-brand-quaternary);
@@ -597,7 +601,7 @@
   --progress-bar-range-label-text: var(--form-slider-range-label-text);
   --sheet-body-default: var(--general-surface-primary);
   --sheet-body-secondary: var(--general-surface-secondary);
-  --sheet-border-border: var(--general-border-primary);
+  --sheet-border: var(--general-border-primary);
   --sheet-footer-background: var(--sheet-header-background-default);
   --sheet-header-background-brand: var(--general-surface-brand-primary);
   --sheet-header-background-default: var(--general-surface-primary);
@@ -686,7 +690,7 @@
   --table-border-th: var(--general-border-secondary);
   --table-default: var(--general-surface-primary);
   --table-hover: var(--general-surface-hover);
-  --table-of-content-border-active: var(--general-border-brand);
+  --table-of-contents-border-active: var(--general-border-brand);
   --table-striped: var(--general-surface-tertiary);
   --tag-danger-background: var(--general-status-danger-background-primary);
   --tag-danger-border: var(--tedi-red-300);
