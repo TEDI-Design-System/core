@@ -32,7 +32,7 @@ body {
  * To overwrite behavior of focus outline
  * Set '--global-outline-color' and '--global-outline-offset' inside component scope
  */
-*:where(:focus) {
+*:where(:focus-visible) {
   @include mixins.focus-element;
 }
 
