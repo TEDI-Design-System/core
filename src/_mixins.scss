@@ -25,7 +25,7 @@ $breakpoints: (
   padding: 0 !important;
   overflow: hidden;
   border: 0 !important;
-  clip-path: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
 }
 
 @mixin table-cell-selector($selector: 'all') {
