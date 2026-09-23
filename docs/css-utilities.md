@@ -319,12 +319,12 @@ Hides an element visually while keeping it accessible to screen readers.
 
 #### `focus-element`
 
-Applies the standard accessible focus outline. Customizable via `--global-outline-color` and `--global-outline-offset` CSS variables.
+Applies the standard accessible focus outline. Customizable via `--global-outline-color` and `--global-outline-offset` CSS variables. The outline automatically follows the element's own `border-radius`, so the mixin no longer sets one. Prefer `:focus-visible`, which lets the user agent decide when a visible focus indicator is warranted (typically keyboard navigation, but also text inputs and user preferences), rather than showing the outline on every focus.
 
 ```scss
 @use 'mixins';
 
-.my-interactive-element:focus {
+.my-interactive-element:focus-visible {
   @include mixins.focus-element;
 }
 ```

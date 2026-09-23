@@ -49,13 +49,8 @@ $breakpoints: (
 }
 
 @mixin focus-element {
-  outline: 2px solid var(--global-outline-color, var(--tedi-primary-600));
-  outline-offset: var(--global-outline-offset, 1px);
-  border-radius: 0.25rem;
-
-  html:not([data-whatintent='keyboard']) & {
-    outline: none;
-  }
+  outline: var(--tedi-borders-02) solid var(--global-outline-color);
+  outline-offset: var(--global-outline-offset);
 }
 
 @mixin button-reset {
