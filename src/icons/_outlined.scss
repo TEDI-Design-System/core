@@ -1,0 +1,20 @@
+// Material Symbols — Outlined. Import this entry alone to ship only the outlined
+// icon font instead of all three styles (~1 MB combined). See react#41.
+@use 'base';
+
+// Directory (including trailing slash) the woff2 is served from. Defaults to the
+// packaged location; SCSS consumers whose fonts live elsewhere can override it:
+//   @use 'pkg:@tedi-design-system/core/icons/outlined.scss' with ($font-path: '~/assets/fonts/');
+$font-path: '/fonts/' !default;
+
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  src: url('#{$font-path}material-symbols-outlined.woff2') format('woff2');
+  font-display: block;
+}
+
+.material-symbols--outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+}

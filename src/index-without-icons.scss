@@ -1,0 +1,28 @@
+// Full TEDI stylesheet WITHOUT the Material Symbols icon fonts. Mirror of
+// index.scss with `@use 'icons'` omitted, so the output declares no
+// `@font-face` for the icon styles and references no icon woff2.
+//
+// Combine it with a single icon style to load exactly one font instead of all
+// three (~1 MB combined). See react#41 and docs/icons.md:
+//
+//   @use 'pkg:@tedi-design-system/core/index-without-icons.scss';
+//   @use 'pkg:@tedi-design-system/core/icons/outlined.scss';
+//
+// Keep the @use list in sync with index.scss (this file intentionally omits
+// only the `@use 'icons'` line).
+@use 'bootstrap-utility/breakpoints';
+@use 'bootstrap-utility/grid';
+@use 'variables/bootstrap-variables';
+@use 'variables/base-variables';
+@use 'variables/color-variables';
+@use 'variables/dimensional-variables';
+@use 'variables/font-variables';
+@use 'variables/utility-variables';
+@use 'mixins';
+@use 'base';
+@use 'fonts';
+@use 'typography';
+
+// Helpers should overwrite all other styles
+@use 'helpers';
+@use 'print';

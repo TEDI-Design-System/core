@@ -1,0 +1,10 @@
+// Every Material Symbols style. Reproduces the original `@use 'icons'` behaviour
+// (all three fonts declared). Prefer a single-style entry — icons/outlined,
+// icons/rounded or icons/sharp — when the app uses one icon style. See react#41.
+//
+// Each style's `$font-path` is hidden here to avoid a forwarding conflict, so the
+// aggregate is not path-configurable. For a custom font location, import the
+// per-style entries and configure each with `... with ($font-path: '…')`.
+@forward 'outlined' hide $font-path;
+@forward 'rounded' hide $font-path;
+@forward 'sharp' hide $font-path;
