@@ -1,3 +1,10 @@
+# [6.10.0](https://github.com/TEDI-Design-System/core/compare/core-6.9.1...core-6.10.0) (2026-09-23)
+
+
+### feat
+
+* optimize icon export #146 (#147) ([](https://github.com/TEDI-Design-System/core/commit/8ec83686251949abff423150cc400eb6b3ad3339)), closes [#146](https://github.com/TEDI-Design-System/core/issues/146) [#147](https://github.com/TEDI-Design-System/core/issues/147) [#146](https://github.com/TEDI-Design-System/core/issues/146) [#146](https://github.com/TEDI-Design-System/core/issues/146) [#146](https://github.com/TEDI-Design-System/core/issues/146)
+
 ## [6.9.1](https://github.com/TEDI-Design-System/core/compare/core-6.9.0...core-6.9.1) (2026-09-23)
 
 
