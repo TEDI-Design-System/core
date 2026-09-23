@@ -1,3 +1,10 @@
+## [6.11.1](https://github.com/TEDI-Design-System/core/compare/core-6.11.0...core-6.11.1) (2026-09-23)
+
+
+### fix
+
+* use valid clip-path syntax in visually-hidden helpers #155 (#156) ([](https://github.com/TEDI-Design-System/core/commit/e884d5f49ec96549b4f2ed8462ae1a8e56a674d9)), closes [#155](https://github.com/TEDI-Design-System/core/issues/155) [#156](https://github.com/TEDI-Design-System/core/issues/156)
+
 # [6.11.0](https://github.com/TEDI-Design-System/core/compare/core-6.10.0...core-6.11.0) (2026-09-23)
 
 
