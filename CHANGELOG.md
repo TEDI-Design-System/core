@@ -1,3 +1,10 @@
+## [6.9.1](https://github.com/TEDI-Design-System/core/compare/core-6.9.0...core-6.9.1) (2026-09-23)
+
+
+### fix
+
+* remove focus-element mixin side-effects #120 (#154) ([](https://github.com/TEDI-Design-System/core/commit/18313929a9ba214ab97c3ad63e7cbfe2b8526f40)), closes [#120](https://github.com/TEDI-Design-System/core/issues/120) [#154](https://github.com/TEDI-Design-System/core/issues/154) [#120](https://github.com/TEDI-Design-System/core/issues/120) [#120](https://github.com/TEDI-Design-System/core/issues/120)
+
 # [6.9.0](https://github.com/TEDI-Design-System/core/compare/core-6.8.2...core-6.9.0) (2026-09-09)
 
 
