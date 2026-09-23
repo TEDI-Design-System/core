@@ -288,7 +288,7 @@ async function run() {
 
   if (baseLines.length > 0) {
     sortCssVars(baseLines);
-    const css = `:root {\n${baseLines.join("\n")}\n}\n`;
+    const css = `:root,\n:host {\n${baseLines.join("\n")}\n}\n`;
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     fs.writeFileSync(path.join(OUTPUT_DIR, "_base-variables.scss"), css);
   }
@@ -328,7 +328,7 @@ async function run() {
       if (mobileLines.length) blocks.push(`@media (width < 48rem) {\n${mobileLines.join("\n")}\n}`);
 
       if (blocks.length > 0) {
-        const css = `.tedi-theme--default,\n:root {\n${blocks.join("\n\n")}\n}\n`;
+        const css = `.tedi-theme--default,\n:root,\n:host {\n${blocks.join("\n\n")}\n}\n`;
         const dir = path.join(OUTPUT_DIR, "themes", "default");
         fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(path.join(dir, "font-variables__default.scss"), css);
@@ -399,7 +399,7 @@ async function run() {
       }
 
       if (finalBlocks.length > 0) {
-        const css = `:root {\n${finalBlocks.join("\n\n")}\n}\n`;
+        const css = `:root,\n:host {\n${finalBlocks.join("\n\n")}\n}\n`;
         fs.writeFileSync(path.join(OUTPUT_DIR, "_dimensional-variables.scss"), css);
       }
     }

@@ -1,5 +1,6 @@
 .tedi-theme--default,
-:root {
+:root,
+:host {
   --family-default: var(--tedi-family-roboto);
   --family-heading: var(--tedi-family-roboto);
   --body-regular-weight: var(--tedi-weight-02);

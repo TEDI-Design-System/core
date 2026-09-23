@@ -1,4 +1,5 @@
-:root {
+:root,
+:host {
   --global-outline-color: var(--general-effect-colors-focus-outset-outer-shadow, var(--tedi-primary-600));
   --global-outline-offset: var(--tedi-borders-01, 1px);
   --z-index-sticky: 1020;
