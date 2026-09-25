@@ -80,7 +80,8 @@
   --content-label-inner-spacing-x: var(--tedi-dimensions-02);
   --content-label-label-sm-height: var(--tedi-dimensions-13);
   --dropdown-body-padding-x: var(--tedi-dimensions-07);
-  --dropdown-body-padding-y: var(--tedi-dimensions-05);
+  --dropdown-body-padding-y: var(--tedi-dimensions-07);
+  --dropdown-body-padding-y-sm: var(--tedi-dimensions-05);
   --dropdown-group-label-padding-x: var(--dropdown-item-padding-x);
   --dropdown-group-label-padding-y: var(--dropdown-item-padding-y);
   --dropdown-item-inner-spacing: var(--tedi-dimensions-05);
@@ -520,7 +521,8 @@
   --content-label-inner-spacing-x: var(--tedi-dimensions-02);
   --content-label-label-sm-height: var(--tedi-dimensions-13);
   --dropdown-body-padding-x: var(--tedi-dimensions-07);
-  --dropdown-body-padding-y: var(--tedi-dimensions-05);
+  --dropdown-body-padding-y: var(--tedi-dimensions-07);
+  --dropdown-body-padding-y-sm: var(--tedi-dimensions-05);
   --dropdown-group-label-padding-x: var(--dropdown-item-padding-x);
   --dropdown-group-label-padding-y: var(--dropdown-item-padding-y);
   --dropdown-item-inner-spacing: var(--tedi-dimensions-05);
@@ -962,6 +964,7 @@
   --content-label-label-sm-height: var(--tedi-dimensions-13);
   --dropdown-body-padding-x: var(--tedi-dimensions-07);
   --dropdown-body-padding-y: var(--tedi-dimensions-07);
+  --dropdown-body-padding-y-sm: var(--tedi-dimensions-07);
   --dropdown-group-label-padding-x: var(--dropdown-item-padding-x);
   --dropdown-group-label-padding-y: var(--dropdown-item-padding-y);
   --dropdown-item-inner-spacing: var(--tedi-dimensions-05);
