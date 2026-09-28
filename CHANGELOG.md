@@ -1,3 +1,10 @@
+## [6.11.2](https://github.com/TEDI-Design-System/core/compare/core-6.11.1...core-6.11.2) (2026-09-28)
+
+
+### fix
+
+* expose tokens to :host #142 (#157) ([](https://github.com/TEDI-Design-System/core/commit/1db2d2cc19c9aa34d218771ec4e7f3455417e341)), closes [#142](https://github.com/TEDI-Design-System/core/issues/142) [#157](https://github.com/TEDI-Design-System/core/issues/157)
+
 ## [6.11.1](https://github.com/TEDI-Design-System/core/compare/core-6.11.0...core-6.11.1) (2026-09-23)
 
 
