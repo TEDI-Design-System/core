@@ -1,4 +1,5 @@
-:root {
+:root,
+:host {
   --alert-default-icon-container-height: var(--tedi-dimensions-13);
   --alert-default-icon-size: var(--button-icon-inner-size);
   --alert-default-inner-spacing-x: var(--tedi-dimensions-03);

@@ -1,7 +1,8 @@
 @use 'themes/default/color-variables__default';
 @use 'themes/default/color-variables__dark';
 
-:root {
+:root,
+:host {
   /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
   @extend .tedi-theme--default;
 }

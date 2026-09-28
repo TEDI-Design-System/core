@@ -1,6 +1,7 @@
 @use 'themes/default/font-variables__default';
 
-:root {
+:root,
+:host {
   /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
   @extend .tedi-theme--default;
 }
