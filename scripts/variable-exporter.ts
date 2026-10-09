@@ -282,7 +282,8 @@ async function run() {
   const heldBack = new Set<string>();
   for (const coll of wantedColls) {
     coll.variableIds = coll.variableIds.filter(varId => {
-      if (publishedById.has(varId) || variables[varId]?.hiddenFromPublishing) return true;
+      if (!variables[varId]) return false;
+      if (publishedById.has(varId) || variables[varId].hiddenFromPublishing) return true;
       heldBack.add(varId);
       return false;
     });
@@ -290,7 +291,7 @@ async function run() {
 
   const renamed = Object.keys(collOfVar).filter(id => {
     const publishedName = publishedById.get(id)?.name;
-    return publishedName !== undefined && publishedName !== variables[id].name;
+    return publishedName !== undefined && variables[id] !== undefined && publishedName !== variables[id].name;
   });
   if (heldBack.size || renamed.length) {
     console.warn(
