@@ -211,6 +211,7 @@ type TokenTiers = Record<string, Record<string, TokenEntry>>;
 interface FigmaVariable {
   name: string;
   hiddenFromPublishing?: boolean;
+  deletedButReferenced?: boolean;
   resolvedValuesByMode?: Record<string, any>;
   valuesByMode?: Record<string, any>;
 }
@@ -278,12 +279,16 @@ async function run() {
 
   // Hold back variables that have never been published. Variables hidden from
   // publishing are kept: they are never published by design, yet the
-  // stylesheet relies on them (containers, header sizes, ...).
+  // stylesheet relies on them (containers, header sizes, ...). Deleted
+  // variables that layers still reference stay in the API response
+  // (deletedButReferenced) but are invisible in Figma; keep them only while
+  // the published library still has them.
   const heldBack = new Set<string>();
   for (const coll of wantedColls) {
     coll.variableIds = coll.variableIds.filter(varId => {
       if (!variables[varId]) return false;
-      if (publishedById.has(varId) || variables[varId].hiddenFromPublishing) return true;
+      if (publishedById.has(varId)) return true;
+      if (variables[varId].hiddenFromPublishing && !variables[varId].deletedButReferenced) return true;
       heldBack.add(varId);
       return false;
     });
@@ -295,8 +300,8 @@ async function run() {
   });
   if (heldBack.size || renamed.length) {
     console.warn(
-      `Unpublished Figma changes left out: ${heldBack.size} new variable(s), ${renamed.length} rename(s).\n` +
-      [...heldBack].map(id => `  new:    ${variables[id].name}`)
+      `Unpublished Figma changes left out: ${heldBack.size} new or deleted variable(s), ${renamed.length} rename(s).\n` +
+      [...heldBack].map(id => `  ${variables[id].deletedButReferenced ? "deleted:" : "new:    "} ${variables[id].name}`)
         .concat(renamed.map(id => `  rename: ${publishedById.get(id)!.name} -> ${variables[id].name}`))
         .sort()
         .join("\n")
