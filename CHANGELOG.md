@@ -1,3 +1,17 @@
+## [6.11.3](https://github.com/TEDI-Design-System/core/compare/core-6.11.2...core-6.11.3) (2026-10-15)
+
+
+### chore
+
+* **deps-dev:** bump @commitlint/cli from 21.2.1 to 21.2.3 (#160) ([](https://github.com/TEDI-Design-System/core/commit/214ae14a7dd37a73e8bfd343ee2477c0035ec36d)), closes [#160](https://github.com/TEDI-Design-System/core/issues/160)
+* **deps-dev:** bump prettier from 3.9.6 to 3.9.9 (#164) ([](https://github.com/TEDI-Design-System/core/commit/7fe0c030d46237a1f30a3f63780948b6427d659f)), closes [#164](https://github.com/TEDI-Design-System/core/issues/164)
+* **deps-dev:** bump sass from 1.101.0 to 1.105.0 (#161) ([](https://github.com/TEDI-Design-System/core/commit/8db653ab2f5c5d5adff169bdf6ecc9167b7ff794)), closes [#161](https://github.com/TEDI-Design-System/core/issues/161)
+
+
+### fix
+
+* only import published Figma variables #159 (#165) ([](https://github.com/TEDI-Design-System/core/commit/2080757c0d6720568dbab78f412b36ea9b25e59c)), closes [#159](https://github.com/TEDI-Design-System/core/issues/159) [#165](https://github.com/TEDI-Design-System/core/issues/165) [#159](https://github.com/TEDI-Design-System/core/issues/159) [#159](https://github.com/TEDI-Design-System/core/issues/159) [#159](https://github.com/TEDI-Design-System/core/issues/159) [#159](https://github.com/TEDI-Design-System/core/issues/159)
+
 ## [6.11.2](https://github.com/TEDI-Design-System/core/compare/core-6.11.1...core-6.11.2) (2026-09-28)
 
 
