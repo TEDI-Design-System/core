@@ -12,5 +12,4 @@ For a full reference of available utility CSS classes and SCSS mixins, see [CSS 
 
 ## Contributing
 
-Check the [wiki](https://github.com/TEDI-Design-System/general) for component guidelines and coding standards.  
-Report issues or contribute via [GitHub Issues](https://github.com/TEDI-Design-System/core/issues).
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to report issues, set up the repository and open a pull request. Guidelines and coding standards are in the [wiki](https://github.com/TEDI-Design-System/general/wiki).
