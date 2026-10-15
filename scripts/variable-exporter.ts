@@ -67,17 +67,17 @@ function isBrandTheme(modeName: string): boolean {
   return !(lower.includes("default") || lower.includes("light") || lower.includes("dark"));
 }
 
-async function fetchFigmaVariables(): Promise<FigmaVariablesResponse> {
-  const res = await fetch(`https://api.figma.com/v1/files/${FIGMA_FILE_KEY}/variables/local`, {
+async function fetchFigma<T>(endpoint: "local" | "published"): Promise<T> {
+  const res = await fetch(`https://api.figma.com/v1/files/${FIGMA_FILE_KEY}/variables/${endpoint}`, {
     headers: { "X-Figma-Token": FIGMA_VARIABLE_TOKEN ?? "" },
   });
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Figma API error: ${res.status} ${res.statusText} — ${body || "<empty body>"}`);
+    throw new Error(`Figma API error (${endpoint}): ${res.status} ${res.statusText}: ${body || "<empty body>"}`);
   }
 
-  return (await res.json()) as FigmaVariablesResponse;
+  return (await res.json()) as T;
 }
 
 function getUnit(collectionName: string): "px" | "rem" | null {
@@ -120,11 +120,14 @@ function resolveValue(
   aliasMap: Record<string, string>,
   unit: "px" | "rem" | null,
   convertToRemForBase = false,
-  varName = ""
+  varName = "",
+  inlineAlias?: (targetId: string) => string | undefined
 ): string {
   if (!raw) return "0";
 
   if (raw && typeof raw === "object" && (raw.type === "VARIABLE_ALIAS" || (raw.id && !("value" in raw)))) {
+    const inlined = inlineAlias?.(raw.id);
+    if (inlined !== undefined) return inlined;
     const cssVar = aliasMap[raw.id];
     return cssVar ? `var(${cssVar})` : "0";
   }
@@ -207,12 +210,15 @@ type TokenTiers = Record<string, Record<string, TokenEntry>>;
 
 interface FigmaVariable {
   name: string;
+  hiddenFromPublishing?: boolean;
+  deletedButReferenced?: boolean;
   resolvedValuesByMode?: Record<string, any>;
   valuesByMode?: Record<string, any>;
 }
 interface FigmaCollection {
   name: string;
   remote: boolean;
+  hiddenFromPublishing?: boolean;
   modes: { modeId: string; name: string }[];
   variableIds: string[];
   defaultModeId?: string;
@@ -223,15 +229,32 @@ interface FigmaVariablesResponse {
     variableCollections: Record<string, FigmaCollection>;
   };
 }
+// /variables/published carries names and keys only, never values or modes.
+interface FigmaPublishedVariablesResponse {
+  meta: {
+    variables: Record<string, { id: string; name: string }>;
+  };
+}
 
 async function run() {
-  const data = await fetchFigmaVariables();
+  const [data, published] = await Promise.all([
+    fetchFigma<FigmaVariablesResponse>("local"),
+    fetchFigma<FigmaPublishedVariablesResponse>("published"),
+  ]);
   const variables = data.meta.variables as Record<string, FigmaVariable>;
   const collections = data.meta.variableCollections as Record<string, FigmaCollection>;
 
+  // /variables/local is the file's working state, including edits nobody has
+  // published yet. Name every variable as it was last published, so a rename
+  // only reaches the stylesheet once the design team publishes it (#159).
+  const publishedById = new Map(Object.values(published.meta.variables).map(v => [v.id, v]));
+  // The name also picks the unit in resolveValue(), so an unpublished rename
+  // must not change the emitted value either.
+  const publishedName = (id: string): string => publishedById.get(id)?.name ?? variables[id].name;
+
   const aliasMap: Record<string, string> = {};
   for (const id in variables) {
-    aliasMap[id] = `--${kebab(variables[id].name)}`;
+    aliasMap[id] = `--${kebab(publishedName(id))}`;
   }
 
   const wantedColls = Object.values(collections)
@@ -251,6 +274,45 @@ async function run() {
     }
   }
 
+  // Collection of every wanted variable, taken before unpublished ones are
+  // dropped below, so a reference to a held-back variable can still be resolved.
+  const collOfVar: Record<string, FigmaCollection & { name: string }> = {};
+  for (const coll of wantedColls) {
+    for (const varId of coll.variableIds) collOfVar[varId] = coll;
+  }
+
+  // Hold back variables that have never been published. Variables hidden from
+  // publishing (on their own or through their collection) are kept: they are never published by design, yet the
+  // stylesheet relies on them (containers, header sizes, ...). Deleted
+  // variables that layers still reference stay in the API response
+  // (deletedButReferenced) but are invisible in Figma; keep them only while
+  // the published library still has them.
+  const heldBack = new Set<string>();
+  for (const coll of wantedColls) {
+    coll.variableIds = coll.variableIds.filter(varId => {
+      if (!variables[varId]) return false;
+      if (publishedById.has(varId)) return true;
+      const hidden = variables[varId].hiddenFromPublishing || coll.hiddenFromPublishing;
+      if (hidden && !variables[varId].deletedButReferenced) return true;
+      heldBack.add(varId);
+      return false;
+    });
+  }
+
+  const renamed = Object.keys(collOfVar).filter(id => {
+    const publishedName = publishedById.get(id)?.name;
+    return publishedName !== undefined && variables[id] !== undefined && publishedName !== variables[id].name;
+  });
+  if (heldBack.size || renamed.length) {
+    console.warn(
+      `Unpublished Figma changes left out: ${heldBack.size} new or deleted variable(s), ${renamed.length} rename(s).\n` +
+      [...heldBack].map(id => `  ${variables[id].deletedButReferenced ? "deleted:" : "new:    "} ${variables[id].name}`)
+        .concat(renamed.map(id => `  rename: ${publishedById.get(id)!.name} -> ${variables[id].name}`))
+        .sort()
+        .join("\n")
+    );
+  }
+
   for (const coll of wantedColls) {
     const seen = new Map<string, string>();
     const deduped: string[] = [];
@@ -268,158 +330,6 @@ async function run() {
       deduped.push(varId);
     }
     coll.variableIds = deduped;
-  }
-
-  const baseLines: string[] = [];
-  for (const coll of wantedColls.filter(c => c.name.includes("base"))) {
-    const modeId = coll.defaultModeId ?? coll.modes[0]?.modeId;
-    if (!modeId) continue;
-
-    for (const varId of coll.variableIds) {
-      const v = variables[varId];
-      if (!v) continue;
-      const raw = v.resolvedValuesByMode?.[modeId] ?? v.valuesByMode?.[modeId];
-      if (raw === undefined) continue;
-
-      const resolved = resolveValue(raw, aliasMap, null, true, v.name);
-      baseLines.push(`  ${aliasMap[varId]}: ${resolved};`);
-    }
-  }
-
-  if (baseLines.length > 0) {
-    sortCssVars(baseLines);
-    const css = `:root,\n:host {\n${baseLines.join("\n")}\n}\n`;
-    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-    fs.writeFileSync(path.join(OUTPUT_DIR, "_base-variables.scss"), css);
-  }
-
-  for (const coll of wantedColls.filter(c => !c.name.includes("base"))) {
-    const unit = getUnit(coll.name);
-    const isFonts = coll.name === "TEDI fonts semantic";
-    const isColors = coll.name === "TEDI colors semantic";
-    const isDimensions = coll.name === "TEDI dimensions semantic";
-
-    if (isFonts) {
-      const desktopLines: string[] = [];
-      const tabletLines: string[] = [];
-      const mobileLines: string[] = [];
-
-      for (const mode of coll.modes) {
-        const lower = mode.name.toLowerCase();
-
-        if (isBrandTheme(mode.name)) continue;
-
-        const target = lower.includes("mobile") ? mobileLines
-                     : lower.includes("tablet") ? tabletLines
-                     : desktopLines;
-
-        for (const varId of coll.variableIds) {
-          const v = variables[varId];
-          if (!v) continue;
-          const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
-          if (raw === undefined) continue;
-          target.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, v.name)};`);
-        }
-      }
-
-      const blocks: string[] = [];
-      if (desktopLines.length) blocks.push(desktopLines.join("\n"));
-      if (tabletLines.length) blocks.push(`@media (width < 62rem) {\n${tabletLines.join("\n")}\n}`);
-      if (mobileLines.length) blocks.push(`@media (width < 48rem) {\n${mobileLines.join("\n")}\n}`);
-
-      if (blocks.length > 0) {
-        const css = `.tedi-theme--default,\n:root,\n:host {\n${blocks.join("\n\n")}\n}\n`;
-        const dir = path.join(OUTPUT_DIR, "themes", "default");
-        fs.mkdirSync(dir, { recursive: true });
-        fs.writeFileSync(path.join(dir, "font-variables__default.scss"), css);
-      }
-    }
-
-    for (const mode of coll.modes) {
-      const themeConfig = getThemeConfigFromMode(mode.name);
-      if (!themeConfig) continue;
-
-      const lines: string[] = [];
-      for (const varId of coll.variableIds) {
-        const v = variables[varId];
-        if (!v) continue;
-        const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
-        if (raw === undefined) continue;
-        lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, v.name)};`);
-      }
-
-      if (lines.length === 0) continue;
-      sortCssVars(lines);
-
-      const type = isColors ? "color" : isFonts ? "font" : "dimensional";
-      const fileName = `${type}-variables__${themeConfig.fileSuffix}.scss`;
-      const dir = path.join(OUTPUT_DIR, "themes", themeConfig.folder);
-      const themeClass = `.tedi-theme--${themeConfig.fileSuffix}`;
-
-      const css = `${themeClass} {\n${lines.join("\n")}\n}\n`;
-      fs.mkdirSync(dir, { recursive: true });
-      fs.writeFileSync(path.join(dir, fileName), css);
-    }
-
-    if (isDimensions) {
-      const rootLines: string[] = [];
-      const mediaBlocks: string[] = [];
-
-      for (const mode of coll.modes) {
-        const modeKebab = kebab(mode.name);
-        const media = RESPONSIVE_MEDIA[modeKebab] ?? "";
-        const lines: string[] = [];
-
-        for (const varId of coll.variableIds) {
-          const v = variables[varId];
-          if (!v) continue;
-          const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
-          if (raw === undefined) continue;
-          lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, v.name)};`);
-        }
-
-        if (lines.length > 0) {
-          sortCssVars(lines);
-          const blockContent = lines.join("\n");
-
-          if (media) {
-            mediaBlocks.push(`  @media ${media} {\n${blockContent}\n  }`);
-          } else {
-            rootLines.push(blockContent);
-          }
-        }
-      }
-
-      const finalBlocks: string[] = [];
-      if (rootLines.length > 0) {
-        finalBlocks.push(rootLines.join("\n\n"));
-      }
-      if (mediaBlocks.length > 0) {
-        finalBlocks.push(...mediaBlocks);
-      }
-
-      if (finalBlocks.length > 0) {
-        const css = `:root,\n:host {\n${finalBlocks.join("\n\n")}\n}\n`;
-        fs.writeFileSync(path.join(OUTPUT_DIR, "_dimensional-variables.scss"), css);
-      }
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // tokens.json — the same variables the SCSS above declares, as data.
-  //
-  // Two tiers, exactly as Figma models them: "base" (the * base collections) and
-  // "semantic" (the * semantic collections). Consumers must NOT re-derive tiers
-  // from name prefixes — that invents distinctions Figma does not make.
-  //
-  // Buckets mirror the cascade a page actually sees:
-  //   themes.default    — :root on a default-theme desktop viewport
-  //   themes.dark       — the .tedi-theme--dark override subset
-  //   breakpoints.*     — the @media override subsets (tablet, mobile)
-  // ---------------------------------------------------------------------------
-  const collOfVar: Record<string, FigmaCollection & { name: string }> = {};
-  for (const coll of wantedColls) {
-    for (const varId of coll.variableIds) collOfVar[varId] = coll;
   }
 
   // What a mode MEANS, rather than what it is called: collections label the same
@@ -472,9 +382,165 @@ async function run() {
       return targetMode ? resolveLiteral(raw.id, targetMode, preferredModeName, depth + 1) : "0";
     }
 
-    return resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), v.name);
+    return resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), publishedName(varId));
   };
 
+  // A published variable can already point at a held-back one (e.g. a renamed
+  // state now aliasing a brand-new general/state/active). Its var() would
+  // dangle, so emit the value the reference resolves to instead.
+  const inlineHeldBack = (preferredModeName?: string) => (targetId: string): string | undefined => {
+    if (!heldBack.has(targetId)) return undefined;
+    const targetMode = pickMode(collOfVar[targetId], preferredModeName);
+    return targetMode ? resolveLiteral(targetId, targetMode, preferredModeName) : "0";
+  };
+
+  const baseLines: string[] = [];
+  for (const coll of wantedColls.filter(c => c.name.includes("base"))) {
+    const modeId = coll.defaultModeId ?? coll.modes[0]?.modeId;
+    if (!modeId) continue;
+
+    for (const varId of coll.variableIds) {
+      const v = variables[varId];
+      if (!v) continue;
+      const raw = v.resolvedValuesByMode?.[modeId] ?? v.valuesByMode?.[modeId];
+      if (raw === undefined) continue;
+
+      const resolved = resolveValue(raw, aliasMap, null, true, publishedName(varId), inlineHeldBack());
+      baseLines.push(`  ${aliasMap[varId]}: ${resolved};`);
+    }
+  }
+
+  if (baseLines.length > 0) {
+    sortCssVars(baseLines);
+    const css = `:root,\n:host {\n${baseLines.join("\n")}\n}\n`;
+    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+    fs.writeFileSync(path.join(OUTPUT_DIR, "_base-variables.scss"), css);
+  }
+
+  for (const coll of wantedColls.filter(c => !c.name.includes("base"))) {
+    const unit = getUnit(coll.name);
+    const isFonts = coll.name === "TEDI fonts semantic";
+    const isColors = coll.name === "TEDI colors semantic";
+    const isDimensions = coll.name === "TEDI dimensions semantic";
+
+    if (isFonts) {
+      const desktopLines: string[] = [];
+      const tabletLines: string[] = [];
+      const mobileLines: string[] = [];
+
+      for (const mode of coll.modes) {
+        const lower = mode.name.toLowerCase();
+
+        if (isBrandTheme(mode.name)) continue;
+
+        const target = lower.includes("mobile") ? mobileLines
+                     : lower.includes("tablet") ? tabletLines
+                     : desktopLines;
+
+        for (const varId of coll.variableIds) {
+          const v = variables[varId];
+          if (!v) continue;
+          const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
+          if (raw === undefined) continue;
+          target.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, publishedName(varId), inlineHeldBack(mode.name))};`);
+        }
+      }
+
+      const blocks: string[] = [];
+      if (desktopLines.length) blocks.push(desktopLines.join("\n"));
+      if (tabletLines.length) blocks.push(`@media (width < 62rem) {\n${tabletLines.join("\n")}\n}`);
+      if (mobileLines.length) blocks.push(`@media (width < 48rem) {\n${mobileLines.join("\n")}\n}`);
+
+      if (blocks.length > 0) {
+        const css = `.tedi-theme--default,\n:root,\n:host {\n${blocks.join("\n\n")}\n}\n`;
+        const dir = path.join(OUTPUT_DIR, "themes", "default");
+        fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(path.join(dir, "font-variables__default.scss"), css);
+      }
+    }
+
+    for (const mode of coll.modes) {
+      const themeConfig = getThemeConfigFromMode(mode.name);
+      if (!themeConfig) continue;
+
+      const lines: string[] = [];
+      for (const varId of coll.variableIds) {
+        const v = variables[varId];
+        if (!v) continue;
+        const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
+        if (raw === undefined) continue;
+        lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, publishedName(varId), inlineHeldBack(mode.name))};`);
+      }
+
+      if (lines.length === 0) continue;
+      sortCssVars(lines);
+
+      const type = isColors ? "color" : isFonts ? "font" : "dimensional";
+      const fileName = `${type}-variables__${themeConfig.fileSuffix}.scss`;
+      const dir = path.join(OUTPUT_DIR, "themes", themeConfig.folder);
+      const themeClass = `.tedi-theme--${themeConfig.fileSuffix}`;
+
+      const css = `${themeClass} {\n${lines.join("\n")}\n}\n`;
+      fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(path.join(dir, fileName), css);
+    }
+
+    if (isDimensions) {
+      const rootLines: string[] = [];
+      const mediaBlocks: string[] = [];
+
+      for (const mode of coll.modes) {
+        const modeKebab = kebab(mode.name);
+        const media = RESPONSIVE_MEDIA[modeKebab] ?? "";
+        const lines: string[] = [];
+
+        for (const varId of coll.variableIds) {
+          const v = variables[varId];
+          if (!v) continue;
+          const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
+          if (raw === undefined) continue;
+          lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, publishedName(varId), inlineHeldBack(mode.name))};`);
+        }
+
+        if (lines.length > 0) {
+          sortCssVars(lines);
+          const blockContent = lines.join("\n");
+
+          if (media) {
+            mediaBlocks.push(`  @media ${media} {\n${blockContent}\n  }`);
+          } else {
+            rootLines.push(blockContent);
+          }
+        }
+      }
+
+      const finalBlocks: string[] = [];
+      if (rootLines.length > 0) {
+        finalBlocks.push(rootLines.join("\n\n"));
+      }
+      if (mediaBlocks.length > 0) {
+        finalBlocks.push(...mediaBlocks);
+      }
+
+      if (finalBlocks.length > 0) {
+        const css = `:root,\n:host {\n${finalBlocks.join("\n\n")}\n}\n`;
+        fs.writeFileSync(path.join(OUTPUT_DIR, "_dimensional-variables.scss"), css);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // tokens.json — the same variables the SCSS above declares, as data.
+  //
+  // Two tiers, exactly as Figma models them: "base" (the * base collections) and
+  // "semantic" (the * semantic collections). Consumers must NOT re-derive tiers
+  // from name prefixes — that invents distinctions Figma does not make.
+  //
+  // Buckets mirror the cascade a page actually sees:
+  //   themes.default    — :root on a default-theme desktop viewport
+  //   themes.dark       — the .tedi-theme--dark override subset
+  //   breakpoints.*     — the @media override subsets (tablet, mobile)
+  // ---------------------------------------------------------------------------
   const themeTokens: Record<string, TokenTiers> = {};
   const breakpointTokens: Record<string, TokenTiers> = {};
 
@@ -497,7 +563,7 @@ async function run() {
     root[bucket][tier] ??= {};
     root[bucket][tier][aliasMap[varId].replace(/^--/, "")] = {
       value: toModernColorNotation(
-        resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), v.name)
+        resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), publishedName(varId), inlineHeldBack(preferredModeName))
       ),
       resolved: toModernColorNotation(resolveLiteral(varId, modeId, preferredModeName)),
     };
