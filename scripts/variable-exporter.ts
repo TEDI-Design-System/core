@@ -218,6 +218,7 @@ interface FigmaVariable {
 interface FigmaCollection {
   name: string;
   remote: boolean;
+  hiddenFromPublishing?: boolean;
   modes: { modeId: string; name: string }[];
   variableIds: string[];
   defaultModeId?: string;
@@ -247,10 +248,13 @@ async function run() {
   // published yet. Name every variable as it was last published, so a rename
   // only reaches the stylesheet once the design team publishes it (#159).
   const publishedById = new Map(Object.values(published.meta.variables).map(v => [v.id, v]));
+  // The name also picks the unit in resolveValue(), so an unpublished rename
+  // must not change the emitted value either.
+  const publishedName = (id: string): string => publishedById.get(id)?.name ?? variables[id].name;
 
   const aliasMap: Record<string, string> = {};
   for (const id in variables) {
-    aliasMap[id] = `--${kebab(publishedById.get(id)?.name ?? variables[id].name)}`;
+    aliasMap[id] = `--${kebab(publishedName(id))}`;
   }
 
   const wantedColls = Object.values(collections)
@@ -278,7 +282,7 @@ async function run() {
   }
 
   // Hold back variables that have never been published. Variables hidden from
-  // publishing are kept: they are never published by design, yet the
+  // publishing (on their own or through their collection) are kept: they are never published by design, yet the
   // stylesheet relies on them (containers, header sizes, ...). Deleted
   // variables that layers still reference stay in the API response
   // (deletedButReferenced) but are invisible in Figma; keep them only while
@@ -288,7 +292,8 @@ async function run() {
     coll.variableIds = coll.variableIds.filter(varId => {
       if (!variables[varId]) return false;
       if (publishedById.has(varId)) return true;
-      if (variables[varId].hiddenFromPublishing && !variables[varId].deletedButReferenced) return true;
+      const hidden = variables[varId].hiddenFromPublishing || coll.hiddenFromPublishing;
+      if (hidden && !variables[varId].deletedButReferenced) return true;
       heldBack.add(varId);
       return false;
     });
@@ -377,7 +382,7 @@ async function run() {
       return targetMode ? resolveLiteral(raw.id, targetMode, preferredModeName, depth + 1) : "0";
     }
 
-    return resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), v.name);
+    return resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), publishedName(varId));
   };
 
   // A published variable can already point at a held-back one (e.g. a renamed
@@ -400,7 +405,7 @@ async function run() {
       const raw = v.resolvedValuesByMode?.[modeId] ?? v.valuesByMode?.[modeId];
       if (raw === undefined) continue;
 
-      const resolved = resolveValue(raw, aliasMap, null, true, v.name, inlineHeldBack());
+      const resolved = resolveValue(raw, aliasMap, null, true, publishedName(varId), inlineHeldBack());
       baseLines.push(`  ${aliasMap[varId]}: ${resolved};`);
     }
   }
@@ -437,7 +442,7 @@ async function run() {
           if (!v) continue;
           const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
           if (raw === undefined) continue;
-          target.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, v.name, inlineHeldBack(mode.name))};`);
+          target.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, publishedName(varId), inlineHeldBack(mode.name))};`);
         }
       }
 
@@ -464,7 +469,7 @@ async function run() {
         if (!v) continue;
         const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
         if (raw === undefined) continue;
-        lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, v.name, inlineHeldBack(mode.name))};`);
+        lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, publishedName(varId), inlineHeldBack(mode.name))};`);
       }
 
       if (lines.length === 0) continue;
@@ -494,7 +499,7 @@ async function run() {
           if (!v) continue;
           const raw = v.resolvedValuesByMode?.[mode.modeId] ?? v.valuesByMode?.[mode.modeId];
           if (raw === undefined) continue;
-          lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, v.name, inlineHeldBack(mode.name))};`);
+          lines.push(`  ${aliasMap[varId]}: ${resolveValue(raw, aliasMap, unit, false, publishedName(varId), inlineHeldBack(mode.name))};`);
         }
 
         if (lines.length > 0) {
@@ -558,7 +563,7 @@ async function run() {
     root[bucket][tier] ??= {};
     root[bucket][tier][aliasMap[varId].replace(/^--/, "")] = {
       value: toModernColorNotation(
-        resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), v.name, inlineHeldBack(preferredModeName))
+        resolveValue(raw, aliasMap, getUnit(coll.name), coll.name.includes("base"), publishedName(varId), inlineHeldBack(preferredModeName))
       ),
       resolved: toModernColorNotation(resolveLiteral(varId, modeId, preferredModeName)),
     };
