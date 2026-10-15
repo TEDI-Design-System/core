@@ -19,7 +19,7 @@ Everyone taking part is expected to follow the [Code of Conduct](https://github.
 3. Write commits in the [commit convention](https://github.com/TEDI-Design-System/general/wiki/Commit-convention) format with the issue number in the header. A `commit-msg` hook checks the format.
 4. Open a pull request against `rc`. Add `Closes #<issue number>` to the description so the issue closes on merge.
 
-Core releases directly from `rc`: every merge publishes a new version of the package, and React and Angular both depend on it. Check that a change doesn't break either library before merging.
+Core releases directly from `rc`: every merge with a `feat`, `fix` or `perf` commit (or a breaking change) publishes a new version of the package, and React and Angular both depend on it. Check that a change doesn't break either library before merging.
 
 ## Local setup
 
