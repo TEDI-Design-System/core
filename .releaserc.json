@@ -3,14 +3,7 @@
   "branches": ["rc"],
   "plugins": [
     "@semantic-release/commit-analyzer",
-    [
-      "@semantic-release/release-notes-generator",
-      {
-        "writerOpts": {
-          "transform": "commit => { if (commit.references) { commit.references = commit.references.map(ref => ({ ...ref, owner: null, repository: null })); } return commit; }"
-        }
-      }
-    ],
+    "@semantic-release/release-notes-generator",
     ["@semantic-release/changelog", { "changelogFile": "./CHANGELOG.md" }],
     [
       "@semantic-release/git",
