@@ -1,6 +1,7 @@
 {
   "name": "@tedi-design-system/core",
   "version": "0.0.0-semantic-version",
+  "license": "MIT",
   "main": "index.scss",
   "sass": "index.scss",
   "style": "index.css",
