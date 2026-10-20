@@ -13,3 +13,7 @@ For a full reference of available utility CSS classes and SCSS mixins, see [CSS 
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to report issues, set up the repository and open a pull request. Guidelines and coding standards are in the [wiki](https://github.com/TEDI-Design-System/general/wiki).
+
+## License
+
+[MIT](LICENSE). The bundled fonts keep their own licenses, see [NOTICE.md](NOTICE.md).
