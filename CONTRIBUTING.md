@@ -1,6 +1,6 @@
 # Contributing to TEDI Core
 
-Thanks for helping improve `@tedi-design-system/core`, the design tokens, fonts, icons and shared styles used by TEDI React and Angular. This page covers what is specific to this repository. The full process is in the [TEDI wiki](https://github.com/TEDI-Design-System/general/wiki).
+Thanks for helping improve `@tedi-design-system/core`, the design tokens, fonts, icons and shared styles used by TEDI React, Angular and Vue. This page covers what is specific to this repository. The full process is in the [TEDI wiki](https://github.com/TEDI-Design-System/general/wiki).
 
 Everyone taking part is expected to follow the [Code of Conduct](https://github.com/TEDI-Design-System/.github/blob/main/CODE_OF_CONDUCT.md).
 
@@ -19,7 +19,7 @@ Everyone taking part is expected to follow the [Code of Conduct](https://github.
 3. Write commits in the [commit convention](https://github.com/TEDI-Design-System/general/wiki/Commit-convention) format with the issue number in the header. A `commit-msg` hook checks the format.
 4. Open a pull request against `rc`. Add `Closes #<issue number>` to the description so the issue closes on merge.
 
-Core releases directly from `rc`: every merge with a `feat`, `fix` or `perf` commit (or a breaking change) publishes a new version of the package, and React and Angular both depend on it. Check that a change doesn't break either library before merging.
+Core releases directly from `rc`: every merge with a `feat`, `fix` or `perf` commit (or a breaking change) publishes a new version of the package, and React, Angular and Vue all depend on it. Check that a change doesn't break any of the libraries before merging.
 
 ## Local setup
 
@@ -31,7 +31,7 @@ npm run lint    # stylelint, with --fix
 npm run build   # package build into dist/
 ```
 
-To try a change in React or Angular before releasing, build core and point the library at the local `dist/` (for example with `npm link`).
+To try a change in React, Angular or Vue before releasing, build core and point the library at the local `dist/` (for example with `npm link`).
 
 ## Design tokens from Figma
 
