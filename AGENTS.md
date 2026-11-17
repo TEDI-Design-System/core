@@ -4,7 +4,7 @@ Guidance for AI coding agents working in this repository.
 
 ## Project Overview
 
-`@tedi-design-system/core`: design tokens, SCSS variables, base styles, utility classes, fonts and icons shared by TEDI React and TEDI Angular. Plain SCSS, no framework code.
+`@tedi-design-system/core`: design tokens, SCSS variables, base styles, utility classes, fonts and icons shared by TEDI React, TEDI Angular and TEDI Vue. Plain SCSS, no framework code.
 
 ## Commands
 
@@ -50,7 +50,7 @@ To change a generated token, change it in Figma or fix the exporter.
 
 ## Consumers
 
-React and Angular both depend on this package, so treat renaming or removing a token, class, mixin or file path as a breaking change. Check usages in `../react/` and `../angular/` (local only, not available in CI) and call out consumer impact in the PR.
+React, Angular and Vue all depend on this package, so treat renaming or removing a token, class, mixin or file path as a breaking change. Check usages in `../react/`, `../angular/` and `../vue/` (local only, not available in CI) and call out consumer impact in the PR.
 
 ## Commits and Releases
 
