@@ -3,7 +3,6 @@
 
 ### Features
 
-* **variables:** update variables from Figma ([b01f563](https://github.com/TEDI-Design-System/core/commit/b01f563fb7b5289865ff23901dc480af4240a77e))
 * **variables:** update variables from Figma [#69](https://github.com/TEDI-Design-System/core/issues/69) ([9d97e19](https://github.com/TEDI-Design-System/core/commit/9d97e1966296c331628c547e672d5663c804fd02))
 
 # [6.13.0](https://github.com/TEDI-Design-System/core/compare/core-6.12.0...core-6.13.0) (2026-11-16)
